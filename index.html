@@ -32,7 +32,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 /* Layout */
 .container{max-width:1400px;margin:0 auto;padding:20px}
 .tab-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.tab-btn{padding:8px 20px;border-radius:6px;border:1px solid var(--c-border);background:var(--c-panel);color:var(--c-text-sec);font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit}
+.tab-btn{padding:8px 20px;border-radius:6px;border:1px solid var(--c-border);background:var(--c-panel);color:var(--c-text-sec);font-size:14px;cursor:pointer;transition:all .2;font-family:inherit}
 .tab-btn:hover{border-color:var(--c-accent);color:var(--c-text)}
 .tab-btn.active{background:var(--c-accent2);border-color:var(--c-accent2);color:#fff}
 .tab-content{display:none}.tab-content.active{display:block}
@@ -44,7 +44,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 
 /* Price Cards */
 .price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.price-card{background:var(--c-panel);border:1px solid var(--c-border);border-radius:var(--radius);padding:14px 16px;transition:all .2s;cursor:pointer;position:relative;overflow:hidden}
+.price-card{background:var(--c-panel);border:1px solid var(--c-border);border-radius:var(--radius);padding:14px 16px;transition:all .2;cursor:pointer;position:relative;overflow:hidden}
 .price-card:hover{border-color:var(--c-accent);background:var(--c-panel2);transform:translateY(-2px)}
 .price-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
 .price-card.up::before{background:var(--c-up)}
@@ -133,7 +133,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
   background:rgba(0,163,180,.08);border:1px solid rgba(0,163,180,.2);
   font-size:11px;color:var(--c-accent);text-align:center;
   display:flex;align-items:center;justify-content:center;gap:4px;
-  transition:background .2s;
+  transition:background .2;
 }
 .profit-card:hover .profit-ai-hint{background:rgba(0,163,180,.15)}
 
@@ -221,7 +221,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 
 /* Profit Cards */
 .profit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.profit-card{background:var(--c-panel);border:1px solid var(--c-border);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden;transition:all .2s}
+.profit-card{background:var(--c-panel);border:1px solid var(--c-border);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden;transition:all .2}
 .profit-card.profit{border-color:rgba(22,163,74,.3)}
 .profit-card.loss{border-color:rgba(224,57,53,.3)}
 .profit-card:hover{transform:translateY(-2px)}
@@ -244,7 +244,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .profit .pr-value{color:var(--c-profit)}
 .loss .pr-value{color:var(--c-loss)}
 .profit-bar{height:6px;border-radius:3px;background:var(--c-bg);margin-top:12px;overflow:hidden;position:relative}
-.profit-bar-fill{height:100%;border-radius:3px;transition:width .4s}
+.profit-bar-fill{height:100%;border-radius:3px;transition:width .4}
 .profit .profit-bar-fill{background:var(--c-profit)}
 .loss .profit-bar-fill{background:var(--c-loss)}
 .profit-threshold{font-size:11px;color:var(--c-text-dim);margin-top:4px}
@@ -281,7 +281,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .spread-bar-label{font-size:13px;color:var(--c-text-sec)}
 .spread-bar-track{height:24px;border-radius:4px;background:var(--c-bg);position:relative;overflow:hidden}
 .spread-bar-zero{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--c-border)}
-.spread-bar-fill{position:absolute;top:2px;bottom:2px;border-radius:3px;transition:width .4s;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:11px;font-weight:600;color:#fff}
+.spread-bar-fill{position:absolute;top:2px;bottom:2px;border-radius:3px;transition:width .4;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:11px;font-weight:600;color:#fff}
 .spread-bar-fill.profit{background:var(--c-profit)}
 .spread-bar-fill.loss{background:var(--c-loss)}
 .spread-bar-value{font-size:13px;font-weight:600;text-align:right}
@@ -365,12 +365,12 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .auto-update-btn{
   padding:8px 18px;border-radius:6px;border:1px solid var(--c-accent);
   background:var(--c-bg);color:var(--c-accent);font-size:13px;font-weight:600;
-  cursor:pointer;font-family:inherit;transition:all .2s;margin-right:8px;
+  cursor:pointer;font-family:inherit;transition:all .2;margin-right:8px;
   display:inline-flex;align-items:center;gap:6px;
 }
 .auto-update-btn:hover{background:rgba(0,163,180,.08);box-shadow:0 2px 8px rgba(0,163,180,.15)}
 .auto-update-btn:disabled{opacity:.6;cursor:wait}
-.auto-update-btn .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--c-accent);border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+.auto-update-btn .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--c-accent);border-top-color:transparent;border-radius:50%;animation:spin .8 linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* Update Modal */
@@ -395,7 +395,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .update-actions{display:flex;gap:12px;margin-top:16px;justify-content:flex-end}
 .update-actions button{
   padding:8px 20px;border-radius:6px;border:1px solid var(--c-border);
-  font-size:13px;cursor:pointer;font-family:inherit;transition:all .2s;
+  font-size:13px;cursor:pointer;font-family:inherit;transition:all .2;
 }
 .update-actions .btn-cancel{background:var(--c-bg);color:var(--c-text-sec)}
 .update-actions .btn-cancel:hover{border-color:var(--c-text-dim);color:var(--c-text)}
@@ -407,7 +407,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .update-toast{
   position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
   background:var(--c-profit);color:#fff;padding:10px 24px;border-radius:6px;
-  font-size:14px;font-weight:600;z-index:2000;opacity:0;transition:opacity .3s;
+  font-size:14px;font-weight:600;z-index:2000;opacity:0;transition:opacity .3;
   pointer-events:none;
 }
 .update-toast.show{opacity:1}
@@ -593,16 +593,16 @@ let costParams = {
 
 // ==================== PEER PLANTS ====================
 // peerPlants loaded from data.json
-const peerPlants = [];
+
 function renderPeerPlants(){
   const html=peerPlants.map(p=>{
-    const tags=p.products.map(t=>'<span class="peer-product-tag">'+t+'</span>').join("");
+    const 标签=p.products.map(t=>'<span class="peer-product-tag">'+t+'</span>').join("");
     return '<div class="peer-card">'+
       '<div class="peer-card-head">'+
         '<div class="peer-name">'+p.name+'</div>'+
         '<div class="peer-location">'+p.location+'</div>'+
       '</div>'+
-      '<div class="peer-products">'+tags+'</div>'+
+      '<div class="peer-products">'+标签+'</div>'+
       '<div class="peer-capacity">'+p.capacity+'</div>'+
       '<div class="peer-status">'+p.status+'</div>'+
       '<div class="peer-note">'+p.note+'</div>'+
@@ -884,7 +884,7 @@ function renderAIAnalysis(){
   // Check hydrogen sensitivity
   const h2Sensitivity=profitLines.filter(l=>l.h2Qty>0).reduce((sum,l)=>sum+l.h2Qty,0);
   adviceHTML+='<p><strong>\u6c22\u6c14\u6210\u672c\u654f\u611f\u6027\uff1a</strong>\u6c22\u6c14\u4ef7\u683c\u6bcf\u53d8\u52a80.1\u5143/Nm3\uff0c\u5f71\u54cd\u5168\u90e8\u4ea7\u54c1\u7ebf\u5229\u6da6\u5408\u8ba1 '+Math.round(h2Sensitivity*0.1)+' \u5143/\u5428\u3002\u5f53\u524d\u6c22\u6c14\u4ef7\u683c'+costParams.h2.toFixed(2)+'\u5143/Nm3\u3002</p>';
-  adviceHTML+='<p><strong>\u84b8\u6c7d\u6210\u672c\u654f\u611f\u6027\uff1a</strong>\u84b8\u6c7d\u4ef7\u683c\u6bcf\u53d8\u52a810\u5143/\u5428\uff0c\u5f71\u54cd\u5168\u90e8\u4ea7\u54c1\u7ebf\u5229\u6da6\u5408\u8ba1 '+Math.round(profitLines.reduce((s,l)=>s+l.steamQty,0)*10)+' \u5143/\u5428\u3002\u5f53\u524d\u84b8\u6c7d\u4ef7\u683c'+costParams.steam+'\u5143/\u5428\u3002</p>';
+  adviceHTML+='<p><strong>\u84b8\u6c7d\u6210\u672c\u654f\u611f\u6027\uff1a</strong>\u84b8\u6c7d\u4ef7\u683c\u6bcf\u53d8\u52a810\u5143/\u5428\uff0c\u5f71\u54cd\u5168\u90e8\u4ea7\u54c1\u7ebf\u5229\u6da6\u5408\u8ba1 '+Math.round(profitLines.reduce((,l)=>+l.steamQty,0)*10)+' \u5143/\u5428\u3002\u5f53\u524d\u84b8\u6c7d\u4ef7\u683c'+costParams.steam+'\u5143/\u5428\u3002</p>';
 
   document.getElementById("aiContent").innerHTML=
     '<div class="ai-section loss"><h4><span class="dot"></span> \u4e8f\u635f\u539f\u56e0\u5206\u6790</h4>'+lossHTML+'</div>'+
@@ -1106,7 +1106,7 @@ function showAnalysisModal(line){
   });
 
   let tagsHTML="";
-  a.tags.forEach(tag=>{
+  a.标签.forEach(tag=>{
     tagsHTML+='<span class="analysis-tag">'+tag+'</span>';
   });
 
