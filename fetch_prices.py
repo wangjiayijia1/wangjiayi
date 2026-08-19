@@ -810,9 +810,15 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"\nOutput: {OUTPUT_FILE}")
+    print("\nOutput: %s" % OUTPUT_FILE)
     print(
-        f"Products: {len(data['products'])} | Raw: {len(data['rawMaterials'])} | Mid: {len(data['intermediates'])} | Profit: {len(data['profitLines'])}"
+        "Products: %s | Raw: %s | Mid: %s | Profit: %s"
+        % (
+            len(data["products"]),
+            len(data["rawMaterials"]),
+            len(data["intermediates"]),
+            len(data["profitLines"]),
+        )
     )
     print("Done!")
 
