@@ -373,44 +373,6 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .auto-update-btn .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--c-accent);border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Update Modal */
-.update-modal-body{max-height:60vh;overflow-y:auto;padding-right:4px}
-.update-group-title{
-  font-size:13px;font-weight:700;color:var(--c-accent);
-  margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--c-border);
-}
-.update-group-title:first-child{margin-top:0}
-.update-row{
-  display:grid;grid-template-columns:90px 1fr 70px 60px;gap:8px;
-  align-items:center;padding:6px 0;border-bottom:1px solid rgba(45,61,80,.3);
-}
-.update-row-label{font-size:13px;color:var(--c-text)}
-.update-row-input{
-  width:100%;padding:6px 10px;border-radius:4px;border:1px solid var(--c-border);
-  background:var(--c-bg);color:var(--c-text);font-size:14px;font-family:monospace;
-}
-.update-row-input:focus{outline:none;border-color:var(--c-accent)}
-.update-row-prev{font-size:12px;color:var(--c-text-dim);font-family:monospace;text-align:right}
-.update-row-change{font-size:12px;font-family:monospace;text-align:center;font-weight:600}
-.update-actions{display:flex;gap:12px;margin-top:16px;justify-content:flex-end}
-.update-actions button{
-  padding:8px 20px;border-radius:6px;border:1px solid var(--c-border);
-  font-size:13px;cursor:pointer;font-family:inherit;transition:all .2s;
-}
-.update-actions .btn-cancel{background:var(--c-bg);color:var(--c-text-sec)}
-.update-actions .btn-cancel:hover{border-color:var(--c-text-dim);color:var(--c-text)}
-.update-actions .btn-save{
-  background:linear-gradient(135deg,var(--c-accent2),var(--c-accent));
-  border:none;color:#fff;font-weight:600;
-}
-.update-actions .btn-save:hover{box-shadow:0 4px 12px rgba(0,163,180,.3)}
-.update-toast{
-  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
-  background:var(--c-profit);color:#fff;padding:10px 24px;border-radius:6px;
-  font-size:14px;font-weight:600;z-index:2000;opacity:0;transition:opacity .3s;
-  pointer-events:none;
-}
-.update-toast.show{opacity:1}
 @media(max-width:768px){
   .update-row{grid-template-columns:70px 1fr 55px 50px;gap:6px}
   .update-row-label{font-size:12px}
@@ -436,7 +398,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
         <div class="ms-item">下跌 <span class="ms-num ms-down" id="downCount">-</span></div>
         <div class="ms-item">持平 <span class="ms-num ms-flat" id="flatCount">-</span></div>
       </div>
-      <button class="update-btn" id="updatePriceBtn">更新价格</button>
+      <button class="update-btn" id="updatePriceBtn">更新</button>
     </div>
   </div>
 </div>
@@ -518,23 +480,6 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
   </div>
 </div>
 
-<!-- Update Price Modal -->
-<div class="modal-overlay" id="updateOverlay">
-  <div class="modal" style="max-width:720px">
-    <button class="modal-close" id="updateClose">&times;</button>
-    <div style="margin-bottom:16px;padding-right:30px">
-      <div style="font-size:18px;font-weight:700">更新今日价格</div>
-      <div style="font-size:12px;color:var(--c-text-sec);margin-top:2px">输入今日最新价格，涨跌幅自动计算，保存后利润和AI分析全部刷新</div>
-    </div>
-    <div class="update-modal-body" id="updateBody"></div>
-    <div class="update-actions">
-      <button class="btn-cancel" id="updateCancel">取消</button>
-      <button class="btn-save" id="updateSave">保存并刷新</button>
-    </div>
-  </div>
-</div>
-
-<div class="update-toast" id="updateToast">价格已更新，利润和AI分析已刷新</div>
 
 <script>
 // ==================== DATA LOADING ====================
@@ -552,9 +497,10 @@ let costParams = {
 };
 let priceData = null;
 
-async function loadData(){
+async function loadData(cacheBust=false){
   try{
-    const resp = await fetch('data.json');
+    const url = cacheBust ? ('data.json?t='+Date.now()) : 'data.json';
+    const resp = await fetch(url);
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     priceData = await resp.json();
     products = priceData.products || [];
@@ -1160,120 +1106,53 @@ function initModalClose(){
 
 // ==================== DATE ====================
 function setDate(){
-  const now=new Date();
-  document.getElementById("topDate").textContent=now.getFullYear()+"\u5e74"+(now.getMonth()+1)+"\u6708"+now.getDate()+"\u65e5";
+  if(priceData && priceData.lastUpdate){
+    document.getElementById("topDate").textContent="数据更新时间："+priceData.lastUpdate;
+  }else{
+    const now=new Date();
+    const pad=n=>n<10?'0'+n:n;
+    document.getElementById("topDate").textContent=
+      now.getFullYear()+"年"+(now.getMonth()+1)+"月"+now.getDate()+"日 "+
+      pad(now.getHours())+":"+pad(now.getMinutes());
+  }
 }
 
-// ==================== UPDATE PRICE MODAL ====================
+// ==================== UPDATE BUTTON ====================
 function initUpdatePrice(){
-  const overlay=document.getElementById("updateOverlay");
-  const btn=document.getElementById("updatePriceBtn");
-  const closeBtn=document.getElementById("updateClose");
-  const cancelBtn=document.getElementById("updateCancel");
-  const saveBtn=document.getElementById("updateSave");
-  const body=document.getElementById("updateBody");
+  const btn = document.getElementById("updatePriceBtn");
+  const originalText = "更新";
 
-  // Build update form
-  function buildForm(){
-    const groups=[
-      {title:"\u4ea7\u54c1",items:products},
-      {title:"\u539f\u6599",items:rawMaterials},
-      {title:"\u4e2d\u95f4\u4f53",items:intermediates},
-    ];
-    let html="";
-    groups.forEach(g=>{
-      html+='<div class="update-group-title">'+g.title+' ('+g.items.length+'\u79cd)</div>';
-      g.items.forEach(item=>{
-        html+='<div class="update-row">'+
-          '<div class="update-row-label">'+item.name+'</div>'+
-          '<input class="update-row-input" type="number" step="0.01" min="0" data-name="'+item.name+'" value="'+item.price+'" data-prev="'+item.price+'">'+
-          '<div class="update-row-prev">'+item.price.toLocaleString()+'</div>'+
-          '<div class="update-row-change" data-name="'+item.name+'"></div>'+
-        '</div>';
-      });
-    });
-    body.innerHTML=html;
+  btn.addEventListener("click", async ()=>{
+    btn.textContent = "请稍后";
+    btn.disabled = true;
+    btn.style.opacity = "0.6";
+    btn.style.cursor = "not-allowed";
 
-    // Listen for changes to show diff
-    body.querySelectorAll(".update-row-input").forEach(input=>{
-      input.addEventListener("input",()=>{
-        const prev=parseFloat(input.dataset.prev);
-        const val=parseFloat(input.value)||0;
-        const diff=val-prev;
-        const changeEl=body.querySelector('.update-row-change[data-name="'+input.dataset.name+'"]');
-        if(diff>0){
-          changeEl.textContent="+"+Math.round(diff*100)/100;
-          changeEl.style.color="var(--c-up)";
-        }else if(diff<0){
-          changeEl.textContent=Math.round(diff*100)/100;
-          changeEl.style.color="var(--c-down)";
-        }else{
-          changeEl.textContent="\u2014";
-          changeEl.style.color="var(--c-text-dim)";
-        }
-      });
-    });
-  }
-
-  // Open
-  btn.addEventListener("click",()=>{
-    buildForm();
-    overlay.classList.add("active");
-  });
-
-  // Close
-  function close(){overlay.classList.remove("active")}
-  closeBtn.addEventListener("click",close);
-  cancelBtn.addEventListener("click",close);
-  overlay.addEventListener("click",e=>{if(e.target===overlay)close()});
-
-  // Save
-  saveBtn.addEventListener("click",()=>{
-    const inputs=body.querySelectorAll(".update-row-input");
-    const allItems=[...products,...rawMaterials,...intermediates];
-    inputs.forEach(input=>{
-      const name=input.dataset.name;
-      const newVal=parseFloat(input.value)||0;
-      const item=allItems.find(i=>i.name===name);
-      if(item){
-        const oldPrice=item.price;
-        const change=Math.round((newVal-oldPrice)*100)/100;
-        item.price=newVal;
-        item.change=change;
-        if(oldPrice>0){
-          item.changePct=Math.round(change/oldPrice*10000)/100;
-        }
-        if(change>0)item.trend="up";
-        else if(change<0)item.trend="down";
-        else item.trend="flat";
-      }
-    });
-
-    // Update profit line prices that reference market data
-    profitLines.forEach(line=>{
-      // Match product price to market data
-      const productMatch=allItems.find(i=>i.name===line.name.replace("(外售)",""));
-      if(productMatch) line.productPrice=productMatch.price;
-      // Update raw material prices in profit lines
-      line.rawMaterials.forEach(rm=>{
-        const match=allItems.find(i=>i.name===rm.label);
-        if(match) rm.price=match.price;
-      });
-    });
-
-    // Re-render everything
-    renderAllPriceCards();
-    initCardClick();
-    renderProfitCards();
-    renderSpreadBars();
-    renderAIAnalysis();
-    setDate();
-    close();
-
-    // Show toast
-    const toast=document.getElementById("updateToast");
-    toast.classList.add("show");
-    setTimeout(()=>toast.classList.remove("show"),2500);
+    const ok = await loadData(true); // cache-bust
+    if(ok){
+      renderAllPriceCards();
+      renderPeerPlants();
+      renderProfitCards();
+      renderSpreadBars();
+      renderAIAnalysis();
+      initCardClick();
+      setDate();
+      btn.textContent = "更新成功";
+      setTimeout(()=>{
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = "";
+        btn.style.cursor = "";
+      }, 1500);
+    }else{
+      btn.textContent = "更新失败";
+      setTimeout(()=>{
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = "";
+        btn.style.cursor = "";
+      }, 1500);
+    }
   });
 }
 
