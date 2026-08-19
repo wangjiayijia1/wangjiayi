@@ -678,7 +678,8 @@ def fetch_all_prices():
     if "\u5408\u6210\u6c28" in results and "\u6db2\u6c28" not in results:
         results["\u6db2\u6c28"] = dict(results["\u5408\u6210\u6c28"])
         print(
-            f"  [OK] \u6db2\u6c28: {results['\u6db2\u6c28']['price']} (same as \u5408\u6210\u6c28)"
+            "  [OK] \u6db2\u6c28: %s (same as \u5408\u6210\u6c28)"
+            % results["\u6db2\u6c28"]["price"]
         )
 
     return results, failed
