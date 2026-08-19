@@ -1,0 +1,421 @@
+{
+  "lastUpdate": "2026-08-19 14:05:56",
+  "products": [
+    {
+      "name": "己内酰胺",
+      "formula": "C6H11NO",
+      "price": 12401.67,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": 3.06,
+      "trend": "up",
+      "tag": "product"
+    },
+    {
+      "name": "己二酸",
+      "formula": "C6H10O4",
+      "price": 8375.0,
+      "unit": "元/吨",
+      "change": 49.95,
+      "changePct": 0.6,
+      "weekPct": 0.0,
+      "trend": "flat",
+      "tag": "product"
+    },
+    {
+      "name": "尼龙6切片",
+      "formula": "(C6H11NO)n",
+      "price": 12866.67,
+      "unit": "元/吨",
+      "change": 166.67,
+      "changePct": 1.31,
+      "weekPct": 1.6,
+      "trend": "up",
+      "tag": "product"
+    },
+    {
+      "name": "合成氨",
+      "formula": "NH3",
+      "price": 2313.33,
+      "unit": "元/吨",
+      "change": 32.84,
+      "changePct": 1.44,
+      "weekPct": 2.36,
+      "trend": "up",
+      "tag": "product"
+    },
+    {
+      "name": "硝酸",
+      "formula": "HNO3",
+      "price": 1300.0,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": -0.51,
+      "trend": "down",
+      "tag": "product"
+    },
+    {
+      "name": "双氧水",
+      "formula": "H2O2",
+      "price": 576.67,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": -3.82,
+      "trend": "down",
+      "tag": "product"
+    },
+    {
+      "name": "硫酸",
+      "formula": "H2SO4",
+      "price": 1835.0,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": -0.53,
+      "trend": "down",
+      "tag": "product"
+    },
+    {
+      "name": "液氨",
+      "formula": "NH3(l)",
+      "price": 2313.33,
+      "unit": "元/吨",
+      "change": 32.84,
+      "changePct": 1.44,
+      "weekPct": 2.36,
+      "trend": "up",
+      "tag": "product"
+    },
+    {
+      "name": "硫铵",
+      "formula": "(NH4)2SO4",
+      "price": 1090.0,
+      "unit": "元/吨",
+      "change": -16.71,
+      "changePct": -1.51,
+      "weekPct": -2.57,
+      "trend": "down",
+      "tag": "product"
+    }
+  ],
+  "rawMaterials": [
+    {
+      "name": "纯苯",
+      "formula": "C6H6",
+      "price": 7981.0,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": 0.81,
+      "trend": "up",
+      "tag": "raw"
+    },
+    {
+      "name": "硫磺",
+      "formula": "S",
+      "price": 9502.33,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": 0.71,
+      "trend": "up",
+      "tag": "raw"
+    }
+  ],
+  "intermediates": [
+    {
+      "name": "环己酮",
+      "formula": "C6H10O",
+      "price": 9200.0,
+      "unit": "元/吨",
+      "change": 349.59,
+      "changePct": 3.95,
+      "weekPct": 5.04,
+      "trend": "up",
+      "tag": "mid"
+    },
+    {
+      "name": "环己烷",
+      "formula": "C6H12",
+      "price": 6433.33,
+      "unit": "元/吨",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": 2.66,
+      "trend": "up",
+      "tag": "mid"
+    }
+  ],
+  "defaultCosts": {
+    "h2": 1.5,
+    "steam": 220,
+    "power": 0.55
+  },
+  "profitLines": [
+    {
+      "name": "己内酰胺",
+      "productPrice": 12401.67,
+      "threshold": 2000,
+      "rawMaterials": [
+        {
+          "label": "纯苯",
+          "qty": 1.0,
+          "unit": "吨",
+          "price": 7981.0
+        }
+      ],
+      "h2Qty": 250,
+      "steamQty": 5,
+      "powerQty": 400,
+      "otherCost": 800,
+      "byproduct": 880,
+      "byproductLabel": "副产硫铵回收",
+      "spreadLabel": "己内酰胺-纯苯",
+      "plant": {
+        "capacity": "30万吨/年",
+        "unitName": "酰胺装置（A线20万+C线10万）",
+        "status": "A线2026年3月技改达产达效，蒸汽单耗降50%，日产量670吨/天",
+        "advantage": "单线产能国内领先，技改后能耷达国内先进水平，副产硫铵回收降本"
+      }
+    },
+    {
+      "name": "己二酸",
+      "productPrice": 8375.0,
+      "threshold": 500,
+      "rawMaterials": [
+        {
+          "label": "纯苯",
+          "qty": 0.7,
+          "unit": "吨",
+          "price": 7981.0
+        },
+        {
+          "label": "硝酸",
+          "qty": 0.65,
+          "unit": "吨",
+          "price": 1300.0
+        }
+      ],
+      "h2Qty": 60,
+      "steamQty": 6,
+      "powerQty": 500,
+      "otherCost": 400,
+      "byproduct": 0,
+      "spreadLabel": "己二酸-纯苯",
+      "plant": {
+        "capacity": "14万吨/年",
+        "unitName": "己二酸装置",
+        "status": "2024年产量创投产新高，一季度满负荷运行",
+        "advantage": "余热发电项目配套己二酸装置区，蒸汽冷凝液余热回收降本增效"
+      }
+    },
+    {
+      "name": "尼龙6切片",
+      "productPrice": 12866.67,
+      "threshold": 500,
+      "rawMaterials": [
+        {
+          "label": "己内酰胺",
+          "qty": 1.01,
+          "unit": "吨",
+          "price": 12401.67
+        }
+      ],
+      "h2Qty": 0,
+      "steamQty": 1.5,
+      "powerQty": 350,
+      "otherCost": 200,
+      "byproduct": 0,
+      "spreadLabel": "尼龙6-己内酰胺",
+      "plant": {
+        "capacity": "10万吨/年（预计可达11万吨）",
+        "unitName": "尼龙装置（A线7万+C线3万）",
+        "status": "日产能310吨，自控回路和连锁投用率100%，一键停车系统投运",
+        "advantage": "中粘有光常规纺切片，用于工程塑料和民用短纤，边际贡献最大的产品"
+      }
+    },
+    {
+      "name": "环己酮(外售)",
+      "productPrice": 9200.0,
+      "threshold": 500,
+      "rawMaterials": [
+        {
+          "label": "纯苯",
+          "qty": 0.95,
+          "unit": "吨",
+          "price": 7981.0
+        }
+      ],
+      "h2Qty": 350,
+      "steamQty": 4,
+      "powerQty": 300,
+      "otherCost": 300,
+      "byproduct": 0,
+      "spreadLabel": "环己酮-纯苯",
+      "plant": {
+        "capacity": "醇酮装置（C线改造后日均环己醇307吨）",
+        "unitName": "环己醇酮装置（A线/E线/C线）",
+        "status": "C线完成分离塔内件改造，满负荷运行，2024年环己酮产量同比增10.93%",
+        "advantage": "吨环己酮苯耗降0.1吨，蒸汽降0.5吨，氢气降50Nm³，返苯纯度99.9%"
+      }
+    },
+    {
+      "name": "合成氨",
+      "productPrice": 2313.33,
+      "threshold": 400,
+      "rawMaterials": [
+        {
+          "label": "原料煤",
+          "qty": 1.3,
+          "unit": "吨",
+          "price": 920
+        }
+      ],
+      "h2Qty": 0,
+      "steamQty": -1.5,
+      "powerQty": 1000,
+      "otherCost": 200,
+      "byproduct": 0,
+      "byproductLabel": "副产蒸汽",
+      "spreadLabel": "合成氨-煤",
+      "plant": {
+        "capacity": "40万吨/年",
+        "unitName": "合成氨气化装置（A/B/C三台气化炉）",
+        "status": "A炉连运205天、B炉268天、C炉180天创历史最佳，一季度液氨产量11.56万吨同比增3.9%",
+        "advantage": "园区龙头装置，为下游己内酰胺/己二酸/双氧水提供原料，副产蒸汽降低公用工程成本"
+      }
+    },
+    {
+      "name": "双氧水",
+      "productPrice": 576.67,
+      "threshold": 100,
+      "rawMaterials": [],
+      "h2Qty": 70,
+      "steamQty": 0.5,
+      "powerQty": 150,
+      "otherCost": 100,
+      "byproduct": 0,
+      "spreadLabel": "双氧水-氢气",
+      "plant": {
+        "capacity": "24万吨/年",
+        "unitName": "双氧水装置（尼龙车间管辖）",
+        "status": "日产能730吨/天，达行业同等规模偏上水平，一键停车系统投运",
+        "advantage": "产能从650吨/天提升至730吨/天，稳产即高产，安全自动化程度高"
+      }
+    },
+    {
+      "name": "硝酸",
+      "productPrice": 1300.0,
+      "threshold": 150,
+      "rawMaterials": [
+        {
+          "label": "液氨",
+          "qty": 0.29,
+          "unit": "吨",
+          "price": 2313.33
+        }
+      ],
+      "h2Qty": 0,
+      "steamQty": -0.8,
+      "powerQty": 60,
+      "otherCost": 120,
+      "byproduct": 0,
+      "byproductLabel": "副产蒸汽",
+      "spreadLabel": "硝酸-液氨",
+      "plant": {
+        "capacity": "27万吨/年",
+        "unitName": "硝酸装置（A/B双线）",
+        "status": "双加压法工艺，A线满负荷运行，B线2024年完成催化剂更换，尾气处理达标",
+        "advantage": "双加压法能效高，副产蒸汽回收利用，氨耗控制圠0.29吨/吨以下行业领先"
+      }
+    }
+  ],
+  "peerPlants": [
+    {
+      "name": "中国平煤神马集团",
+      "location": "河南平顶山",
+      "products": [
+        "己内酰胺",
+        "己二酸",
+        "尼龙6",
+        "环己酮",
+        "己二腈"
+      ],
+      "capacity": "己内酰胺40万吨/年 + 环己醇25万吨/年 + 己二腈20万吨/年(一期)",
+      "status": "2026年4月己二腈一期投产，产品纯度99.9%。氢氨项目(合成氨40万吨+氢气4亿标方)2023年投运，为园区降本8.74亿元。尼龙产业链完整布局，千亿级尼龙城加速成型。",
+      "note": "国内唯一同时掌握己内酰胺法和丁二烯法两条己二腈路线的企业，产业链一体化程度最高，是太化最强劲的华北周边竞争对手"
+    },
+    {
+      "name": "华鲁恒升",
+      "location": "山东德州/荆州",
+      "products": [
+        "己内酰胺",
+        "己二酸",
+        "尼龙6",
+        "环己酮",
+        "合成氨"
+      ],
+      "capacity": "己内酰胺30万吨/年 + 己二酸20万吨/年(尼齦66配套) + 尼龙6 30万吨/年 + 环己酮40万吨/年",
+      "status": "2024年11月尼龙6装置投产，12月己二酸装置试生产。一头多线煤气化平台，合成氨/尿素/己内酰胺/己二酸一体化。2026Q1净利润11.17亿元同比增58%，成本控制能力行业标杆。",
+      "note": "煤头一体化成本优势突出，综合成本比行业平均低约20%，荆州基地新增产能持续释放，对太化华北市场份额构成直接挤压"
+    },
+    {
+      "name": "兰花科创",
+      "location": "山西晋城",
+      "products": [
+        "己内酰胺",
+        "合成氨",
+        "尿素"
+      ],
+      "capacity": "己内酰胺20万吨/年 + 合成氨配套",
+      "status": "煤炭-合成气-合成氨-己内酰胺一体化产业链，自有优质无烟煤原料优势。2025年煤制芳烹战略布局推进中。",
+      "note": "同处山西，原料煤自给成本优势明显，与太化在己内酰胺市场直接竞争，省内同赛道对手"
+    },
+    {
+      "name": "恒申集团(申远)",
+      "location": "福建连江",
+      "products": [
+        "己内酰胺",
+        "尼龙6"
+      ],
+      "capacity": "己内酰胺100万吨/年(全球最大)",
+      "status": "2023年四线建成投产，实现年产100万吨己内酰胺一体化战略，建成全球唯一完整布局锦纶-6八道产业链的产业园区。",
+      "note": "全球己内酰胺产能第一，规模效应碎压，对全国己内酰胺定价权影响极大，太化售价被动跟随其调价节奏"
+    },
+    {
+      "name": "华峰化学",
+      "location": "重庆",
+      "products": [
+        "己二酸",
+        "尼齦66"
+      ],
+      "capacity": "己二酸115万吨/年(六期已投产)",
+      "status": "2024年12月己二酸六期115万吨/年扩建项目正式投产，己二酸产能和产量均居行业领先。重庆基地30万吨/年己二腈三期+尼齦66一体化项目持续推进。",
+      "note": "国内己二酸绝对龙头，产能占比超40%，新增产能投放直接压制己二酸价格，太化己二酸售价受其开工率直接影响"
+    },
+    {
+      "name": "鲁西化工",
+      "location": "山东聊城",
+      "products": [
+        "己内酰胺",
+        "尼龙6"
+      ],
+      "capacity": "己内酰胺60万吨/年 + 尼龙6 60万吨/年(一期30万已投产)",
+      "status": "60万吨/年己内酰胺·尼龙6项目一期(30万CPL+30万PA6)已开工，与中化集团融合开启新一轮成长。",
+      "note": "山东地区CPL+PA6一体化产能快速扩张，与太化在尼龙6切片市场直接竞争，中化系资源加持后竞争力增强"
+    },
+    {
+      "name": "中国石化(湖南石化)",
+      "location": "湖南岳阳",
+      "products": [
+        "己内酰胺"
+      ],
+      "capacity": "己内酰胺60万吨/年(全球单套最大)",
+      "status": "年产60万吨己内酰胺产业链搬迁与升级转型发展项目已全线开车，技术领先。",
+      "note": "全球单套产能最大、技术最先进的己内酰胺基地，对全国CPL供应格局和定价有决定性影响"
+    }
+  ]
+}
