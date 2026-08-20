@@ -1,13 +1,13 @@
 {
-  "lastUpdate": "2026-08-20 01:15:37",
+  "lastUpdate": "2026-08-19 14:05:56",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
-      "price": 12685.0,
+      "price": 12401.67,
       "unit": "元/吨",
-      "change": 283.33,
-      "changePct": 2.28,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 3.06,
       "trend": "up",
       "tag": "product"
@@ -15,9 +15,9 @@
     {
       "name": "己二酸",
       "formula": "C6H10O4",
-      "price": 8425.0,
+      "price": 8375.0,
       "unit": "元/吨",
-      "change": 50.25,
+      "change": 49.95,
       "changePct": 0.6,
       "weekPct": 0.0,
       "trend": "flat",
@@ -26,10 +26,10 @@
     {
       "name": "尼龙6切片",
       "formula": "(C6H11NO)n",
-      "price": 12966.67,
+      "price": 12866.67,
       "unit": "元/吨",
-      "change": 100.0,
-      "changePct": 0.78,
+      "change": 166.67,
+      "changePct": 1.31,
       "weekPct": 1.6,
       "trend": "up",
       "tag": "product"
@@ -37,10 +37,10 @@
     {
       "name": "合成氨",
       "formula": "NH3",
-      "price": 2346.67,
+      "price": 2313.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 32.84,
+      "changePct": 1.44,
       "weekPct": 2.36,
       "trend": "up",
       "tag": "product"
@@ -59,10 +59,10 @@
     {
       "name": "双氧水",
       "formula": "H2O2",
-      "price": 583.33,
+      "price": 576.67,
       "unit": "元/吨",
-      "change": 6.63,
-      "changePct": 1.15,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -3.82,
       "trend": "down",
       "tag": "product"
@@ -81,10 +81,10 @@
     {
       "name": "液氨",
       "formula": "NH3(l)",
-      "price": 2346.67,
+      "price": 2313.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 32.84,
+      "changePct": 1.44,
       "weekPct": 2.36,
       "trend": "up",
       "tag": "product"
@@ -92,10 +92,10 @@
     {
       "name": "硫铵",
       "formula": "(NH4)2SO4",
-      "price": 1086.67,
+      "price": 1090.0,
       "unit": "元/吨",
-      "change": -3.38,
-      "changePct": -0.31,
+      "change": -16.71,
+      "changePct": -1.51,
       "weekPct": -2.57,
       "trend": "down",
       "tag": "product"
@@ -105,7 +105,7 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 8124.33,
+      "price": 7981.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -131,8 +131,8 @@
       "formula": "C6H10O",
       "price": 9200.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 349.59,
+      "changePct": 3.95,
       "weekPct": 5.04,
       "trend": "up",
       "tag": "mid"
@@ -157,14 +157,14 @@
   "profitLines": [
     {
       "name": "己内酰胺",
-      "productPrice": 12685.0,
+      "productPrice": 12401.67,
       "threshold": 2000,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 8124.33
+          "price": 7981.0
         }
       ],
       "h2Qty": 250,
@@ -183,14 +183,14 @@
     },
     {
       "name": "己二酸",
-      "productPrice": 8425.0,
+      "productPrice": 8375.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 8124.33
+          "price": 7981.0
         },
         {
           "label": "硝酸",
@@ -214,14 +214,14 @@
     },
     {
       "name": "尼龙6切片",
-      "productPrice": 12966.67,
+      "productPrice": 12866.67,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "己内酰胺",
           "qty": 1.01,
           "unit": "吨",
-          "price": 12685.0
+          "price": 12401.67
         }
       ],
       "h2Qty": 0,
@@ -246,7 +246,7 @@
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 8124.33
+          "price": 7981.0
         }
       ],
       "h2Qty": 350,
@@ -264,7 +264,7 @@
     },
     {
       "name": "合成氨",
-      "productPrice": 2346.67,
+      "productPrice": 2313.33,
       "threshold": 400,
       "rawMaterials": [
         {
@@ -290,7 +290,7 @@
     },
     {
       "name": "双氧水",
-      "productPrice": 583.33,
+      "productPrice": 576.67,
       "threshold": 100,
       "rawMaterials": [],
       "h2Qty": 70,
@@ -315,7 +315,7 @@
           "label": "液氨",
           "qty": 0.29,
           "unit": "吨",
-          "price": 2346.67
+          "price": 2313.33
         }
       ],
       "h2Qty": 0,
@@ -416,6 +416,50 @@
       "capacity": "己内酰胺60万吨/年(全球单套最大)",
       "status": "年产60万吨己内酰胺产业链搬迁与升级转型发展项目已全线开车，技术领先。",
       "note": "全球单套产能最大、技术最先进的己内酰胺基地，对全国CPL供应格局和定价有决定性影响"
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-08-19",
+      "category": "装置检修",
+      "title": "华鲁恒升荆州基地己二酸装置计划9月检修",
+      "summary": "华鲁恒升荆州基地己二酸装置计划9月中旬停车检修约15天，预计影响产量约8000吨。短期供应收紧或支撑己二酸价格企稳回升。",
+      "source": "隆众资讯"
+    },
+    {
+      "date": "2026-08-18",
+      "category": "行业快讯",
+      "title": "纯苯港口库存持续走低，价格突破7900元/吨",
+      "summary": "受上游原油价格坚挺及华东港口库存偏低影响，纯苯基准价持续走高至7981元/吨。下游己内酰胺、己二酸等产品成本承压，利润空间进一步压缩。",
+      "source": "生意社"
+    },
+    {
+      "date": "2026-08-17",
+      "category": "市场动态",
+      "title": "尼龙6切片需求回暖，纺丝订单环比增加",
+      "summary": "近期民用纺丝和工程塑料领域订单环比改善，尼龙6切片市场需求回暖。叠加原料己内酰胺价格上行，切片价格跟涨，价差维持在合理区间。",
+      "source": "中纤网"
+    },
+    {
+      "date": "2026-08-16",
+      "category": "装置检修",
+      "title": "恒申集团连江基地部分己内酰胺产线降负运行",
+      "summary": "恒申集团连江基地因例行设备维护，一条己内酰胺产线降负荷运行，预计持续一周。作为全球最大CPL生产商，其开工率变化对全国定价有直接影响。",
+      "source": "卓创资讯"
+    },
+    {
+      "date": "2026-08-15",
+      "category": "价格预警",
+      "title": "硫磺价格高位运行，硫酸成本支撑强劲",
+      "summary": "硫磺基准价维持在9500元/吨以上高位，受国际硫磺供应偏紧及下游磷复肥需求支撑。硫酸价格跟随原料走强，对下游硝酸、己二酸等生产成本形成支撑。",
+      "source": "生意社"
+    },
+    {
+      "date": "2026-08-14",
+      "category": "行业快讯",
+      "title": "中国平煤神马集团己二腈一期投产，尼龙66产业链完善",
+      "summary": "平煤神马集团20万吨/年己二腈一期项目正式投产，产品纯度达99.9%。作为国内唯一同时掌握己内酰胺法和丁二烯法两条己二腈路线的企业，其尼龙产业链一体化程度进一步提升。",
+      "source": "中国化工报"
     }
   ]
 }

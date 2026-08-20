@@ -27,6 +27,8 @@ from urllib.error import URLError, HTTPError
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, "data.json")
+HISTORY_FILE = os.path.join(SCRIPT_DIR, "price_history.json")
+HISTORY_MAX_DAYS = 90  # 保留最近 90 天历史
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -699,6 +701,64 @@ def load_existing_data():
     return None
 
 
+def load_history():
+    """Load existing price_history.json"""
+    if os.path.exists(HISTORY_FILE):
+        try:
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"history": []}
+
+
+def save_history(history_data):
+    """Save price_history.json"""
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history_data, f, ensure_ascii=False, indent=2)
+
+
+def append_history(data, history_data):
+    """Append today's prices to history, keep last HISTORY_MAX_DAYS entries"""
+    today = datetime.now().strftime("%Y-%m-%d")
+    all_items = (
+        data.get("products", [])
+        + data.get("rawMaterials", [])
+        + data.get("intermediates", [])
+    )
+    # Also record profit line prices for multi-period analysis
+    profit_snapshot = []
+    for line in data.get("profitLines", []):
+        profit_snapshot.append(
+            {
+                "name": line["name"],
+                "productPrice": line.get("productPrice", 0),
+                "rawMaterials": [
+                    {"label": rm["label"], "price": rm["price"]}
+                    for rm in line.get("rawMaterials", [])
+                ],
+            }
+        )
+
+    entry = {
+        "date": today,
+        "prices": {item["name"]: item["price"] for item in all_items},
+        "profitLines": profit_snapshot,
+    }
+
+    # Remove duplicate for today (in case of re-run)
+    history_data["history"] = [
+        h for h in history_data.get("history", []) if h.get("date") != today
+    ]
+    history_data["history"].append(entry)
+
+    # Trim to last N days
+    if len(history_data["history"]) > HISTORY_MAX_DAYS:
+        history_data["history"] = history_data["history"][-HISTORY_MAX_DAYS:]
+
+    return history_data
+
+
 def build_data(prices, existing):
     """Build the final data structure"""
     existing_prices = {}
@@ -780,6 +840,7 @@ def build_data(prices, existing):
         "defaultCosts": DEFAULT_COSTS,
         "profitLines": profit_lines,
         "peerPlants": PEER_PLANTS,
+        "news": existing.get("news", []) if existing else [],
     }
 
 
@@ -820,6 +881,14 @@ def main():
             len(data["profitLines"]),
         )
     )
+
+    # Append to price history
+    print("\n[3/3] Updating price_history.json...")
+    history_data = load_history()
+    append_history(data, history_data)
+    save_history(history_data)
+    print(f"History: {len(history_data['history'])} days recorded")
+
     print("Done!")
 
 

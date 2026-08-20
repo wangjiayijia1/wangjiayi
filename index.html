@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0F1924">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="太化看板">
+<meta name="description" content="太化新材料化工产品价格看板 - 实时价格、利润分析、行业资讯">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230F1924'/%3E%3Ctext x='32' y='40' font-family='sans-serif' font-size='28' font-weight='bold' fill='%2300A3B4' text-anchor='middle'%3E太化%3C/text%3E%3C/svg%3E">
 <title>太化新材料 · 化工价格看板</title>
 <style>
 :root{
@@ -28,6 +35,9 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .ms-item{display:flex;align-items:center;gap:4px}
 .ms-num{font-weight:700}
 .ms-up{color:var(--c-up)}.ms-down{color:var(--c-down)}.ms-flat{color:var(--c-flat)}
+.pwa-badge{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;white-space:nowrap}
+.pwa-badge.offline{background:rgba(232,130,30,.15);color:var(--c-warn)}
+.pwa-badge.installed{background:rgba(0,163,180,.15);color:var(--c-accent);cursor:pointer}
 
 /* Layout */
 .container{max-width:1400px;margin:0 auto;padding:20px}
@@ -37,10 +47,57 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .tab-btn.active{background:var(--c-accent2);border-color:var(--c-accent2);color:#fff}
 .tab-content{display:none}.tab-content.active{display:block}
 
+/* News Board */
+.news-board{background:var(--c-panel);border:1px solid var(--c-border);border-radius:var(--radius);margin-bottom:20px;overflow:hidden}
+.news-board-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:linear-gradient(135deg,rgba(0,163,180,.08),rgba(11,77,140,.08));border-bottom:1px solid var(--c-border)}
+.news-board-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
+.news-board-title .nb-icon{width:20px;height:20px;border-radius:4px;background:linear-gradient(135deg,var(--c-accent2),var(--c-accent));display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.news-board-count{font-size:12px;color:var(--c-text-dim)}
+.news-board-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.news-board-body.expanded{max-height:1200px}
+.news-board-toggle{padding:4px 12px;border-radius:4px;border:1px solid var(--c-border);background:var(--c-bg);color:var(--c-text-sec);font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s}
+.news-board-toggle:hover{border-color:var(--c-accent);color:var(--c-accent)}
+.news-list{padding:8px 0}
+.news-item{display:flex;gap:12px;padding:10px 18px;border-bottom:1px solid rgba(45,61,80,.4);transition:background .2s}
+.news-item:last-child{border-bottom:none}
+.news-item:hover{background:rgba(0,163,180,.04)}
+.news-item-date{flex-shrink:0;width:90px;text-align:center}
+.news-item-date .ni-day{font-size:18px;font-weight:800;color:var(--c-accent);line-height:1.2}
+.news-item-date .ni-month{font-size:11px;color:var(--c-text-dim)}
+.news-item-content{flex:1;min-width:0}
+.news-item-tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:3px;font-weight:600;margin-bottom:4px}
+.news-tag-装置检修{background:rgba(232,130,30,.15);color:var(--c-warn)}
+.news-tag-行业快讯{background:rgba(0,163,180,.15);color:var(--c-accent)}
+.news-tag-市场动态{background:rgba(123,63,203,.15);color:#A78BFA}
+.news-tag-价格预警{background:rgba(224,57,53,.15);color:var(--c-up)}
+.news-tag-政策法规{background:rgba(11,77,140,.15);color:#5B9BD5}
+.news-item-title{font-size:14px;font-weight:600;color:var(--c-text);margin-bottom:3px;line-height:1.4}
+.news-item-summary{font-size:12px;color:var(--c-text-sec);line-height:1.6}
+.news-item-source{font-size:11px;color:var(--c-text-dim);margin-top:4px}
+
 /* Section Title */
 .sec-title{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:16px;font-weight:600;color:var(--c-text)}
 .sec-title .bar{width:3px;height:18px;background:var(--c-accent);border-radius:2px}
 .sec-title .count{font-size:13px;color:var(--c-text-dim);font-weight:400}
+
+/* Period Switcher */
+.period-switcher{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding:10px 16px;background:var(--c-panel);border:1px solid var(--c-border);border-radius:var(--radius);flex-wrap:wrap}
+.ps-label{font-size:13px;color:var(--c-text-sec);font-weight:600}
+.ps-btn{padding:5px 16px;border-radius:5px;border:1px solid var(--c-border);background:var(--c-bg);color:var(--c-text-sec);font-size:13px;cursor:pointer;font-family:inherit;transition:all .2s}
+.ps-btn:hover{border-color:var(--c-accent);color:var(--c-text)}
+.ps-btn.active{background:var(--c-accent2);border-color:var(--c-accent2);color:#fff}
+.ps-hint{font-size:11px;color:var(--c-text-dim);margin-left:auto}
+
+/* Multi-period profit badge */
+.profit-period-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;margin-left:8px;vertical-align:middle}
+.ppb-today{background:rgba(0,163,180,.15);color:var(--c-accent)}
+.ppb-7d{background:rgba(232,130,30,.15);color:var(--c-warn)}
+.ppb-30d{background:rgba(123,63,203,.15);color:#A78BFA}
+.profit-trend-mini{display:flex;align-items:center;gap:6px;font-size:11px;margin-top:4px;padding:4px 0;border-top:1px solid rgba(45,61,80,.3)}
+.ptm-item{display:flex;align-items:center;gap:3px}
+.ptm-arrow{font-size:10px}
+.ptm-val{font-weight:600}
+.ptm-label{color:var(--c-text-dim)}
 
 /* Price Cards */
 .price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
@@ -339,6 +396,10 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
   .cost-input-group input{width:60px}
   .modal{padding:16px}
   .modal-chart{height:200px}
+  .news-item{flex-direction:column;gap:4px;padding:10px 14px}
+  .news-item-date{display:flex;align-items:baseline;gap:6px;width:auto;text-align:left}
+  .news-item-date .ni-day{font-size:14px}
+  .news-item-date .ni-month{font-size:11px}
 }
 @media(max-width:480px){
   .price-grid{grid-template-columns:1fr}
@@ -399,6 +460,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
         <div class="ms-item">持平 <span class="ms-num ms-flat" id="flatCount">-</span></div>
       </div>
       <button class="update-btn" id="updatePriceBtn">更新</button>
+      <span class="pwa-badge" id="pwaBadge" style="display:none"></span>
     </div>
   </div>
 </div>
@@ -412,6 +474,19 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 
   <!-- Tab: Prices -->
   <div class="tab-content active" id="tab-prices">
+    <div class="news-board" id="newsBoard" style="display:none">
+      <div class="news-board-head">
+        <div class="news-board-title">
+          <span class="nb-icon">&#x1F4E8;</span>
+          公告 / 市场要闻
+          <span class="news-board-count" id="newsCount"></span>
+        </div>
+        <button class="news-board-toggle" id="newsToggle">展开 &#x25BC;</button>
+      </div>
+      <div class="news-board-body" id="newsBody">
+        <div class="news-list" id="newsList"></div>
+      </div>
+    </div>
     <div class="sec-title"><div class="bar"></div>产品价格 <span class="count" id="productCount"></span></div>
     <div class="price-grid" id="productGrid"></div>
     <div class="sec-title" style="margin-top:24px"><div class="bar"></div>原料价格 <span class="count" id="rawCount"></span></div>
@@ -424,6 +499,13 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 
   <!-- Tab: Profit -->
   <div class="tab-content" id="tab-profit">
+    <div class="period-switcher">
+      <span class="ps-label">利润分析周期：</span>
+      <button class="ps-btn active" data-period="today">当日</button>
+      <button class="ps-btn" data-period="7d">7日均值</button>
+      <button class="ps-btn" data-period="30d">30日均值</button>
+      <span class="ps-hint" id="periodHint"></span>
+    </div>
     <div class="cost-bar">
       <div class="cost-bar-title">公用工程成本（可编辑，自动重算）</div>
       <div class="cost-input-group">
@@ -489,6 +571,7 @@ let rawMaterials = [];
 let intermediates = [];
 let profitLines = [];
 let peerPlants = [];
+let newsItems = [];
 let defaultCosts = {h2:1.50, steam:220, power:0.55};
 let costParams = {
   h2: parseFloat(localStorage.getItem('th_cost_h2')) || defaultCosts.h2,
@@ -496,6 +579,8 @@ let costParams = {
   power: parseFloat(localStorage.getItem('th_cost_power')) || defaultCosts.power,
 };
 let priceData = null;
+let priceHistory = [];
+let activeProfitPeriod = 'today'; // 'today' | '7d' | '30d'
 
 async function loadData(cacheBust=false){
   try{
@@ -508,6 +593,7 @@ async function loadData(cacheBust=false){
     intermediates = priceData.intermediates || [];
     profitLines = priceData.profitLines || [];
     peerPlants = priceData.peerPlants || [];
+    newsItems = priceData.news || [];
     if(priceData.defaultCosts){
       defaultCosts = priceData.defaultCosts;
       costParams = {
@@ -520,6 +606,8 @@ async function loadData(cacheBust=false){
     if(dsEl && priceData.lastUpdate){
       dsEl.innerHTML = '\u6570\u636e\u6765\u6e90\uff1a\u751f\u610f\u793e(100ppi.com)<br>\u4ef7\u683c\u66f4\u65b0\u65f6\u95f4\uff1a' + priceData.lastUpdate + ' \u00b7 \u4ec5\u4f9b\u53c2\u8003\uff0c\u4e0d\u6784\u6210\u4ea4\u6613\u4f9d\u636e';
     }
+    // Load price history in background (non-blocking)
+    loadHistory(cacheBust);
     return true;
   }catch(err){
     console.error('Failed to load data.json:', err);
@@ -531,6 +619,59 @@ async function loadData(cacheBust=false){
 
 // ==================== PROFIT LINES ====================
 // Loaded from data.json via loadData()
+
+// ==================== LOAD PRICE HISTORY ====================
+async function loadHistory(cacheBust=false){
+  try{
+    const url = cacheBust ? ('price_history.json?t='+Date.now()) : 'price_history.json';
+    const resp = await fetch(url);
+    if(!resp.ok){ console.warn('price_history.json not found, using mock data'); return; }
+    const histData = await resp.json();
+    priceHistory = histData.history || [];
+  }catch(err){
+    console.warn('Failed to load price_history.json:', err);
+  }
+}
+
+// Get real history for a product, fallback to mock
+function getHistory(item){
+  if(priceHistory.length >= 7){
+    const hist = priceHistory.slice(-30).map(h => ({
+      date: h.date.slice(5).replace('-', '/'),
+      price: h.prices[item.name] || item.price
+    }));
+    // Ensure last point matches current
+    if(hist.length > 0) hist[hist.length-1].price = item.price;
+    return hist;
+  }
+  return generateHistory(item);
+}
+
+// Calculate average profit for a given period
+function getAvgProfit(line, days){
+  if(priceHistory.length < days) days = priceHistory.length;
+  if(days < 1) return null;
+  const recent = priceHistory.slice(-days);
+  let total = 0;
+  let count = 0;
+  recent.forEach(h => {
+    const snap = (h.profitLines || []).find(p => p.name === line.name);
+    if(snap){
+      let rawCost = 0;
+      snap.rawMaterials.forEach(rm => { rawCost += (line.rawMaterials.find(r => r.label === rm.label) || {}).qty * rm.price || 0; });
+      const h2Cost = line.h2Qty * costParams.h2;
+      const steamCost = line.steamQty * costParams.steam;
+      const powerCost = line.powerQty * costParams.power;
+      const utilityTotal = utilityOverrides.hasOwnProperty(line.name) ? utilityOverrides[line.name] : (h2Cost + steamCost + powerCost);
+      const otherCost = otherCostOverrides.hasOwnProperty(line.name) ? otherCostOverrides[line.name] : line.otherCost;
+      const byproduct = line.byproduct || 0;
+      const profit = snap.productPrice - rawCost - utilityTotal - otherCost + byproduct;
+      total += profit;
+      count++;
+    }
+  });
+  return count > 0 ? total / count : null;
+}
 
 // ==================== PEER PLANTS ====================
 // peerPlants loaded from data.json (declared above)
@@ -549,6 +690,51 @@ function renderPeerPlants(){
     '</div>';
   }).join("");
   document.getElementById("peerGrid").innerHTML=html;
+}
+
+// ==================== NEWS BOARD ====================
+function renderNewsBoard(){
+  const board=document.getElementById("newsBoard");
+  if(!board) return;
+  if(!newsItems || newsItems.length===0){
+    board.style.display="none";
+    return;
+  }
+  board.style.display="block";
+  document.getElementById("newsCount").textContent="("+newsItems.length+")";
+  const html=newsItems.map(n=>{
+    const parts=(n.date||"").split("-");
+    const monthStr=parts.length>=2?(parts[1]+"\u6708"):"";
+    const dayStr=parts.length>=3?parts[2]:"";
+    const tagClass="news-tag-"+(n.category||"\u5176\u4ed6");
+    return '<div class="news-item">'+
+      '<div class="news-item-date"><div class="ni-day">'+dayStr+'</div><div class="ni-month">'+monthStr+'</div></div>'+
+      '<div class="news-item-content">'+
+        '<span class="news-item-tag '+tagClass+'">'+(n.category||"")+'</span>'+
+        '<div class="news-item-title">'+n.title+'</div>'+
+        '<div class="news-item-summary">'+n.summary+'</div>'+
+        (n.source?'<div class="news-item-source">\u6765\u6e90\uff1a'+n.source+'</div>':'')+
+      '</div>'+
+    '</div>';
+  }).join("");
+  document.getElementById("newsList").innerHTML=html;
+}
+
+function initNewsToggle(){
+  const toggle=document.getElementById("newsToggle");
+  const body=document.getElementById("newsBody");
+  if(!toggle||!body) return;
+  body.classList.add("expanded");
+  toggle.innerHTML="\u6536\u8d77 \u25B2";
+  toggle.addEventListener("click",()=>{
+    if(body.classList.contains("expanded")){
+      body.classList.remove("expanded");
+      toggle.innerHTML="\u5c55\u5f00 \u25BC";
+    }else{
+      body.classList.add("expanded");
+      toggle.innerHTML="\u6536\u8d77 \u25B2";
+    }
+  });
 }
 
 // ==================== CALCULATE PROFIT ====================
@@ -648,12 +834,35 @@ function renderAllPriceCards(){
 
 // ==================== RENDER PROFIT CARDS ====================
 function renderProfitCards(){
+  const periodLabels = {today: '\u5f53\u65e5', '7d': '7\u65e5\u5747\u503c', '30d': '30\u65e5\u5747\u503c'};
+  const periodBadgeClass = {today:'ppb-today','7d':'ppb-7d','30d':'ppb-30d'};
   const html=profitLines.map(line=>{
     const r=calcProfit(line);
-    const status=r.profit>=line.threshold?"profit":"loss";
+    const displayProfit = activeProfitPeriod === 'today' ? r.profit : (getAvgProfit(line, activeProfitPeriod === '7d' ? 7 : 30) || r.profit);
+    const status=displayProfit>=line.threshold?"profit":"loss";
     const maxBar=5000;
-    const barWidth=Math.min(Math.abs(r.profit)/maxBar*100,100);
+    const barWidth=Math.min(Math.abs(displayProfit)/maxBar*100,100);
     const statusText=status==="profit"?"\u76c8\u5229":"\u4e8f\u635f";
+    // Multi-period comparison
+    const avg7 = getAvgProfit(line, 7);
+    const avg30 = getAvgProfit(line, 30);
+    let trendHTML = '';
+    if(avg7 !== null || avg30 !== null){
+      trendHTML = '<div class="profit-trend-mini">';
+      if(activeProfitPeriod !== 'today'){
+        const todayDiff = r.profit - (activeProfitPeriod === '7d' ? avg7 : avg30);
+        const trendIcon = todayDiff > 0 ? '\u25B2' : todayDiff < 0 ? '\u25BC' : '\u2014';
+        const trendColor = todayDiff > 0 ? 'var(--c-up)' : todayDiff < 0 ? 'var(--c-down)' : 'var(--c-flat)';
+        trendHTML += '<div class="ptm-item"><span class="ptm-label">\u5f53\u65e5vs'+periodLabels[activeProfitPeriod]+':</span><span class="ptm-arrow" style="color:'+trendColor+'">'+trendIcon+'</span><span class="ptm-val" style="color:'+trendColor+'">'+(todayDiff>0?'+':'')+Math.round(todayDiff).toLocaleString()+'</span></div>';
+      }
+      if(avg7 !== null && activeProfitPeriod !== '7d'){
+        trendHTML += '<div class="ptm-item"><span class="ptm-label">7\u65e5\u5747:</span><span class="ptm-val" style="color:var(--c-warn)">'+Math.round(avg7).toLocaleString()+'</span></div>';
+      }
+      if(avg30 !== null && activeProfitPeriod !== '30d'){
+        trendHTML += '<div class="ptm-item"><span class="ptm-label">30\u65e5\u5747:</span><span class="ptm-val" style="color:#A78BFA">'+Math.round(avg30).toLocaleString()+'</span></div>';
+      }
+      trendHTML += '</div>';
+    }
     let calcRows='';
     calcRows+='<div class="row"><span class="label">\u4ea7\u54c1\u552e\u4ef7</span><span class="value">+'+line.productPrice.toLocaleString()+' \u5143/\u5428</span></div>';
     line.rawMaterials.forEach(rm=>{
@@ -685,12 +894,13 @@ function renderProfitCards(){
       calcRows+='</div>';
     }
     return '<div class="profit-card '+status+'">'+
-      '<div class="pc-status">'+statusText+'</div>'+
+      '<div class="pc-status">'+statusText+'<span class="profit-period-badge '+periodBadgeClass[activeProfitPeriod]+'">'+periodLabels[activeProfitPeriod]+'</span></div>'+
       '<div class="profit-head"><div class="profit-name">'+line.name+'</div></div>'+
       '<div class="profit-calc">'+calcRows+'</div>'+
-      '<div class="profit-result"><span class="pr-label">\u5229\u6da6\u72b6\u6001</span><span class="pr-value">'+fmtMoney(r.profit)+'</span></div>'+
+      '<div class="profit-result"><span class="pr-label">\u5229\u6da6\u72b6\u6001</span><span class="pr-value">'+fmtMoney(displayProfit)+'</span></div>'+
       '<div class="profit-bar"><div class="profit-bar-fill" style="width:'+barWidth+'%"></div></div>'+
-      '<div class="profit-threshold">\u9884\u8b66\u9608\u503c: '+line.threshold+' \u5143/\u5428 \u00b7 \u5f53\u524d'+(r.profit<line.threshold?"\u5df2\u4f4e\u4e8e":"\u9ad8\u4e8e")+"\u9608\u503c"+(r.profit<line.threshold?" \u26a0":"")+'</div>'+
+      '<div class="profit-threshold">\u9884\u8b66\u9608\u503c: '+line.threshold+' \u5143/\u5428 \u00b7 \u5f53\u524d'+(displayProfit<line.threshold?"\u5df2\u4f4e\u4e8e":"\u9ad8\u4e8e")+"\u9608\u503c"+(displayProfit<line.threshold?" \u26a0":"")+'</div>'+
+      trendHTML+
       (line.analysis?'<div class="profit-ai-hint">\u25b8 \u70b9\u51fb\u67e5\u770b AI \u5e02\u573a\u5206\u6790</div>':'')+
     '</div>';
   }).join("");
@@ -732,37 +942,42 @@ function updateSingleProfitCard(lineName, sourceInput){
   const line=profitLines.find(l=>l.name===lineName);
   if(!line) return;
   const r=calcProfit(line);
+  const displayProfit = activeProfitPeriod === 'today' ? r.profit : (getAvgProfit(line, activeProfitPeriod === '7d' ? 7 : 30) || r.profit);
   const card=sourceInput.closest(".profit-card");
   if(!card) return;
   // 更新利润状态
-  const status=r.profit>=line.threshold?"profit":"loss";
+  const status=displayProfit>=line.threshold?"profit":"loss";
   const statusText=status==="profit"?"\u76c8\u5229":"\u4e8f\u635f";
   card.className="profit-card "+status;
   const pcStatus=card.querySelector(".pc-status");
-  if(pcStatus) pcStatus.textContent=statusText;
+  if(pcStatus){
+    const periodLabels = {today: '\u5f53\u65e5', '7d': '7\u65e5\u5747\u503c', '30d': '30\u65e5\u5747\u503c'};
+    const periodBadgeClass = {today:'ppb-today','7d':'ppb-7d','30d':'ppb-30d'};
+    pcStatus.innerHTML = statusText + '<span class="profit-period-badge '+periodBadgeClass[activeProfitPeriod]+'">'+periodLabels[activeProfitPeriod]+'</span>';
+  }
   // 更新吨毛利
   const rows=card.querySelectorAll(".profit-calc .row");
   const lastRow=rows[rows.length-1];
   if(lastRow){
     const valSpan=lastRow.querySelector(".value");
     if(valSpan){
-      valSpan.textContent=fmtMoney(r.profit)+" \u5143/\u5428";
+      valSpan.textContent=fmtMoney(displayProfit)+" \u5143/\u5428";
       valSpan.style.color=status==="profit"?"var(--c-profit)":"var(--c-loss)";
     }
   }
   // 更新利润结果
   const prValue=card.querySelector(".pr-value");
-  if(prValue) prValue.textContent=fmtMoney(r.profit);
+  if(prValue) prValue.textContent=fmtMoney(displayProfit);
   // 更新进度条
   const barFill=card.querySelector(".profit-bar-fill");
   if(barFill){
     const maxBar=5000;
-    barFill.style.width=Math.min(Math.abs(r.profit)/maxBar*100,100)+"%";
+    barFill.style.width=Math.min(Math.abs(displayProfit)/maxBar*100,100)+"%";
   }
   // 更新预警阈值文字
   const thresholdDiv=card.querySelector(".profit-threshold");
   if(thresholdDiv){
-    thresholdDiv.textContent="\u9884\u8b66\u9608\u503c: "+line.threshold+" \u5143/\u5428 \u00b7 \u5f53\u524d"+(r.profit<line.threshold?"\u5df2\u4f4e\u4e8e":"\u9ad8\u4e8e")+"\u9608\u503c"+(r.profit<line.threshold?" \u26a0":"");
+    thresholdDiv.textContent="\u9884\u8b66\u9608\u503c: "+line.threshold+" \u5143/\u5428 \u00b7 \u5f53\u524d"+(displayProfit<line.threshold?"\u5df2\u4f4e\u4e8e":"\u9ad8\u4e8e")+"\u9608\u503c"+(displayProfit<line.threshold?" \u26a0":"");
   }
 }
 
@@ -771,15 +986,16 @@ function renderSpreadBars(){
   const maxSpread=4500;
   const html=profitLines.map(line=>{
     const r=calcProfit(line);
-    const isProfit=r.profit>=line.threshold;
-    const width=Math.min(Math.abs(r.profit)/maxSpread*100,100);
-    const side=r.profit>=0?"left:50%":"right:50%";
+    const displayProfit = activeProfitPeriod === 'today' ? r.profit : (getAvgProfit(line, activeProfitPeriod === '7d' ? 7 : 30) || r.profit);
+    const isProfit=displayProfit>=line.threshold;
+    const width=Math.min(Math.abs(displayProfit)/maxSpread*100,100);
+    const side=displayProfit>=0?"left:50%":"right:50%";
     return '<div class="spread-bar-row">'+
       '<div class="spread-bar-label">'+line.spreadLabel+'</div>'+
       '<div class="spread-bar-track"><div class="spread-bar-zero"></div>'+
-        '<div class="spread-bar-fill '+(isProfit?'profit':'loss')+'" style="'+side+';width:'+width+'%">'+fmtMoney(r.profit)+'</div>'+
+        '<div class="spread-bar-fill '+(isProfit?'profit':'loss')+'" style="'+side+';width:'+width+'%">'+fmtMoney(displayProfit)+'</div>'+
       '</div>'+
-      '<div class="spread-bar-value" style="color:'+(isProfit?'var(--c-profit)':'var(--c-loss)')+'">'+fmtMoney(r.profit)+'</div>'+
+      '<div class="spread-bar-value" style="color:'+(isProfit?'var(--c-profit)':'var(--c-loss)')+'">'+fmtMoney(displayProfit)+'</div>'+
     '</div>';
   }).join("");
   document.getElementById("spreadBars").innerHTML=html;
@@ -787,7 +1003,11 @@ function renderSpreadBars(){
 
 // ==================== RENDER AI ANALYSIS ====================
 function renderAIAnalysis(){
-  const results=profitLines.map(line=>({name:line.name,...calcProfit(line),threshold:line.threshold,productPrice:line.productPrice}));
+  const results=profitLines.map(line=>{
+    const r=calcProfit(line);
+    const displayProfit = activeProfitPeriod === 'today' ? r.profit : (getAvgProfit(line, activeProfitPeriod === '7d' ? 7 : 30) || r.profit);
+    return {name:line.name, profit:displayProfit, rawCost:r.rawCost, threshold:line.threshold, productPrice:line.productPrice};
+  });
   const sorted=[...results].sort((a,b)=>b.profit-a.profit);
   const best=sorted[0];
   const worst=sorted[sorted.length-1];
@@ -902,7 +1122,8 @@ function renderAIAnalysis(){
 
 // ==================== TREND MODAL ====================
 function showTrendModal(item){
-  const history=generateHistory(item);
+  const history=getHistory(item);
+  const isReal = priceHistory.length >= 7;
   const prices=history.map(d=>d.price);
   const minP=Math.min(...prices);
   const maxP=Math.max(...prices);
@@ -935,10 +1156,11 @@ function showTrendModal(item){
     '</div>'+
     alertHTML+
     '<div class="modal-chart-wrap"><canvas class="modal-chart" id="trendCanvas"></canvas></div>'+
+    '<div class="modal-chart-label" style="text-align:center;font-size:11px;color:var(--c-text-dim);margin-top:4px">'+(isReal?'\u25cf \u771f\u5b9e\u5386\u53f2\u6570\u636e':'\u25cb \u6a21\u62df\u8d8b\u52bf\uff08\u5f85\u5386\u53f2\u6570\u636e\u79ef\u7d2f\uff09')+'</div>'+
     '<div class="modal-stats">'+
-      '<div class="modal-stat"><div class="ms-val" style="color:var(--c-up)">'+maxP.toLocaleString()+'</div><div class="ms-lbl">30\u65e5\u6700\u9ad8</div></div>'+
-      '<div class="modal-stat"><div class="ms-val" style="color:var(--c-down)">'+minP.toLocaleString()+'</div><div class="ms-lbl">30\u65e5\u6700\u4f4e</div></div>'+
-      '<div class="modal-stat"><div class="ms-val" style="color:var(--c-accent)">'+avgP.toLocaleString()+'</div><div class="ms-lbl">30\u65e5\u5747\u503c</div></div>'+
+      '<div class="modal-stat"><div class="ms-val" style="color:var(--c-up)">'+maxP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u6700\u9ad8</div></div>'+
+      '<div class="modal-stat"><div class="ms-val" style="color:var(--c-down)">'+minP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u6700\u4f4e</div></div>'+
+      '<div class="modal-stat"><div class="ms-val" style="color:var(--c-accent)">'+avgP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u5747\u503c</div></div>'+
       '<div class="modal-stat"><div class="ms-val" style="color:'+changeColor+'">'+(item.weekPct>0?"+":"")+item.weekPct+'%</div><div class="ms-lbl">\u5468\u6da8\u8dcc</div></div>'+
     '</div>';
   document.getElementById("modalOverlay").classList.add("active");
@@ -1086,6 +1308,36 @@ function initCardClick(){
   });
 }
 
+// ==================== PERIOD SWITCHER ====================
+function initPeriodSwitcher(){
+  const hint = document.getElementById("periodHint");
+  function updateHint(){
+    if(activeProfitPeriod === 'today'){
+      hint.textContent = '';
+    }else{
+      const days = activeProfitPeriod === '7d' ? 7 : 30;
+      const available = Math.min(priceHistory.length, days);
+      if(available < 2){
+        hint.textContent = '\u26a0 \u5386\u53f2\u6570\u636e\u4e0d\u8db3\uff0c\u4ec5\u6709'+priceHistory.length+'\u5929\uff0c\u6682\u7528\u5f53\u65e5\u6570\u636e\u66ff\u4ee3';
+      }else{
+        hint.textContent = '\u57fa\u4e8e'+available+'\u5929\u5386\u53f2\u5747\u503c\u8ba1\u7b97';
+      }
+    }
+  }
+  document.querySelectorAll(".ps-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      document.querySelectorAll(".ps-btn").forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      activeProfitPeriod = btn.dataset.period;
+      updateHint();
+      renderProfitCards();
+      renderSpreadBars();
+      renderAIAnalysis();
+    });
+  });
+  updateHint();
+}
+
 // ==================== PROFIT CARD CLICK -> AI ANALYSIS MODAL ====================
 function showAnalysisModal(line){
   const r=calcProfit(line);
@@ -1189,6 +1441,7 @@ function initUpdatePrice(){
     if(ok){
       renderAllPriceCards();
       renderPeerPlants();
+      renderNewsBoard();
       renderProfitCards();
       renderSpreadBars();
       renderAIAnalysis();
@@ -1213,6 +1466,40 @@ function initUpdatePrice(){
   });
 }
 
+// ==================== SERVICE WORKER (PWA) ====================
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js').then(reg=>{
+      console.log('[PWA] Service Worker registered');
+    }).catch(err=>{
+      console.warn('[PWA] SW registration failed:', err);
+    });
+
+    // Offline indicator
+    function updateOnlineStatus(){
+      const badge=document.getElementById('pwaBadge');
+      if(!badge) return;
+      if(!navigator.onLine){
+        badge.style.display='inline-block';
+        badge.className='pwa-badge offline';
+        badge.textContent='\u26a0 \u79bb\u7ebf\u6a21\u5f0f';
+      }else{
+        // Check if running as installed PWA
+        if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone){
+          badge.style.display='inline-block';
+          badge.className='pwa-badge installed';
+          badge.textContent='\u25cf \u5df2\u5b89\u88c5';
+        }else{
+          badge.style.display='none';
+        }
+      }
+    }
+    window.addEventListener('online',updateOnlineStatus);
+    window.addEventListener('offline',updateOnlineStatus);
+    updateOnlineStatus();
+  });
+}
+
 // ==================== INIT ====================
 async function init(){
   const ok = await loadData();
@@ -1220,11 +1507,14 @@ async function init(){
     setDate();
     renderAllPriceCards();
     renderPeerPlants();
+    renderNewsBoard();
+    initNewsToggle();
     renderProfitCards();
     renderSpreadBars();
     renderAIAnalysis();
     initCostInputs();
     initCardClick();
+    initPeriodSwitcher();
     initTabs();
     initModalClose();
     initUpdatePrice();
