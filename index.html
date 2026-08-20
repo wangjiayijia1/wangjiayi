@@ -53,8 +53,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .news-board-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
 .news-board-title .nb-icon{width:20px;height:20px;border-radius:4px;background:linear-gradient(135deg,var(--c-accent2),var(--c-accent));display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
 .news-board-count{font-size:12px;color:var(--c-text-dim)}
-.news-board-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.news-board-body.expanded{max-height:1200px}
+.news-board-body{max-height:none;overflow:visible}
 .news-board-toggle{padding:4px 12px;border-radius:4px;border:1px solid var(--c-border);background:var(--c-bg);color:var(--c-text-sec);font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s}
 .news-board-toggle:hover{border-color:var(--c-accent);color:var(--c-accent)}
 .news-list{padding:8px 0}
@@ -70,6 +69,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .news-tag-行业快讯{background:rgba(0,163,180,.15);color:var(--c-accent)}
 .news-tag-市场动态{background:rgba(123,63,203,.15);color:#A78BFA}
 .news-tag-价格预警{background:rgba(224,57,53,.15);color:var(--c-up)}
+.news-tag-安全事故{background:rgba(224,57,53,.25);color:#FF4444;border:1px solid rgba(224,57,53,.3)}
 .news-tag-政策法规{background:rgba(11,77,140,.15);color:#5B9BD5}
 .news-item-title{font-size:14px;font-weight:600;color:var(--c-text);margin-bottom:3px;line-height:1.4}
 .news-item-summary{font-size:12px;color:var(--c-text-sec);line-height:1.6}
@@ -469,24 +469,12 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="prices">价格总览</button>
     <button class="tab-btn" data-tab="profit">利润分析</button>
+    <button class="tab-btn" data-tab="news">公告 / 市场要闻</button>
     <button class="tab-btn" data-tab="ai">AI 分析</button>
   </div>
 
   <!-- Tab: Prices -->
   <div class="tab-content active" id="tab-prices">
-    <div class="news-board" id="newsBoard" style="display:none">
-      <div class="news-board-head">
-        <div class="news-board-title">
-          <span class="nb-icon">&#x1F4E8;</span>
-          公告 / 市场要闻
-          <span class="news-board-count" id="newsCount"></span>
-        </div>
-        <button class="news-board-toggle" id="newsToggle">展开 &#x25BC;</button>
-      </div>
-      <div class="news-board-body" id="newsBody">
-        <div class="news-list" id="newsList"></div>
-      </div>
-    </div>
     <div class="sec-title"><div class="bar"></div>产品价格 <span class="count" id="productCount"></span></div>
     <div class="price-grid" id="productGrid"></div>
     <div class="sec-title" style="margin-top:24px"><div class="bar"></div>原料价格 <span class="count" id="rawCount"></span></div>
@@ -530,6 +518,23 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
     <div class="spread-chart">
       <div class="sec-title" style="margin-bottom:8px"><div class="bar"></div>核心价差一览</div>
       <div class="spread-bars" id="spreadBars"></div>
+    </div>
+  </div>
+
+  <!-- Tab: News -->
+  <div class="tab-content" id="tab-news">
+    <div class="news-board" id="newsBoard" style="display:none">
+      <div class="news-board-head">
+        <div class="news-board-title">
+          <span class="nb-icon">&#x1F4E8;</span>
+          公告 / 市场要闻
+          <span class="news-board-count" id="newsCount"></span>
+        </div>
+        <button class="news-board-toggle" id="newsToggle">收起 &#x25B2;</button>
+      </div>
+      <div class="news-board-body expanded" id="newsBody">
+        <div class="news-list" id="newsList"></div>
+      </div>
     </div>
   </div>
 
@@ -729,9 +734,11 @@ function initNewsToggle(){
   toggle.addEventListener("click",()=>{
     if(body.classList.contains("expanded")){
       body.classList.remove("expanded");
+      body.style.display="none";
       toggle.innerHTML="\u5c55\u5f00 \u25BC";
     }else{
       body.classList.add("expanded");
+      body.style.display="block";
       toggle.innerHTML="\u6536\u8d77 \u25B2";
     }
   });
