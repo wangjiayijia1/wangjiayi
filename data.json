@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-08-21 01:18:49",
+  "lastUpdate": "2026-08-22 01:14:50",
   "products": [
     {
       "name": "己内酰胺",
@@ -28,8 +28,8 @@
       "formula": "(C6H11NO)n",
       "price": 12966.67,
       "unit": "元/吨",
-      "change": 100.0,
-      "changePct": 0.78,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 1.6,
       "trend": "up",
       "tag": "product"
