@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-08-23 01:21:10",
+  "lastUpdate": "2026-08-24 01:19:12",
   "products": [
     {
       "name": "己内酰胺",
@@ -8,19 +8,19 @@
       "unit": "元/吨",
       "change": 33.33,
       "changePct": 0.26,
-      "weekPct": 3.06,
+      "weekPct": 3.63,
       "trend": "up",
       "tag": "product"
     },
     {
       "name": "己二酸",
       "formula": "C6H10O4",
-      "price": 8400.0,
+      "price": 8375.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.0,
-      "trend": "flat",
+      "weekPct": 0.6,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -30,18 +30,18 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.6,
+      "weekPct": 2.1,
       "trend": "up",
       "tag": "product"
     },
     {
       "name": "合成氨",
       "formula": "NH3",
-      "price": 2440.0,
+      "price": 2523.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 2.36,
+      "weekPct": 9.08,
       "trend": "up",
       "tag": "product"
     },
@@ -63,8 +63,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -3.82,
-      "trend": "down",
+      "weekPct": 1.15,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -74,18 +74,18 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.53,
-      "trend": "down",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     },
     {
       "name": "液氨",
       "formula": "NH3(l)",
-      "price": 2440.0,
+      "price": 2523.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 2.36,
+      "weekPct": 9.08,
       "trend": "up",
       "tag": "product"
     },
@@ -96,7 +96,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -2.57,
+      "weekPct": -1.81,
       "trend": "down",
       "tag": "product"
     }
@@ -105,23 +105,23 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 8134.33,
+      "price": 8187.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.81,
+      "weekPct": 5.63,
       "trend": "up",
       "tag": "raw"
     },
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 9202.33,
+      "price": 9235.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.71,
-      "trend": "up",
+      "weekPct": -2.81,
+      "trend": "down",
       "tag": "raw"
     }
   ],
@@ -133,7 +133,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 5.04,
+      "weekPct": 3.95,
       "trend": "up",
       "tag": "mid"
     },
@@ -144,8 +144,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 2.66,
-      "trend": "up",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "mid"
     }
   ],
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 8134.33
+          "price": 8187.67
         }
       ],
       "h2Qty": 250,
@@ -183,14 +183,14 @@
     },
     {
       "name": "己二酸",
-      "productPrice": 8400.0,
+      "productPrice": 8375.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 8134.33
+          "price": 8187.67
         },
         {
           "label": "硝酸",
@@ -246,7 +246,7 @@
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 8134.33
+          "price": 8187.67
         }
       ],
       "h2Qty": 350,
@@ -264,7 +264,7 @@
     },
     {
       "name": "合成氨",
-      "productPrice": 2440.0,
+      "productPrice": 2523.33,
       "threshold": 400,
       "rawMaterials": [
         {
@@ -315,7 +315,7 @@
           "label": "液氨",
           "qty": 0.29,
           "unit": "吨",
-          "price": 2440.0
+          "price": 2523.33
         }
       ],
       "h2Qty": 0,
