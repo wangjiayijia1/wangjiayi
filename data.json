@@ -1,13 +1,13 @@
 {
-  "lastUpdate": "2026-09-02 03:15:20",
+  "lastUpdate": "2026-09-03 03:17:40",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
-      "price": 13221.67,
+      "price": 13355.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 133.33,
+      "changePct": 1.01,
       "weekPct": 0.89,
       "trend": "up",
       "tag": "product"
@@ -72,8 +72,8 @@
       "formula": "H2SO4",
       "price": 1800.0,
       "unit": "元/吨",
-      "change": -25.0,
-      "changePct": -1.37,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -0.54,
       "trend": "down",
       "tag": "product"
@@ -105,7 +105,7 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 8331.0,
+      "price": 8534.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -116,7 +116,7 @@
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 8402.33,
+      "price": 8602.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -129,10 +129,10 @@
     {
       "name": "环己酮",
       "formula": "C6H10O",
-      "price": 9200.0,
+      "price": 9700.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 499.58,
+      "changePct": 5.43,
       "weekPct": -3.16,
       "trend": "down",
       "tag": "mid"
@@ -140,10 +140,10 @@
     {
       "name": "环己烷",
       "formula": "C6H12",
-      "price": 6666.67,
+      "price": 7166.67,
       "unit": "元/吨",
-      "change": 465.12,
-      "changePct": 7.5,
+      "change": -537.77,
+      "changePct": -6.98,
       "weekPct": 3.63,
       "trend": "up",
       "tag": "mid"
@@ -157,14 +157,14 @@
   "profitLines": [
     {
       "name": "己内酰胺",
-      "productPrice": 13221.67,
+      "productPrice": 13355.0,
       "threshold": 2000,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 8331.0
+          "price": 8534.33
         }
       ],
       "h2Qty": 250,
@@ -190,7 +190,7 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 8331.0
+          "price": 8534.33
         },
         {
           "label": "硝酸",
@@ -221,7 +221,7 @@
           "label": "己内酰胺",
           "qty": 1.01,
           "unit": "吨",
-          "price": 13221.67
+          "price": 13355.0
         }
       ],
       "h2Qty": 0,
@@ -239,14 +239,14 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 9200.0,
+      "productPrice": 9700.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 8331.0
+          "price": 8534.33
         }
       ],
       "h2Qty": 350,
