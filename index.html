@@ -53,6 +53,7 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .news-board-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
 .news-board-title .nb-icon{width:20px;height:20px;border-radius:4px;background:linear-gradient(135deg,var(--c-accent2),var(--c-accent));display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
 .news-board-count{font-size:12px;color:var(--c-text-dim)}
+.news-board-auto{font-size:10px;padding:2px 7px;border-radius:3px;background:rgba(0,163,180,.15);color:var(--c-accent);font-weight:600;margin-left:4px}
 .news-board-body{max-height:none;overflow:visible}
 .news-board-toggle{padding:4px 12px;border-radius:4px;border:1px solid var(--c-border);background:var(--c-bg);color:var(--c-text-sec);font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s}
 .news-board-toggle:hover{border-color:var(--c-accent);color:var(--c-accent)}
@@ -71,6 +72,9 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
 .news-tag-价格预警{background:rgba(224,57,53,.15);color:var(--c-up)}
 .news-tag-安全事故{background:rgba(224,57,53,.25);color:#FF4444;border:1px solid rgba(224,57,53,.3)}
 .news-tag-政策法规{background:rgba(11,77,140,.15);color:#5B9BD5}
+.news-item-commodity{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:rgba(200,200,200,.12);color:var(--c-text-sec);margin-left:4px;margin-bottom:4px}
+a.news-item-title{display:block;font-size:13px;font-weight:600;color:var(--c-text);text-decoration:none;line-height:1.5;word-break:break-all}
+a.news-item-title:hover{color:var(--c-accent)}
 .news-item-title{font-size:14px;font-weight:600;color:var(--c-text);margin-bottom:3px;line-height:1.4}
 .news-item-summary{font-size:12px;color:var(--c-text-sec);line-height:1.6}
 .news-item-source{font-size:11px;color:var(--c-text-dim);margin-top:4px}
@@ -469,8 +473,8 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="prices">价格总览</button>
     <button class="tab-btn" data-tab="profit">利润分析</button>
-    <button class="tab-btn" data-tab="news">公告 / 市场要闻</button>
     <button class="tab-btn" data-tab="ai">AI 分析</button>
+    <button class="tab-btn" data-tab="news">公告 / 市场要闻</button>
   </div>
 
   <!-- Tab: Prices -->
@@ -521,23 +525,6 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
     </div>
   </div>
 
-  <!-- Tab: News -->
-  <div class="tab-content" id="tab-news">
-    <div class="news-board" id="newsBoard" style="display:none">
-      <div class="news-board-head">
-        <div class="news-board-title">
-          <span class="nb-icon">&#x1F4E8;</span>
-          公告 / 市场要闻
-          <span class="news-board-count" id="newsCount"></span>
-        </div>
-        <button class="news-board-toggle" id="newsToggle">收起 &#x25B2;</button>
-      </div>
-      <div class="news-board-body expanded" id="newsBody">
-        <div class="news-list" id="newsList"></div>
-      </div>
-    </div>
-  </div>
-
   <!-- Tab: AI -->
   <div class="tab-content" id="tab-ai">
     <div class="ai-panel">
@@ -549,6 +536,24 @@ body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-ser
         </div>
       </div>
       <div class="ai-content" id="aiContent"></div>
+    </div>
+  </div>
+
+  <!-- Tab: News -->
+  <div class="tab-content" id="tab-news">
+    <div class="news-board" id="newsBoard" style="display:none">
+      <div class="news-board-head">
+        <div class="news-board-title">
+          <span class="nb-icon">&#x1F4E8;</span>
+          公告 / 市场要闻
+          <span class="news-board-count" id="newsCount"></span>
+          <span class="news-board-auto" id="newsAutoBadge" style="display:none"></span>
+        </div>
+        <button class="news-board-toggle" id="newsToggle">收起 &#x25B2;</button>
+      </div>
+      <div class="news-board-body expanded" id="newsBody">
+        <div class="news-list" id="newsList"></div>
+      </div>
     </div>
   </div>
 
@@ -707,17 +712,31 @@ function renderNewsBoard(){
   }
   board.style.display="block";
   document.getElementById("newsCount").textContent="("+newsItems.length+")";
+  // Show auto-update badge if news has autoFetched flag
+  const autoBadge=document.getElementById("newsAutoBadge");
+  if(autoBadge){
+    const hasAuto=newsItems.some(n=>n.autoFetched);
+    if(hasAuto){
+      autoBadge.style.display="inline-block";
+      autoBadge.textContent="\u81ea\u52a8\u66f4\u65b0";
+    }else{
+      autoBadge.style.display="none";
+    }
+  }
   const html=newsItems.map(n=>{
     const parts=(n.date||"").split("-");
     const monthStr=parts.length>=2?(parts[1]+"\u6708"):"";
     const dayStr=parts.length>=3?parts[2]:"";
     const tagClass="news-tag-"+(n.category||"\u5176\u4ed6");
+    const commodityTag=n.commodity?'<span class="news-item-commodity">'+n.commodity+'</span>':'';
+    const titleHtml=n.url?'<a href="'+n.url+'" target="_blank" rel="noopener" class="news-item-title">'+n.title+'</a>':'<div class="news-item-title">'+n.title+'</div>';
     return '<div class="news-item">'+
       '<div class="news-item-date"><div class="ni-day">'+dayStr+'</div><div class="ni-month">'+monthStr+'</div></div>'+
       '<div class="news-item-content">'+
         '<span class="news-item-tag '+tagClass+'">'+(n.category||"")+'</span>'+
-        '<div class="news-item-title">'+n.title+'</div>'+
-        '<div class="news-item-summary">'+n.summary+'</div>'+
+        commodityTag+
+        titleHtml+
+        '<div class="news-item-summary">'+(n.summary||"")+'</div>'+
         (n.source?'<div class="news-item-source">\u6765\u6e90\uff1a'+n.source+'</div>':'')+
       '</div>'+
     '</div>';

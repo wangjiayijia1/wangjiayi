@@ -759,7 +759,202 @@ def append_history(data, history_data):
     return history_data
 
 
-def build_data(prices, existing):
+# ==================== News Fetcher ====================
+
+# Commodity news pages on 100ppi.com (same products as our price board)
+NEWS_COMMODITY_PAGES = {
+    "\u7eaf\u82ef": "https://www.100ppi.com/news/list-14--364-1.html",
+    "\u4e8c\u6c2f\u7532\u70f7": "https://www.100ppi.com/news/list-14--1323-1.html",
+    "\u7532\u9187": "https://www.100ppi.com/news/list-11--397-1.html",
+    "1,4-\u4e01\u4e8c\u9187": "https://www.100ppi.com/news/list-14--1287-1.html",
+    "\u7eaf\u78b1": "https://www.100ppi.com/news/list-14--533-1.html",
+    "\u82ef\u915a": "https://www.100ppi.com/news/list-14--375-1.html",
+    "\u4e01\u4e8c\u70ef": "https://www.100ppi.com/news/list-14--369-1.html",
+    "\u4e59\u4e8c\u9187": "https://www.100ppi.com/news/list-14--448-1.html",
+    "PP": "https://www.100ppi.com/news/list-15--414-1.html",
+    "LLDPE": "https://www.100ppi.com/news/list-15--409-1.html",
+}
+
+# Keywords for news classification
+NEWS_SKIP_KEYWORDS = [
+    "\u57fa\u51c6\u4ef7",
+    "\u5546\u54c1\u62a5\u4ef7\u52a8\u6001",
+    "\u5747\u5dee",
+    "\u51fa\u5e93\u4e00\u89c8",
+    "\u51fa\u5e93\u60c5\u51b5",
+    "\u62a5\u4ef7\u4e00\u89c8",
+    "\u8d77\u62cd\u4ef7",
+    "\u62cd\u5356\u516c\u793a",
+    "\u62cd\u5356\u4fe1\u606f",
+    "\u6536\u76d8\u60c5\u51b5",
+    "\u51fa\u5382\u4ef7\u683c",
+    "\u6536\u76d8",
+]
+
+NEWS_CATEGORY_KEYWORDS = {
+    "\u88c5\u7f6e\u68c0\u4fee": [
+        "\u68c0\u4fee",
+        "\u505c\u8f66",
+        "\u505c\u5de5",
+        "\u77ed\u505c",
+        "\u91cd\u542f",
+        "\u5f00\u5de5",
+    ],
+    "\u5b89\u5168\u4e8b\u6545": [
+        "\u4e8b\u6545",
+        "\u7206\u70b8",
+        "\u6cc4\u6f0f",
+        "\u706b\u707e",
+    ],
+    "\u5e02\u573a\u52a8\u6001": [
+        "\u6da8",
+        "\u8dcc",
+        "\u4e0a\u5347",
+        "\u4e0b\u964d",
+        "\u4e0a\u884c",
+        "\u4e0b\u884c",
+        "\u9707\u8361",
+        "\u504f\u5f3a",
+        "\u504f\u5f31",
+        "\u5927\u5e45",
+    ],
+    "\u4ef7\u683c\u9884\u8b66": ["\u9884\u8b66", "\u98ce\u9669", "\u8b66\u544a"],
+    "\u653f\u7b56\u6cd5\u89c4": [
+        "\u653f\u7b56",
+        "\u6cd5\u89c4",
+        "\u7a0e",
+        "\u73af\u4fdd",
+        "\u9650\u4ea7",
+    ],
+}
+
+
+def _fetch_page_with_cookie(url):
+    """Fetch a page from 100ppi.com, handling the HW_CHECK cookie protection."""
+    try:
+        import gzip
+
+        req = Request(url, headers=HEADERS)
+        resp = urlopen(req, timeout=15)
+        raw = resp.read()
+        if resp.headers.get("Content-Encoding") == "gzip":
+            raw = gzip.decompress(raw)
+        html = raw.decode("utf-8", errors="replace")
+
+        # 100ppi.com uses JS-based cookie check; bypass it
+        if "HW_CHECK" in html and len(html) < 1000:
+            value_match = re.search(r'_0x2\s*=\s*"([a-f0-9]+)"', html)
+            if value_match:
+                cookie_val = value_match.group(1)
+                req2 = Request(
+                    url, headers={**HEADERS, "Cookie": f"HW_CHECK={cookie_val}"}
+                )
+                resp2 = urlopen(req2, timeout=15)
+                raw2 = resp2.read()
+                if resp2.headers.get("Content-Encoding") == "gzip":
+                    raw2 = gzip.decompress(raw2)
+                html = raw2.decode("utf-8", errors="replace")
+        return html
+    except Exception as e:
+        print(f"    [ERROR] fetch page {url}: {e}")
+        return ""
+
+
+def _classify_news(title):
+    """Classify a news title into a category."""
+    for category, keywords in NEWS_CATEGORY_KEYWORDS.items():
+        if any(kw in title for kw in keywords):
+            return category
+    return "\u884c\u4e1a\u5feb\u8baf"
+
+
+def fetch_news(existing_news, max_items=20):
+    """
+    Fetch chemical industry news from 100ppi.com commodity news pages.
+
+    Merges auto-fetched news with existing manually-added news.
+    - existing_news: list of existing news items (may contain manually added ones)
+    - Returns: merged list of news items (max_items auto-fetched + all manual)
+    """
+    print("  Fetching chemical industry news from 100ppi.com...")
+
+    all_news = []
+
+    for commodity, url in NEWS_COMMODITY_PAGES.items():
+        try:
+            html = _fetch_page_with_cookie(url)
+            if not html:
+                continue
+
+            # Extract news detail links with titles
+            detail_links = re.findall(
+                r'<a[^>]*href="(https?://www\.100ppi\.com/news/detail-[^"]+\.html|/news/detail-[^"]+\.html)"[^>]*>([^<]{10,150})</a>',
+                html,
+            )
+
+            for link, title in detail_links:
+                date_match = re.search(r"detail-(\d{8})-", link)
+                if not date_match:
+                    continue
+                date_str = date_match.group(1)
+                date_formatted = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:8]}"
+
+                title = title.strip()
+
+                # Skip boring repetitive content
+                if any(kw in title for kw in NEWS_SKIP_KEYWORDS):
+                    continue
+
+                full_url = (
+                    link if link.startswith("http") else "https://www.100ppi.com" + link
+                )
+                category = _classify_news(title)
+
+                all_news.append(
+                    {
+                        "date": date_formatted,
+                        "category": category,
+                        "title": title,
+                        "url": full_url,
+                        "commodity": commodity,
+                        "autoFetched": True,
+                    }
+                )
+
+            print(f"    {commodity}: {len(detail_links)} links found")
+        except Exception as e:
+            print(f"    {commodity}: ERROR - {e}")
+
+    # Deduplicate by title
+    seen = set()
+    unique_auto = []
+    for n in all_news:
+        if n["title"] not in seen:
+            seen.add(n["title"])
+            unique_auto.append(n)
+
+    # Sort by date descending
+    unique_auto.sort(key=lambda x: x["date"], reverse=True)
+
+    # Keep only top N auto-fetched
+    unique_auto = unique_auto[:max_items]
+
+    # Separate manual news (no autoFetched flag) from existing
+    manual_news = [n for n in (existing_news or []) if not n.get("autoFetched")]
+
+    # Merge: manual first, then auto-fetched
+    # Avoid duplicates: skip auto-fetched items whose title matches a manual one
+    manual_titles = {n.get("title", "") for n in manual_news}
+    auto_filtered = [n for n in unique_auto if n["title"] not in manual_titles]
+
+    merged = manual_news + auto_filtered
+    print(
+        f"  News: {len(manual_news)} manual + {len(auto_filtered)} auto-fetched = {len(merged)} total"
+    )
+    return merged
+
+
+def build_data(prices, existing, news_items=None):
     """Build the final data structure"""
     existing_prices = {}
     if existing:
@@ -840,7 +1035,7 @@ def build_data(prices, existing):
         "defaultCosts": DEFAULT_COSTS,
         "profitLines": profit_lines,
         "peerPlants": PEER_PLANTS,
-        "news": existing.get("news", []) if existing else [],
+        "news": news_items,
     }
 
 
@@ -855,7 +1050,7 @@ def main():
 
     existing = load_existing_data()
 
-    print("\n[1/2] Fetching prices...")
+    print("\n[1/3] Fetching prices...")
     prices, failed = fetch_all_prices()
     print(f"\nResult: {len(prices)} fetched, {len(failed)} failed")
     if failed:
@@ -865,8 +1060,12 @@ def main():
         print("\n[ERROR] No prices fetched, aborting")
         sys.exit(1)
 
-    print("\n[2/2] Building data.json...")
-    data = build_data(prices, existing)
+    print("\n[2/3] Fetching chemical industry news...")
+    existing_news = existing.get("news", []) if existing else []
+    news_items = fetch_news(existing_news, max_items=20)
+
+    print("\n[3/3] Building data.json...")
+    data = build_data(prices, existing, news_items)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
@@ -883,12 +1082,13 @@ def main():
     )
 
     # Append to price history
-    print("\n[3/3] Updating price_history.json...")
+    print("\n[4/4] Updating price_history.json...")
     history_data = load_history()
     append_history(data, history_data)
     save_history(history_data)
     print(f"History: {len(history_data['history'])} days recorded")
 
+    print(f"\nNews: {len(data['news'])} items (auto-fetched + manual)")
     print("Done!")
 
 

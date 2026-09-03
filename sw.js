@@ -1,7 +1,7 @@
 // Service Worker - 太化价格看板 PWA
 // Cache strategy: stale-while-revalidate for data, cache-first for static assets
 
-const CACHE_VERSION = 'th-priceboard-v1';
+const CACHE_VERSION = 'th-priceboard-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
