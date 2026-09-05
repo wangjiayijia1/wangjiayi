@@ -1,23 +1,23 @@
 {
-  "name": "太化新材料价格看板",
-  "short_name": "太化看板",
-  "description": "太化新材料化工产品价格看板 - 实时价格、利润分析、行业资讯",
+  "name": "潞安化工·太化新材料价格看板",
+  "short_name": "潞安化工看板",
+  "description": "潞安化工集团太化新材料 - 化工产品价格看板，实时价格、利润分析、行业资讯",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0F1924",
-  "theme_color": "#0F1924",
+  "background_color": "#1a3c6e",
+  "theme_color": "#1a3c6e",
   "orientation": "any",
   "lang": "zh-CN",
   "scope": "./",
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230F1924'/%3E%3Crect x='24' y='24' width='144' height='144' rx='16' fill='%231A2332' stroke='%2300A3B4' stroke-width='3'/%3E%3Ctext x='96' y='88' font-family='sans-serif' font-size='48' font-weight='bold' fill='%2300A3B4' text-anchor='middle'%3E太化%3C/text%3E%3Ctext x='96' y='128' font-family='sans-serif' font-size='20' fill='%23E8ECF0' text-anchor='middle'%3E价格看板%3C/text%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%231a3c6e'/%3E%3Ctext x='96' y='110' font-family='sans-serif' font-size='56' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3E潞安%3C/text%3E%3C/svg%3E",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%230F1924'/%3E%3Crect x='64' y='64' width='384' height='384' rx='40' fill='%231A2332' stroke='%2300A3B4' stroke-width='8'/%3E%3Ctext x='256' y='230' font-family='sans-serif' font-size='128' font-weight='bold' fill='%2300A3B4' text-anchor='middle'%3E太化%3C/text%3E%3Ctext x='256' y='340' font-family='sans-serif' font-size='52' fill='%23E8ECF0' text-anchor='middle'%3E价格看板%3C/text%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%231a3c6e'/%3E%3Ctext x='256' y='290' font-family='sans-serif' font-size='150' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3E潞安%3C/text%3E%3C/svg%3E",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
