@@ -363,9 +363,12 @@ a.news-item-title:hover{color:var(--c-primary)}
   .dashboard-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
-  .topbar-inner{flex-direction:column;height:auto;padding:12px 16px;gap:8px}
-  .topbar-right{width:100%;justify-content:center}
-  .market-summary{gap:10px;font-size:12px}
+  .topbar-inner{flex-direction:column;height:auto;padding:10px 14px;gap:6px}
+  .topbar-left{gap:10px;width:100%;justify-content:flex-start}
+  .topbar-right{width:100%;justify-content:center;flex-wrap:wrap;gap:8px 12px}
+  .market-summary{gap:8px 12px;font-size:12px;flex-wrap:wrap;justify-content:center}
+  .topbar-date{display:none}
+  .update-btn{padding:6px 14px;font-size:12px}
   .container{padding:12px}
   .price-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .profit-grid{grid-template-columns:1fr}
@@ -677,7 +680,8 @@ function renderNewsBoard(){
     else{autoBadge.style.display="none";}
   }
   const catMap={'\u88c5\u7f6e\u68c0\u4fee':'news-tag-device','\u884c\u4e1a\u5feb\u8baf':'news-tag-industry','\u5e02\u573a\u52a8\u6001':'news-tag-market','\u4ef7\u683c\u9884\u8b66':'news-tag-price','\u5b89\u5168\u4e8b\u6545':'news-tag-safety','\u653f\u7b56\u6cd5\u89c4':'news-tag-policy'};
-  const html=newsItems.map(n=>{
+  const sortedNews=[...newsItems].sort((a,b)=>((b.date||"").localeCompare(a.date||"")));
+  const html=sortedNews.map(n=>{
     const parts=(n.date||"").split("-");
     const monthStr=parts.length>=2?(parts[1]+"\u6708"):"";
     const dayStr=parts.length>=3?parts[2]:"";
