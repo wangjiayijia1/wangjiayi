@@ -367,7 +367,8 @@ a.news-item-title:hover{color:var(--c-primary)}
   .topbar-left{gap:10px;width:100%;justify-content:flex-start}
   .topbar-right{width:100%;justify-content:center;flex-wrap:wrap;gap:8px 12px}
   .market-summary{gap:8px 12px;font-size:12px;flex-wrap:wrap;justify-content:center}
-  .topbar-date{display:none}
+  .topbar-title-wrap{display:none}
+  .topbar-date{display:block;font-size:13px;color:rgba(255,255,255,.85);margin-left:0}
   .update-btn{padding:6px 14px;font-size:12px}
   .container{padding:12px}
   .price-grid{grid-template-columns:repeat(2,1fr);gap:8px}
@@ -434,15 +435,15 @@ a.news-item-title:hover{color:var(--c-primary)}
 
 <div class="container">
   <div class="tab-bar">
-    <button class="tab-btn active" data-tab="dashboard">经营总览</button>
-    <button class="tab-btn" data-tab="prices">价格总览</button>
+    <button class="tab-btn active" data-tab="prices">价格总览</button>
+    <button class="tab-btn" data-tab="news">公告 / 市场要闻</button>
     <button class="tab-btn" data-tab="profit">利润分析</button>
     <button class="tab-btn" data-tab="ai">AI 分析</button>
-    <button class="tab-btn" data-tab="news">公告 / 市场要闻</button>
+    <button class="tab-btn" data-tab="dashboard">经营总览</button>
   </div>
 
-  <!-- Tab: Dashboard (经营总览) -->
-  <div class="tab-content active" id="tab-dashboard">
+  <!-- Tab: Dashboard -->
+  <div class="tab-content" id="tab-dashboard">
     <div class="sec-title"><div class="bar"></div>核心经营指标</div>
     <div class="dashboard-grid" id="dashboardKPIs"></div>
     <div class="alert-center">
@@ -463,8 +464,8 @@ a.news-item-title:hover{color:var(--c-primary)}
     </div>
   </div>
 
-  <!-- Tab: Prices -->
-  <div class="tab-content" id="tab-prices">
+  <!-- Tab: Prices (default active) -->
+  <div class="tab-content active" id="tab-prices">
     <div class="sec-title"><div class="bar"></div>产品价格 <span class="count" id="productCount"></span></div>
     <div class="price-grid" id="productGrid"></div>
     <div class="sec-title" style="margin-top:24px"><div class="bar"></div>原料价格 <span class="count" id="rawCount"></span></div>
@@ -680,8 +681,14 @@ function renderNewsBoard(){
     else{autoBadge.style.display="none";}
   }
   const catMap={'\u88c5\u7f6e\u68c0\u4fee':'news-tag-device','\u884c\u4e1a\u5feb\u8baf':'news-tag-industry','\u5e02\u573a\u52a8\u6001':'news-tag-market','\u4ef7\u683c\u9884\u8b66':'news-tag-price','\u5b89\u5168\u4e8b\u6545':'news-tag-safety','\u653f\u7b56\u6cd5\u89c4':'news-tag-policy'};
-  const sortedNews=[...newsItems].sort((a,b)=>((b.date||"").localeCompare(a.date||"")));
-  const html=sortedNews.map(n=>{
+  const sortedNews=[...newsItems].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const productNames=[...products,...rawMaterials,...intermediates].map(i=>i.name);
+  const filteredNews=sortedNews.filter(n=>{
+    const t=(n.title||"")+(n.summary||"")+(n.commodity||"");
+    return productNames.some(pn=>t.includes(pn));
+  });
+  const displayNews=filteredNews.length>0?filteredNews:sortedNews;
+  const html=displayNews.map(n=>{
     const parts=(n.date||"").split("-");
     const monthStr=parts.length>=2?(parts[1]+"\u6708"):"";
     const dayStr=parts.length>=3?parts[2]:"";
