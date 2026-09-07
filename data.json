@@ -1,14 +1,14 @@
 {
-  "lastUpdate": "2026-09-06 23:34:15",
+  "lastUpdate": "2026-09-07 03:17:38",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
-      "price": 13388.33,
+      "price": 13505.0,
       "unit": "元/吨",
-      "change": 33.33,
-      "changePct": 0.25,
-      "weekPct": 0.89,
+      "change": 116.67,
+      "changePct": 0.87,
+      "weekPct": 2.14,
       "trend": "up",
       "tag": "product"
     },
@@ -19,7 +19,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.29,
+      "weekPct": 2.62,
       "trend": "up",
       "tag": "product"
     },
@@ -30,40 +30,40 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.54,
+      "weekPct": 2.28,
       "trend": "up",
       "tag": "product"
     },
     {
       "name": "合成氨",
       "formula": "NH3",
-      "price": 2790.0,
+      "price": 2763.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 5.61,
-      "trend": "up",
+      "weekPct": -0.36,
+      "trend": "down",
       "tag": "product"
     },
     {
       "name": "硝酸",
       "formula": "HNO3",
-      "price": 1310.0,
+      "price": 1306.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.55,
-      "trend": "up",
+      "weekPct": -0.25,
+      "trend": "down",
       "tag": "product"
     },
     {
       "name": "双氧水",
       "formula": "H2O2",
-      "price": 623.33,
+      "price": 636.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.65,
+      "weekPct": 2.14,
       "trend": "up",
       "tag": "product"
     },
@@ -74,29 +74,29 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.54,
+      "weekPct": -1.37,
       "trend": "down",
       "tag": "product"
     },
     {
       "name": "液氨",
       "formula": "NH3(l)",
-      "price": 2790.0,
+      "price": 2763.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 5.61,
-      "trend": "up",
+      "weekPct": -0.36,
+      "trend": "down",
       "tag": "product"
     },
     {
       "name": "硫铵",
       "formula": "(NH4)2SO4",
-      "price": 1116.67,
+      "price": 1123.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.84,
+      "weekPct": 1.2,
       "trend": "up",
       "tag": "product"
     }
@@ -105,23 +105,23 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 8701.0,
+      "price": 8751.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.78,
-      "trend": "down",
+      "weekPct": 7.67,
+      "trend": "up",
       "tag": "raw"
     },
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 8602.33,
+      "price": 8639.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -4.71,
-      "trend": "down",
+      "weekPct": 3.47,
+      "trend": "up",
       "tag": "raw"
     }
   ],
@@ -129,12 +129,12 @@
     {
       "name": "环己酮",
       "formula": "C6H10O",
-      "price": 9700.0,
+      "price": 9900.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -3.16,
-      "trend": "down",
+      "weekPct": 7.61,
+      "trend": "up",
       "tag": "mid"
     },
     {
@@ -144,8 +144,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 3.63,
-      "trend": "up",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "mid"
     }
   ],
@@ -157,14 +157,14 @@
   "profitLines": [
     {
       "name": "己内酰胺",
-      "productPrice": 13388.33,
+      "productPrice": 13505.0,
       "threshold": 2000,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 8701.0
+          "price": 8751.0
         }
       ],
       "h2Qty": 250,
@@ -190,13 +190,13 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 8701.0
+          "price": 8751.0
         },
         {
           "label": "硝酸",
           "qty": 0.65,
           "unit": "吨",
-          "price": 1310.0
+          "price": 1306.67
         }
       ],
       "h2Qty": 60,
@@ -221,7 +221,7 @@
           "label": "己内酰胺",
           "qty": 1.01,
           "unit": "吨",
-          "price": 13388.33
+          "price": 13505.0
         }
       ],
       "h2Qty": 0,
@@ -239,14 +239,14 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 9700.0,
+      "productPrice": 9900.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 8701.0
+          "price": 8751.0
         }
       ],
       "h2Qty": 350,
@@ -264,7 +264,7 @@
     },
     {
       "name": "合成氨",
-      "productPrice": 2790.0,
+      "productPrice": 2763.33,
       "threshold": 400,
       "rawMaterials": [
         {
@@ -290,7 +290,7 @@
     },
     {
       "name": "双氧水",
-      "productPrice": 623.33,
+      "productPrice": 636.67,
       "threshold": 100,
       "rawMaterials": [],
       "h2Qty": 70,
@@ -308,14 +308,14 @@
     },
     {
       "name": "硝酸",
-      "productPrice": 1310.0,
+      "productPrice": 1306.67,
       "threshold": 150,
       "rawMaterials": [
         {
           "label": "液氨",
           "qty": 0.29,
           "unit": "吨",
-          "price": 2790.0
+          "price": 2763.33
         }
       ],
       "h2Qty": 0,
