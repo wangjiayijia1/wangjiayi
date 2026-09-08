@@ -253,6 +253,14 @@ a.news-item-title:hover{color:var(--c-primary)}
 .peer-capacity{font-size:13px;font-weight:600;color:var(--c-warn);margin-bottom:6px}
 .peer-status{font-size:12px;line-height:1.6;color:var(--c-text-sec);padding:8px 10px;border-radius:4px;background:var(--c-panel2);margin-bottom:6px}
 .peer-note{font-size:11px;line-height:1.5;color:var(--c-text-dim);padding-left:10px;border-left:2px solid var(--c-primary)}
+.peer-prices{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.peer-price-item{display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:12px;background:var(--c-panel2)}
+.peer-price-name{font-weight:600;color:var(--c-text-sec)}
+.peer-price-val{color:var(--c-text);font-weight:700}
+.peer-price-diff{font-size:11px;font-weight:600}
+.peer-price-higher .peer-price-diff{color:var(--c-down)}
+.peer-price-lower .peer-price-diff{color:var(--c-up)}
+.peer-price-neutral .peer-price-diff{color:var(--c-text-dim)}
 
 /* Profit Cards */
 .profit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
@@ -407,6 +415,17 @@ a.news-item-title:hover{color:var(--c-primary)}
 .skeleton{background:linear-gradient(90deg,var(--c-panel2) 25%,var(--c-bg) 50%,var(--c-panel2) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .skeleton-card{height:80px;border-radius:var(--radius)}
+.skeleton-line{height:12px;border-radius:6px;margin:8px 0}
+.skeleton-line.short{width:60%}
+.skeleton-line.mid{width:80%}
+.skeleton-peer-card{height:200px;border-radius:var(--radius)}
+.skeleton-kpi{height:100px;border-radius:var(--radius)}
+
+/* Data delay banner */
+.delay-banner{background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:10px 18px;margin:8px 0;display:flex;align-items:center;gap:10px;font-size:13px;color:#856404;font-weight:500}
+.delay-banner-icon{font-size:18px}
+.delay-banner-close{margin-left:auto;cursor:pointer;color:#856404;font-size:16px;opacity:.7}
+.delay-banner-close:hover{opacity:1}
 </style>
 </head>
 <body>
@@ -599,8 +618,9 @@ async function loadData(cacheBust=false){
     }
     const dsEl=document.querySelector('.data-source');
     if(dsEl&&priceData.lastUpdate){
-      dsEl.innerHTML='\u6570\u636e\u6765\u6e90\uff1a\u751f\u610f\u793e(100ppi.com)<br>\u4ef7\u683c\u66f4\u65b0\u65f6\u95f4\uff1a'+priceData.lastUpdate+' \u00b7 \u4ec5\u4f9b\u53c2\u8003\uff0c\u4e0d\u6784\u6210\u4ea4\u6613\u4f9d\u636e';
+      dsEl.innerHTML='数据来源：生意社(100ppi.com)<br>价格更新时间：'+priceData.lastUpdate+' · 仅供参考，不构成交易依据';
     }
+    checkDataDelay();
     loadHistory(cacheBust);
     return true;
   }catch(err){
@@ -657,9 +677,37 @@ function getAvgProfit(line,days){
 function renderPeerPlants(){
   const html=peerPlants.map(p=>{
     const tags=p.products.map(t=>'<span class="peer-product-tag">'+t+'</span>').join("");
+    // Peer price comparison
+    var priceHTML='';
+    if(p.price&&p.price.length>0){
+      priceHTML='<div class="peer-prices">'+
+        p.price.map(function(pr){
+          // Compare with our price
+          var ourPrice=null;
+          for(var pi=0;pi<products.length;pi++){
+            if(products[pi].name===pr.product){ourPrice=products[pi].price;break;}
+          }
+          var diffSign='',diffClass='peer-price-neutral',diffText='';
+          if(ourPrice&&pr.price){
+            var diff=pr.price-ourPrice;
+            if(Math.abs(diff)>1){
+              diffSign=diff>0?'\u2191':'\u2193';
+              diffText='('+diffSign+Math.abs(diff).toLocaleString()+')';
+              diffClass=diff>0?'peer-price-higher':'peer-price-lower';
+            }
+          }
+          return '<span class="peer-price-item '+diffClass+'">'+
+            '<span class="peer-price-name">'+pr.product+'</span>'+
+            '<span class="peer-price-val">'+(pr.price?pr.price.toLocaleString():'--')+'\u5143/\u5428</span>'+
+            '<span class="peer-price-diff">'+diffText+'</span>'+
+          '</span>';
+        }).join('')+
+      '</div>';
+    }
     return '<div class="peer-card">'+
       '<div class="peer-card-head"><div class="peer-name">'+p.name+'</div><div class="peer-location">'+p.location+'</div></div>'+
       '<div class="peer-products">'+tags+'</div>'+
+      priceHTML+
       '<div class="peer-capacity">'+p.capacity+'</div>'+
       '<div class="peer-status">'+p.status+'</div>'+
       '<div class="peer-note">'+p.note+'</div></div>';
@@ -1032,6 +1080,36 @@ function renderSpreadBars(){
 
 // ==================== RENDER AI ANALYSIS (collapsible) ====================
 function renderAIAnalysis(){
+  // ---- Cloud AI analysis takes priority ----
+  if(priceData&&priceData.aiAnalysis&&priceData.aiAnalysis.sections){
+    var aiData=priceData.aiAnalysis;
+    var sectionsHTML=aiData.sections.map(function(s,i){
+      var bodyHTML=s.body;
+      if(s.metrics){
+        bodyHTML+='<div class="ai-metrics">'+
+          s.metrics.map(function(m){
+            return '<div class="ai-metric"><div class="am-num '+m.cls+'" style="color:'+m.color+'">'+m.value+'</div><div class="am-label">'+m.label+'</div></div>';
+          }).join('')+
+        '</div>';
+      }
+      return '<div class="ai-section '+s.cls+'" data-idx="'+i+'">'+
+        '<div class="ai-section-header"><h4><span class="dot"></span> '+s.title+'</h4><span class="toggle-icon">\u25BC</span></div>'+
+        '<div class="ai-section-body">'+bodyHTML+'</div>'+
+      '</div>';
+    }).join('');
+    var badgeHTML='<div style="text-align:right;font-size:11px;color:var(--c-text-dim);margin-bottom:8px">'+
+      (aiData.generatedAt?'\u26e9 \u4e91\u7aefAI\u751f\u6210 \u00b7 '+aiData.generatedAt:'\u26e9 \u4e91\u7a00AI\u751f\u6210')+
+    '</div>';
+    document.getElementById("aiContent").innerHTML=badgeHTML+sectionsHTML;
+    document.querySelectorAll('.ai-section').forEach(function(sec,i){
+      if(i>=3) sec.classList.add('collapsed');
+    });
+    document.querySelectorAll('.ai-section-header').forEach(function(h){
+      h.addEventListener('click',function(){h.parentElement.classList.toggle('collapsed');});
+    });
+    return;
+  }
+  // ---- Fallback: local rule-based analysis ----
   const results=profitLines.map(line=>{
     const r=calcProfit(line);
     const displayProfit=activeProfitPeriod==='today'?r.profit:(getAvgProfit(line,activeProfitPeriod==='7d'?7:30)||r.profit);
@@ -1151,7 +1229,7 @@ function showTrendModal(item){
     '<div class="modal-change" style="color:'+changeColor+'">'+arrow+' '+(item.change>0?"+":"")+item.change+' ('+(item.changePct>0?"+":"")+item.changePct+'%)</div></div></div>'+
     alertHTML+
     '<div class="modal-chart-wrap"><canvas class="modal-chart" id="trendCanvas"></canvas></div>'+
-    '<div class="modal-chart-label" style="text-align:center;font-size:11px;color:var(--c-text-dim);margin-top:4px">'+(isReal?'\u25cf \u771f\u5b9e\u5386\u53f2\u6570\u636e':'\u25cb \u6a21\u62df\u8d8b\u52bf\uff08\u5f85\u5386\u53f2\u6570\u636e\u79ef\u7d2f\uff09')+'</div>'+
+    '<div class="modal-chart-label" style="text-align:center;font-size:11px;color:var(--c-text-dim);margin-top:4px">'+(isReal?'\u25cf \u771f\u5b9e\u5386\u53f2\u6570\u636e':'\u25cb \u6a21\u62df\u8d8b\u52bf\uff08\u5f85\u5386\u53f2\u6570\u636e\u79ef\u7d2f\uff09')+' \u00b7 \u865a\u7ebf\u4e3a\u7ebf\u6027\u56de\u5f52\u9884\u6d4b\uff0c\u4ec5\u4f9b\u53c2\u8003</div>'+
     '<div class="modal-stats">'+
       '<div class="modal-stat"><div class="ms-val" style="color:var(--c-up)">'+maxP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u6700\u9ad8</div></div>'+
       '<div class="modal-stat"><div class="ms-val" style="color:var(--c-down)">'+minP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u6700\u4f4e</div></div>'+
@@ -1203,6 +1281,43 @@ function drawTrendChart(canvas,data,trend){
   for(let i=0;i<data.length;i+=7){
     const x=pad.left+(cw/(data.length-1))*i;ctx.fillText(data[i].date,x,h-8);
   }
+
+  // ---- Forecast extension (simple linear regression on last 7 points) ----
+  var forecastDays=3;
+  var sampleSize=Math.min(data.length,7);
+  var sample=data.slice(-sampleSize);
+  var sumX=0,sumY=0,sumXY=0,sumXX=0;
+  for(var si=0;si<sample.length;si++){
+    sumX+=si;sumY+=sample[si].price;sumXY+=si*sample[si].price;sumXX+=si*si;
+  }
+  var n=sample.length;
+  var slope=(n*sumXY-sumX*sumY)/(n*sumXX-sumX*sumX||1);
+  var intercept=(sumY-slope*sumX)/n;
+  // Build forecast points
+  var lastIdx=data.length-1;
+  var foreStartX=pad.left+(cw/(data.length-1))*lastIdx;
+  var foreStartY=pad.top+ch-((data[lastIdx].price-yMin)/(yMax-yMin))*ch;
+  ctx.save();
+  ctx.strokeStyle="#888";
+  ctx.lineWidth=1.5;
+  ctx.setLineDash([4,4]);
+  ctx.beginPath();
+  ctx.moveTo(foreStartX,foreStartY);
+  for(var fi=1;fi<=forecastDays;fi++){
+    var predictPrice=intercept+slope*(sampleSize-1+fi);
+    // Clamp to chart area
+    var predictY=pad.top+ch-((predictPrice-yMin)/(yMax-yMin))*ch;
+    if(predictY<pad.top) predictY=pad.top+4;
+    if(predictY>pad.top+ch) predictY=pad.top+ch-4;
+    // Extend X axis proportionally
+    var predictX=foreStartX+(cw/(data.length-1))*fi;
+    ctx.lineTo(predictX,predictY);
+  }
+  ctx.stroke();
+  ctx.restore();
+  // Draw forecast label
+  ctx.fillStyle="#888";ctx.font="10px sans-serif";ctx.textAlign="left";
+  ctx.fillText("\u9884\u6d4b",foreStartX+6,foreStartY-8);
 }
 
 // ==================== COST INPUT HANDLING ====================
@@ -1369,16 +1484,71 @@ if('serviceWorker' in navigator){
   });
 }
 
+// ==================== SKELETON LOADING ====================
+function renderSkeletons(){
+  const skelCard='<div class="skeleton-card skeleton"></div>';
+  const skelPeer='<div class="skeleton-peer-card skeleton"></div>';
+  const skelKPI='<div class="skeleton-kpi skeleton"></div>';
+  const skelLine='<div class="skeleton-line skeleton mid"></div><div class="skeleton-line skeleton short"></div>';
+  const grids=['productGrid','rawGrid','midGrid'];
+  grids.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerHTML=Array(6).fill(skelCard).join('');
+  });
+  const pg=document.getElementById('peerGrid');
+  if(pg) pg.innerHTML=Array(4).fill(skelPeer).join('');
+  const dk=document.getElementById('dashboardKPIs');
+  if(dk) dk.innerHTML=Array(4).fill(skelKPI).join('');
+  const ai=document.getElementById('aiContent');
+  if(ai) ai.innerHTML='<div style="padding:20px">'+Array(6).fill(skelLine).join('')+'</div>';
+  const nl=document.getElementById('newsList');
+  if(nl) nl.innerHTML=Array(5).fill('<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--c-border)"><div class="skeleton skeleton-card" style="width:48px;height:48px;border-radius:8px;flex-shrink:0"></div><div style="flex:1">'+skelLine+skelLine+'</div></div>').join('');
+}
+
+// ==================== DATA DELAY BANNER ====================
+function checkDataDelay(){
+  if(!priceData||!priceData.lastUpdate) return;
+  try{
+    const last=new Date(priceData.lastUpdate.replace(/-/g,'/'));
+    const now=new Date();
+    const diffHours=(now-last)/(1000*60*60);
+    if(diffHours>24){
+      const existing=document.getElementById('delayBanner');
+      if(existing) return;
+      const banner=document.createElement('div');
+      banner.id='delayBanner';
+      banner.className='delay-banner';
+      const hours=Math.round(diffHours);
+      banner.innerHTML='<span class="delay-banner-icon">\u26a0</span>'+
+        '<span>\u6570\u636e\u53ef\u80fd\u5ef6\u8fdf\uff1a\u6700\u540e\u66f4\u65b0\u4e8e '+priceData.lastUpdate+'\uff0c\u5df2\u8d85\u8fc7 '+hours+' \u5c0f\u65f6\u672a\u5237\u65b0\uff0c\u53ef\u80fd\u662f\u81ea\u52a8\u66f4\u65b0\u6d41\u7a0b\u5f02\u5e38</span>'+
+        '<span class="delay-banner-close" onclick="this.parentElement.remove()">\u00d7</span>';
+      const topbar=document.querySelector('.topbar');
+      if(topbar) topbar.after(banner);
+    }else{
+      const existing=document.getElementById('delayBanner');
+      if(existing) existing.remove();
+    }
+  }catch(e){console.warn('Delay check failed:',e);}
+}
+
 // ==================== INIT ====================
 async function init(){
+  renderSkeletons();
+  setDate();
   const ok=await loadData();
   if(ok){
-    setDate();renderAllPriceCards();renderPeerPlants();renderNewsBoard();initNewsToggle();
+    checkDataDelay();
+    renderAllPriceCards();renderPeerPlants();renderNewsBoard();initNewsToggle();
     renderProfitCards();renderSpreadBars();renderAIAnalysis();renderDashboard();
     initCostInputs();initCardClick();initPeriodSwitcher();initLeaderToggle();
     initTabs();initModalClose();initUpdatePrice();
   }else{
-    document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:#5a6373;font-size:18px">\u26a0 \u6570\u636e\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u5237\u65b0\u91cd\u8bd5</div>';
+    document.querySelectorAll('.skeleton-card,.skeleton-peer-card,.skeleton-kpi,.skeleton-line').forEach(el=>el.classList.remove('skeleton'));
+    const dateEl=document.getElementById('topDate');
+    if(dateEl) dateEl.innerHTML='\u26a0 \u6570\u636e\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u5237\u65b0\u91cd\u8bd5\uff08\u70b9\u51fb\u53f3\u4e0a\u89d2\u201c\u5237\u65b0\u6570\u636e\u201d\u6309\u94ae\u91cd\u8bd5\uff09';
+    const pg=document.getElementById('productGrid');
+    if(pg) pg.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-text-dim)">\u6570\u636e\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u70b9\u51fb\u201c\u5237\u65b0\u6570\u636e\u201d\u91cd\u8bd5</div>';
+    initTabs();initModalClose();initUpdatePrice();
   }
 }
 init();

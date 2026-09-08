@@ -23,6 +23,214 @@ from datetime import datetime
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
 
+# ==================== AI Analysis (Qianfan API) ====================
+
+
+def generate_ai_analysis(prices, existing_data):
+    """Call Qianfan LLM API to generate market analysis based on today's price data.
+    Falls back to local rule-based analysis if API is unavailable."""
+    try:
+        api_key = os.environ.get("QIANFAN_API_KEY", "")
+        secret_key = os.environ.get("QIANFAN_SECRET_KEY", "")
+
+        if not api_key or not secret_key:
+            print("  [AI] No QIANFAN_API_KEY/SECRET_KEY found, using local fallback")
+            return generate_local_ai_analysis(prices, existing_data)
+
+        # Get access token
+        token_url = "https://aip.baidubce.com/oauth/2.0/token"
+        token_params = (
+            "grant_type=client_credentials&client_id="
+            + api_key
+            + "&client_secret="
+            + secret_key
+        )
+        token_req = Request(token_url, data=token_params.encode("utf-8"), method="POST")
+        token_req.add_header("Content-Type", "application/x-www-form-urlencoded")
+        with urlopen(token_req, timeout=15) as resp:
+            token_data = json.loads(resp.read().decode("utf-8"))
+
+        access_token = token_data.get("access_token", "")
+        if not access_token:
+            print("  [AI] Failed to get access token, using local fallback")
+            return generate_local_ai_analysis(prices, existing_data)
+
+        # Build prompt from price data
+        prompt = build_ai_prompt(prices, existing_data)
+
+        # Call ERNIE model
+        chat_url = (
+            "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-4.0-8k-latest?access_token="
+            + access_token
+        )
+        payload = json.dumps(
+            {
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.7,
+                "max_output_tokens": 2000,
+            }
+        )
+        chat_req = Request(chat_url, data=payload.encode("utf-8"), method="POST")
+        chat_req.add_header("Content-Type", "application/json")
+
+        with urlopen(chat_req, timeout=60) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+
+        ai_text = result.get("result", "")
+
+        if not ai_text:
+            print("  [AI] Empty response, using local fallback")
+            return generate_local_ai_analysis(prices, existing_data)
+
+        # Parse AI text into structured sections
+        analysis = parse_ai_response(ai_text, prices)
+        analysis["generatedAt"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        analysis["source"] = "qianfan-ernie-4.0"
+        print("  [AI] Cloud analysis generated successfully")
+        return analysis
+
+    except Exception as e:
+        print("  [AI] API call failed: %s, using local fallback" % str(e))
+        return generate_local_ai_analysis(prices, existing_data)
+
+
+def build_ai_prompt(prices, existing_data):
+    """Build a detailed prompt for the LLM based on current price data."""
+    lines = []
+    lines.append("你是化工行业市场分析师，请根据以下化工产品价格数据进行专业分析。")
+    lines.append("\n=== 当日价格数据 ===")
+    for name, info in sorted(prices.items()):
+        price = info.get("price", "?")
+        change = info.get("change", 0)
+        change_pct = info.get("changePct", 0)
+        week_pct = info.get("weekPct", 0)
+        trend = info.get("trend", "flat")
+        unit = info.get("unit", "")
+        lines.append(
+            "- %s: %s%s (日涨跌%s, %s%%, 周涨跌%s%%, 趋势%s)"
+            % (name, price, unit, change, change_pct, week_pct, trend)
+        )
+
+    # Add profit line info
+    profit_lines = existing_data.get("profitLines", [])
+    if profit_lines:
+        lines.append("\n=== 产品线利润情况 ===")
+        for pl in profit_lines:
+            product_price = pl.get("productPrice", "?")
+            threshold = pl.get("threshold", "?")
+            raws = pl.get("rawMaterials", [])
+            raw_str = ", ".join(
+                ["%s(%s)" % (r.get("label", ""), r.get("price", "?")) for r in raws]
+            )
+            lines.append(
+                "- %s: 售价%s, 预警阈值%s, 原料[%s]"
+                % (pl["name"], product_price, threshold, raw_str)
+            )
+
+    lines.append("\n=== 请按以下格式输出分析（每节用【】标记标题）===")
+    lines.append("【市场总览】概括当日市场整体涨跌情况，指出领涨领跌品种")
+    lines.append("【原料成本预警】分析原料价格变动对下游成本的影响，指出需要关注的风险")
+    lines.append("【产品行情预警】分析产品价格走势，指出机会和风险品种")
+    lines.append("【利润分析】基于售价和原料成本，分析各产品线盈利状况，指出亏损风险")
+    lines.append("【采购建议】给出原料采购策略建议")
+    lines.append("【排产建议】给出生产优先级和排产建议")
+    lines.append("\n注意：每节内容控制在3-5句话，专业简洁，数据要引用具体数值。")
+
+    return "\n".join(lines)
+
+
+def parse_ai_response(text, prices):
+    """Parse LLM text response into structured sections for frontend."""
+    section_map = {
+        "市场总览": "market",
+        "原料成本": "raw",
+        "产品行情": "prod",
+        "利润分析": "profit",
+        "采购": "buy",
+        "排产": "advice",
+    }
+    sections = []
+    # Split by 【】 markers
+    parts = re.split(r"【(.+?)】", text)
+    # parts[0] is preamble, then alternating title/content
+    for i in range(1, len(parts) - 1, 2):
+        title = parts[i].strip()
+        body = parts[i + 1].strip() if i + 1 < len(parts) else ""
+        # Match to section class
+        cls = "market"
+        for key, val in section_map.items():
+            if key in title:
+                cls = val
+                break
+        # Convert paragraphs to <p> tags
+        body_html = "".join(
+            ["<p>" + para.strip() + "</p>" for para in body.split("\n") if para.strip()]
+        )
+        sections.append({"cls": cls, "title": title, "body": body_html})
+
+    # If parsing failed, put entire text in one section
+    if not sections:
+        body_html = "".join(
+            ["<p>" + para.strip() + "</p>" for para in text.split("\n") if para.strip()]
+        )
+        sections.append({"cls": "market", "title": "AI市场分析", "body": body_html})
+
+    # Build metrics from price data
+    metrics = build_ai_metrics(prices)
+    if metrics:
+        last_section = sections[-1]
+        last_section["metrics"] = metrics
+
+    return {"sections": sections}
+
+
+def build_ai_metrics(prices):
+    """Build core metric cards from price data."""
+    metrics = []
+    # Find highest and lowest change
+    sorted_by_pct = sorted(prices.items(), key=lambda x: x[1].get("changePct", 0))
+    if sorted_by_pct:
+        highest = sorted_by_pct[-1]
+        metrics.append(
+            {
+                "value": "+" + str(highest[1].get("changePct", 0)) + "%",
+                "label": "涨幅最高(" + highest[0] + ")",
+                "cls": "profit-text",
+                "color": "var(--c-up)",
+            }
+        )
+        lowest = sorted_by_pct[0]
+        metrics.append(
+            {
+                "value": str(lowest[1].get("changePct", 0)) + "%",
+                "label": "跌幅最大(" + lowest[0] + ")",
+                "cls": "loss-text",
+                "color": "var(--c-down)",
+            }
+        )
+    # Count up/down/flat
+    up_cnt = sum(1 for p in prices.values() if p.get("changePct", 0) > 0)
+    down_cnt = sum(1 for p in prices.values() if p.get("changePct", 0) < 0)
+    flat_cnt = len(prices) - up_cnt - down_cnt
+    metrics.append(
+        {
+            "value": str(up_cnt) + "/" + str(down_cnt) + "/" + str(flat_cnt),
+            "label": "涨/跌/平",
+            "cls": "",
+            "color": "var(--c-primary)",
+        }
+    )
+    return metrics
+
+
+def generate_local_ai_analysis(prices, existing_data):
+    """Generate analysis using local rules (fallback when API unavailable)."""
+    # This is the existing local logic - return a minimal structure
+    # The frontend already has full local rule-based rendering as fallback
+    # So we return None to signal "use frontend local rendering"
+    return None
+
+
 # ==================== Config ====================
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -345,6 +553,11 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u5185\u9170\u80fa40\u4e07\u5428/\u5e74 + \u73af\u5df1\u918725\u4e07\u5428/\u5e74 + \u5df1\u4e8c\u814820\u4e07\u5428/\u5e74(\u4e00\u671f)",
         "status": "2026\u5e744\u6708\u5df1\u4e8c\u8148\u4e00\u671f\u6295\u4ea7\uff0c\u4ea7\u54c1\u7eaf\u5ea699.9%\u3002\u6c22\u6c28\u9879\u76ee(\u5408\u6210\u6c2840\u4e07\u5428+\u6c22\u6c144\u4ebf\u6807\u65b9)2023\u5e74\u6295\u8fd0\uff0c\u4e3a\u56ed\u533a\u964d\u672c8.74\u4ebf\u5143\u3002\u5c3c\u9f99\u4ea7\u4e1a\u94fe\u5b8c\u6574\u5e03\u5c40\uff0c\u5343\u4ebf\u7ea7\u5c3c\u9f99\u57ce\u52a0\u901f\u6210\u578b\u3002",
         "note": "\u56fd\u5185\u552f\u4e00\u540c\u65f6\u638c\u63e1\u5df1\u5185\u9170\u80fa\u6cd5\u548c\u4e01\u4e8c\u70ef\u6cd5\u4e24\u6761\u5df1\u4e8c\u8148\u8def\u7ebf\u7684\u4f01\u4e1a\uff0c\u4ea7\u4e1a\u94fe\u4e00\u4f53\u5316\u7a0b\u5ea6\u6700\u9ad8\uff0c\u662f\u592a\u5316\u6700\u5f3a\u52b2\u7684\u534e\u5317\u5468\u8fb9\u7ade\u4e89\u5bf9\u624b",
+        "price": [
+            {"product": "\u5df1\u5185\u9170\u80fa", "price": None},
+            {"product": "\u5df1\u4e8c\u9178", "price": None},
+            {"product": "\u5c3c\u9f996", "price": None},
+        ],
     },
     {
         "name": "\u534e\u9c81\u6052\u5347",
@@ -359,6 +572,11 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u5185\u9170\u80fa30\u4e07\u5428/\u5e74 + \u5df1\u4e8c\u917820\u4e07\u5428/\u5e74(\u5c3c\u9f6666\u914d\u5957) + \u5c3c\u9f996 30\u4e07\u5428/\u5e74 + \u73af\u5df1\u916e40\u4e07\u5428/\u5e74",
         "status": "2024\u5e7411\u6708\u5c3c\u9f996\u88c5\u7f6e\u6295\u4ea7\uff0c12\u6708\u5df1\u4e8c\u9178\u88c5\u7f6e\u8bd5\u751f\u4ea7\u3002\u4e00\u5934\u591a\u7ebf\u7164\u6c14\u5316\u5e73\u53f0\uff0c\u5408\u6210\u6c28/\u5c3f\u7d20/\u5df1\u5185\u9170\u80fa/\u5df1\u4e8c\u9178\u4e00\u4f53\u5316\u30022026Q1\u51c0\u5229\u6da611.17\u4ebf\u5143\u540c\u6bd4\u589e58%\uff0c\u6210\u672c\u63a7\u5236\u80fd\u529b\u884c\u4e1a\u6807\u6746\u3002",
         "note": "\u7164\u5934\u4e00\u4f53\u5316\u6210\u672c\u4f18\u52bf\u7a81\u51fa\uff0c\u7efc\u5408\u6210\u672c\u6bd4\u884c\u4e1a\u5e73\u5747\u4f4e\u7ea620%\uff0c\u8346\u5dde\u57fa\u5730\u65b0\u589e\u4ea7\u80fd\u6301\u7eed\u91ca\u653e\uff0c\u5bf9\u592a\u5316\u534e\u5317\u5e02\u573a\u4efd\u989d\u6784\u6210\u76f4\u63a5\u6324\u538b",
+        "price": [
+            {"product": "\u5df1\u5185\u9170\u80fa", "price": None},
+            {"product": "\u5df1\u4e8c\u9178", "price": None},
+            {"product": "\u5c3c\u9f996", "price": None},
+        ],
     },
     {
         "name": "\u5170\u82b1\u79d1\u521b",
@@ -367,6 +585,9 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u5185\u9170\u80fa20\u4e07\u5428/\u5e74 + \u5408\u6210\u6c28\u914d\u5957",
         "status": "\u7164\u70ad-\u5408\u6210\u6c14-\u5408\u6210\u6c28-\u5df1\u5185\u9170\u80fa\u4e00\u4f53\u5316\u4ea7\u4e1a\u94fe\uff0c\u81ea\u6709\u4f18\u8d28\u65e0\u70df\u7164\u539f\u6599\u4f18\u52bf\u30022025\u5e74\u7164\u5236\u82b3\u70f9\u6218\u7565\u5e03\u5c40\u63a8\u8fdb\u4e2d\u3002",
         "note": "\u540c\u5904\u5c71\u897f\uff0c\u539f\u6599\u7164\u81ea\u7ed9\u6210\u672c\u4f18\u52bf\u660e\u663e\uff0c\u4e0e\u592a\u5316\u5728\u5df1\u5185\u9170\u80fa\u5e02\u573a\u76f4\u63a5\u7ade\u4e89\uff0c\u7701\u5185\u540c\u8d5b\u9053\u5bf9\u624b",
+        "price": [
+            {"product": "\u5df1\u5185\u9170\u80fa", "price": None},
+        ],
     },
     {
         "name": "\u6052\u7533\u96c6\u56e2(\u7533\u8fdc)",
@@ -375,6 +596,9 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u5185\u9170\u80fa100\u4e07\u5428/\u5e74(\u5168\u7403\u6700\u5927)",
         "status": "2023\u5e74\u56db\u7ebf\u5efa\u6210\u6295\u4ea7\uff0c\u5b9e\u73b0\u5e74\u4ea7100\u4e07\u5428\u5df1\u5185\u9170\u80fa\u4e00\u4f53\u5316\u6218\u7565\uff0c\u5efa\u6210\u5168\u7403\u552f\u4e00\u5b8c\u6574\u5e03\u5c40\u9526\u7eb6-6\u516b\u9053\u4ea7\u4e1a\u94fe\u7684\u4ea7\u4e1a\u56ed\u533a\u3002",
         "note": "\u5168\u7403\u5df1\u5185\u9170\u80fa\u4ea7\u80fd\u7b2c\u4e00\uff0c\u89c4\u6a21\u6548\u5e94\u788e\u538b\uff0c\u5bf9\u5168\u56fd\u5df1\u5185\u9170\u80fa\u5b9a\u4ef7\u6743\u5f71\u54cd\u6781\u5927\uff0c\u592a\u5316\u552e\u4ef7\u88ab\u52a8\u8ddf\u968f\u5176\u8c03\u4ef7\u8282\u594f",
+        "price": [
+            {"product": "\u5df1\u5185\u9170\u80fa", "price": None},
+        ],
     },
     {
         "name": "\u534e\u5cf0\u5316\u5b66",
@@ -383,6 +607,9 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u4e8c\u9178115\u4e07\u5428/\u5e74(\u516d\u671f\u5df2\u6295\u4ea7)",
         "status": "2024\u5e7412\u6708\u5df1\u4e8c\u9178\u516d\u671f115\u4e07\u5428/\u5e74\u6269\u5efa\u9879\u76ee\u6b63\u5f0f\u6295\u4ea7\uff0c\u5df1\u4e8c\u9178\u4ea7\u80fd\u548c\u4ea7\u91cf\u5747\u5c45\u884c\u4e1a\u9886\u5148\u3002\u91cd\u5e86\u57fa\u573030\u4e07\u5428/\u5e74\u5df1\u4e8c\u8148\u4e09\u671f+\u5c3c\u9f6666\u4e00\u4f53\u5316\u9879\u76ee\u6301\u7eed\u63a8\u8fdb\u3002",
         "note": "\u56fd\u5185\u5df1\u4e8c\u9178\u7edd\u5bf9\u9f99\u5934\uff0c\u4ea7\u80fd\u5360\u6bd4\u8d8540%\uff0c\u65b0\u589e\u4ea7\u80fd\u6295\u653e\u76f4\u63a5\u538b\u5236\u5df1\u4e8c\u9178\u4ef7\u683c\uff0c\u592a\u5316\u5df1\u4e8c\u9178\u552e\u4ef7\u53d7\u5176\u5f00\u5de5\u7387\u76f4\u63a5\u5f71\u54cd",
+        "price": [
+            {"product": "\u5df1\u4e8c\u9178", "price": None},
+        ],
     },
     {
         "name": "\u9c81\u897f\u5316\u5de5",
@@ -391,6 +618,10 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u5185\u9170\u80fa60\u4e07\u5428/\u5e74 + \u5c3c\u9f996 60\u4e07\u5428/\u5e74(\u4e00\u671f30\u4e07\u5df2\u6295\u4ea7)",
         "status": "60\u4e07\u5428/\u5e74\u5df1\u5185\u9170\u80fa\u00b7\u5c3c\u9f996\u9879\u76ee\u4e00\u671f(30\u4e07CPL+30\u4e07PA6)\u5df2\u5f00\u5de5\uff0c\u4e0e\u4e2d\u5316\u96c6\u56e2\u878d\u5408\u5f00\u542f\u65b0\u4e00\u8f6e\u6210\u957f\u3002",
         "note": "\u5c71\u4e1c\u5730\u533aCPL+PA6\u4e00\u4f53\u5316\u4ea7\u80fd\u5feb\u901f\u6269\u5f20\uff0c\u4e0e\u592a\u5316\u5728\u5c3c\u9f996\u5207\u7247\u5e02\u573a\u76f4\u63a5\u7ade\u4e89\uff0c\u4e2d\u5316\u7cfb\u8d44\u6e90\u52a0\u6301\u540e\u7ade\u4e89\u529b\u589e\u5f3a",
+        "price": [
+            {"product": "\u5df1\u5185\u9170\u80fa", "price": None},
+            {"product": "\u5c3c\u9f996", "price": None},
+        ],
     },
     {
         "name": "\u4e2d\u56fd\u77f3\u5316(\u6e56\u5357\u77f3\u5316)",
@@ -399,6 +630,9 @@ PEER_PLANTS = [
         "capacity": "\u5df1\u5185\u9170\u80fa60\u4e07\u5428/\u5e74(\u5168\u7403\u5355\u5957\u6700\u5927)",
         "status": "\u5e74\u4ea760\u4e07\u5428\u5df1\u5185\u9170\u80fa\u4ea7\u4e1a\u94fe\u642c\u8fc1\u4e0e\u5347\u7ea7\u8f6c\u578b\u53d1\u5c55\u9879\u76ee\u5df2\u5168\u7ebf\u5f00\u8f66\uff0c\u6280\u672f\u9886\u5148\u3002",
         "note": "\u5168\u7403\u5355\u5957\u4ea7\u80fd\u6700\u5927\u3001\u6280\u672f\u6700\u5148\u8fdb\u7684\u5df1\u5185\u9170\u80fa\u57fa\u5730\uff0c\u5bf9\u5168\u56fdCPL\u4f9b\u5e94\u683c\u5c40\u548c\u5b9a\u4ef7\u6709\u51b3\u5b9a\u6027\u5f71\u54cd",
+        "price": [
+            {"product": "\u5df1\u5185\u9170\u80fa", "price": None},
+        ],
     },
 ]
 
@@ -1027,6 +1261,12 @@ def build_data(prices, existing, news_items=None):
         line_copy["rawMaterials"] = new_raws
         profit_lines.append(line_copy)
 
+    # Generate AI analysis
+    print("  [AI] Generating analysis...")
+    data_for_ai = dict(existing or {})
+    data_for_ai["profitLines"] = profit_lines
+    ai_analysis = generate_ai_analysis(prices, data_for_ai)
+
     return {
         "lastUpdate": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "products": products,
@@ -1036,6 +1276,7 @@ def build_data(prices, existing, news_items=None):
         "profitLines": profit_lines,
         "peerPlants": PEER_PLANTS,
         "news": news_items,
+        "aiAnalysis": ai_analysis,
     }
 
 
