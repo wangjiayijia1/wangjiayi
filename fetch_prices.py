@@ -14,69 +14,55 @@ Removed (no data source on 100ppi.com):
   nicotine, raw-coal, fuel-coal, cyclohexanol, hydrogen, natural-gas
 """
 
+import hashlib
+import hmac
 import json
-import re
 import os
+import re
 import sys
 import time
 from datetime import datetime
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
 
-# ==================== AI Analysis (Qianfan API) ====================
+# ==================== AI Analysis (Qianfan v2 API) ====================
 
 
 def generate_ai_analysis(prices, existing_data):
-    """Call Qianfan LLM API to generate market analysis based on today's price data.
+    """Call Qianfan v2 LLM API via OpenAI-compatible endpoint using API Key (Bearer token).
     Falls back to local rule-based analysis if API is unavailable."""
     try:
         api_key = os.environ.get("QIANFAN_API_KEY", "")
-        secret_key = os.environ.get("QIANFAN_SECRET_KEY", "")
 
-        if not api_key or not secret_key:
-            print("  [AI] No QIANFAN_API_KEY/SECRET_KEY found, using local fallback")
-            return generate_local_ai_analysis(prices, existing_data)
-
-        # Get access token
-        token_url = "https://aip.baidubce.com/oauth/2.0/token"
-        token_params = (
-            "grant_type=client_credentials&client_id="
-            + api_key
-            + "&client_secret="
-            + secret_key
-        )
-        token_req = Request(token_url, data=token_params.encode("utf-8"), method="POST")
-        token_req.add_header("Content-Type", "application/x-www-form-urlencoded")
-        with urlopen(token_req, timeout=15) as resp:
-            token_data = json.loads(resp.read().decode("utf-8"))
-
-        access_token = token_data.get("access_token", "")
-        if not access_token:
-            print("  [AI] Failed to get access token, using local fallback")
+        if not api_key:
+            print("  [AI] No QIANFAN_API_KEY found, using local fallback")
             return generate_local_ai_analysis(prices, existing_data)
 
         # Build prompt from price data
         prompt = build_ai_prompt(prices, existing_data)
 
-        # Call ERNIE model
-        chat_url = (
-            "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-4.0-8k-latest?access_token="
-            + access_token
-        )
+        # Call Qianfan v2 OpenAI-compatible chat completions endpoint
+        chat_url = "https://qianfan.baidubce.com/v2/chat/completions"
         payload = json.dumps(
             {
+                "model": "ernie-4.0-8k-latest",
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.7,
-                "max_output_tokens": 2000,
+                "max_tokens": 2000,
             }
         )
         chat_req = Request(chat_url, data=payload.encode("utf-8"), method="POST")
         chat_req.add_header("Content-Type", "application/json")
+        chat_req.add_header("Authorization", "Bearer " + api_key)
 
         with urlopen(chat_req, timeout=60) as resp:
             result = json.loads(resp.read().decode("utf-8"))
 
-        ai_text = result.get("result", "")
+        ai_text = ""
+        if "choices" in result and len(result["choices"]) > 0:
+            ai_text = result["choices"][0].get("message", {}).get("content", "")
+        elif "result" in result:
+            ai_text = result["result"]
 
         if not ai_text:
             print("  [AI] Empty response, using local fallback")
@@ -85,7 +71,7 @@ def generate_ai_analysis(prices, existing_data):
         # Parse AI text into structured sections
         analysis = parse_ai_response(ai_text, prices)
         analysis["generatedAt"] = datetime.now().strftime("%Y-%m-%d %H:%M")
-        analysis["source"] = "qianfan-ernie-4.0"
+        analysis["source"] = "qianfan-v2-ernie-4.0"
         print("  [AI] Cloud analysis generated successfully")
         return analysis
 
