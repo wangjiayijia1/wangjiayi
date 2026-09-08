@@ -24,7 +24,6 @@ jobs:
       - name: Run price fetcher
         env:
           QIANFAN_API_KEY: ${{ secrets.QIANFAN_API_KEY }}
-          QIANFAN_SECRET_KEY: ${{ secrets.QIANFAN_SECRET_KEY }}
         run: python fetch_prices.py
 
       - name: Commit data.json and price_history.json
