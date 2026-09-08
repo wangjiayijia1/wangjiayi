@@ -366,7 +366,7 @@ a.news-item-title:hover{color:var(--c-primary)}
 .trend-ai-reasons-title{font-size:12px;font-weight:600;color:var(--c-text-dim);margin:10px 0 4px}
 .trend-ai-reasons{list-style:none;padding:0;margin:0}
 .trend-ai-reasons li{font-size:12px;line-height:1.6;color:var(--c-text-dim);padding:3px 0 3px 14px;position:relative}
-.trend-ai-reasons li::before{content:"\u2022";position:absolute;left:2px;color:var(--c-primary)}
+.trend-ai-reasons li::before{content:"\u25cf";position:absolute;left:2px;color:var(--c-primary)}
 .trend-ai-outlook{margin-top:10px;font-size:12px;line-height:1.6;color:var(--c-text-dim);padding:8px 10px;border-radius:6px;background:rgba(59,130,246,0.06)}
 .trend-ai-outlook-label{font-weight:600;color:var(--c-primary)}
 
@@ -1376,7 +1376,7 @@ function drawTrendChart(canvas,data,trend){
   ctx.restore();
   // Draw forecast label
   ctx.fillStyle="#888";ctx.font="10px sans-serif";ctx.textAlign="center";
-  var foreMidX=foreStartX+(cw/(data.length-1))*1.5;
+  var foreMidX=Math.min(foreStartX+(cw/(data.length-1))*0.8, w-25);
   ctx.fillText("\u9884\u6d4b",foreMidX,Math.max(foreStartY-12,pad.top+12));
 }
 
