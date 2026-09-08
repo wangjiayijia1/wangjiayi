@@ -19,11 +19,25 @@ import hmac
 import json
 import os
 import re
+import signal
 import sys
 import time
 from datetime import datetime
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
+
+
+# ==================== Global Timeout ====================
+def _timeout_handler(signum, frame):
+    print("\n[FATAL] Script exceeded 8 minutes, force exiting")
+    sys.exit(1)
+
+
+try:
+    signal.signal(signal.SIGALRM, _timeout_handler)
+    signal.alarm(480)  # 8 minutes max
+except (AttributeError, ValueError):
+    pass  # Windows does not support SIGALRM
 
 # ==================== AI Analysis (Qianfan v2 API) ====================
 
@@ -55,7 +69,7 @@ def generate_ai_analysis(prices, existing_data):
         chat_req.add_header("Content-Type", "application/json")
         chat_req.add_header("Authorization", "Bearer " + api_key)
 
-        with urlopen(chat_req, timeout=60) as resp:
+        with urlopen(chat_req, timeout=30) as resp:
             result = json.loads(resp.read().decode("utf-8"))
 
         ai_text = ""
@@ -628,7 +642,7 @@ DEFAULT_COSTS = {"h2": 1.50, "steam": 220, "power": 0.55}
 # ==================== Fetch Functions ====================
 
 
-def fetch_url(url, timeout=15, retries=2, headers=None):
+def fetch_url(url, timeout=12, retries=1, headers=None):
     """Fetch URL with retries (urllib, no external dependency)"""
     use_headers = headers or HEADERS
     for attempt in range(retries + 1):
@@ -644,7 +658,7 @@ def fetch_url(url, timeout=15, retries=2, headers=None):
                     return None
         except Exception as e:
             if attempt < retries:
-                time.sleep(2)
+                time.sleep(1)
                 continue
             print(f"  [ERROR] request failed: {url} -> {e}")
             return None
@@ -668,7 +682,7 @@ def parse_vane_price(html):
 def fetch_week_pct(vid):
     """Fetch weekly change % from 100ppi graph API"""
     url = f"https://www.100ppi.com/graph/cindex.php?f=graph_per_week&ppid={vid}"
-    html = fetch_url(url, headers=HEADERS)
+    html = fetch_url(url, timeout=12, headers=HEADERS)
     if not html or len(html) < 100:
         return None
 
@@ -721,7 +735,7 @@ def fetch_daily_change(vid, vane_name):
 
     encoded = urllib.parse.quote(vane_name)
     url = f"https://m1.100ppi.com/vane/{vid}-{encoded}.html"
-    html = fetch_url(url, headers=MOBILE_HEADERS)
+    html = fetch_url(url, timeout=12, retries=1, headers=MOBILE_HEADERS)
     if not html or "HW_CHECK" in html:
         return None, None
 
@@ -749,7 +763,7 @@ def fetch_daily_change(vid, vane_name):
 
 def fetch_subsite_daily_change(url):
     """Fetch daily change from subsite (compare today vs yesterday benchmark)"""
-    html = fetch_url(url, headers=HEADERS)
+    html = fetch_url(url, timeout=12, retries=1, headers=HEADERS)
     if not html:
         return None, None
 
@@ -802,99 +816,109 @@ def fetch_all_prices():
     # 1. Vane sources
     print("\n--- Vane sources ---")
     for name, config in VANE_SOURCES.items():
-        html = fetch_url(config["url"])
-        price = parse_vane_price(html) if html else None
-        vid = config["vid"]
+        try:
+            html = fetch_url(config["url"], timeout=15, retries=1)
+            price = parse_vane_price(html) if html else None
+            vid = config["vid"]
 
-        if price is not None:
-            week_pct = fetch_week_pct(vid)
-            time.sleep(0.3)
+            if price is not None:
+                week_pct = fetch_week_pct(vid)
+                time.sleep(0.2)
 
-            vane_name = MOBILE_VANE_NAMES.get(vid, name)
-            day_price, day_pct = fetch_daily_change(vid, vane_name)
-            time.sleep(0.3)
+                vane_name = MOBILE_VANE_NAMES.get(vid, name)
+                day_price, day_pct = fetch_daily_change(vid, vane_name)
+                time.sleep(0.2)
 
-            if day_pct is not None and day_pct != 0:
-                yesterday = price / (1 + day_pct / 100)
-                change = round(price - yesterday, 2)
-            else:
-                change = 0.0
-                day_pct = 0.0
+                if day_pct is not None and day_pct != 0:
+                    yesterday = price / (1 + day_pct / 100)
+                    change = round(price - yesterday, 2)
+                else:
+                    change = 0.0
+                    day_pct = 0.0
 
-            if week_pct is not None:
-                if week_pct > 0.01:
+                if week_pct is not None:
+                    if week_pct > 0.01:
+                        trend = "up"
+                    elif week_pct < -0.01:
+                        trend = "down"
+                    else:
+                        trend = "flat"
+                elif day_pct > 0.01:
                     trend = "up"
-                elif week_pct < -0.01:
+                elif day_pct < -0.01:
                     trend = "down"
                 else:
                     trend = "flat"
-            elif day_pct > 0.01:
-                trend = "up"
-            elif day_pct < -0.01:
-                trend = "down"
-            else:
-                trend = "flat"
 
-            results[name] = {
-                "price": price,
-                "change": change,
-                "changePct": day_pct if day_pct is not None else 0.0,
-                "weekPct": week_pct if week_pct is not None else 0.0,
-                "trend": trend,
-            }
-            proxy = f" [proxy: {config['proxy_for']}]" if "proxy_for" in config else ""
-            wp = f", weekPct={week_pct}%" if week_pct is not None else ""
-            print(f"  [OK] {name}: {price}{proxy}{wp}")
-        else:
-            print(f"  [FAIL] {name}: no price")
+                results[name] = {
+                    "price": price,
+                    "change": change,
+                    "changePct": day_pct if day_pct is not None else 0.0,
+                    "weekPct": week_pct if week_pct is not None else 0.0,
+                    "trend": trend,
+                }
+                proxy = (
+                    f" [proxy: {config['proxy_for']}]" if "proxy_for" in config else ""
+                )
+                wp = f", weekPct={week_pct}%" if week_pct is not None else ""
+                print(f"  [OK] {name}: {price}{proxy}{wp}")
+            else:
+                print(f"  [FAIL] {name}: no price")
+                failed.append(name)
+        except Exception as e:
+            print(f"  [FAIL] {name}: {e}")
             failed.append(name)
-        time.sleep(0.5)
+        time.sleep(0.3)
 
     # 2. Subsite sources
     print("\n--- Subsite sources ---")
     for name, config in SUBSITE_SOURCES.items():
-        html = fetch_url(config["url"])
-        price = parse_subsite_price(html) if html else None
+        try:
+            html = fetch_url(config["url"], timeout=15, retries=1)
+            price = parse_subsite_price(html) if html else None
 
-        if price is not None:
-            sub_change, sub_pct = fetch_subsite_daily_change(config["url"])
-            week_pct = fetch_week_pct(config["ppid"])
-            time.sleep(0.3)
+            if price is not None:
+                sub_change, sub_pct = fetch_subsite_daily_change(config["url"])
+                week_pct = fetch_week_pct(config["ppid"])
+                time.sleep(0.2)
 
-            if sub_change is not None:
-                change = sub_change
-                day_pct = sub_pct
-            else:
-                change = 0.0
-                day_pct = 0.0
+                if sub_change is not None:
+                    change = sub_change
+                    day_pct = sub_pct
+                else:
+                    change = 0.0
+                    day_pct = 0.0
 
-            if week_pct is not None:
-                if week_pct > 0.01:
+                if week_pct is not None:
+                    if week_pct > 0.01:
+                        trend = "up"
+                    elif week_pct < -0.01:
+                        trend = "down"
+                    else:
+                        trend = "flat"
+                elif day_pct is not None and day_pct > 0.01:
                     trend = "up"
-                elif week_pct < -0.01:
+                elif day_pct is not None and day_pct < -0.01:
                     trend = "down"
                 else:
                     trend = "flat"
-            elif day_pct is not None and day_pct > 0.01:
-                trend = "up"
-            elif day_pct is not None and day_pct < -0.01:
-                trend = "down"
-            else:
-                trend = "flat"
 
-            results[name] = {
-                "price": price,
-                "change": change,
-                "changePct": day_pct,
-                "weekPct": week_pct if week_pct is not None else 0.0,
-                "trend": trend,
-            }
-            wp = f", weekPct={week_pct}%" if week_pct is not None else ""
-            print(f"  [OK] {name}: {price}{wp}")
-        else:
-            print(f"  [FAIL] {name}: no price")
+                results[name] = {
+                    "price": price,
+                    "change": change,
+                    "changePct": day_pct,
+                    "weekPct": week_pct if week_pct is not None else 0.0,
+                    "trend": trend,
+                }
+                wp = f", weekPct={week_pct}%" if week_pct is not None else ""
+                print(f"  [OK] {name}: {price}{wp}")
+            else:
+                print(f"  [FAIL] {name}: no price")
+                failed.append(name)
+        except Exception as e:
+            print(f"  [FAIL] {name}: {e}")
             failed.append(name)
-        time.sleep(0.5)
+        time.sleep(0.3)
 
     # 3. Liquid ammonia = synthetic ammonia (same data)
     if "\u5408\u6210\u6c28" in results and "\u6db2\u6c28" not in results:
@@ -1055,7 +1079,7 @@ def _fetch_page_with_cookie(url):
         import gzip
 
         req = Request(url, headers=HEADERS)
-        resp = urlopen(req, timeout=15)
+        resp = urlopen(req, timeout=12)
         raw = resp.read()
         if resp.headers.get("Content-Encoding") == "gzip":
             raw = gzip.decompress(raw)
@@ -1069,7 +1093,7 @@ def _fetch_page_with_cookie(url):
                 req2 = Request(
                     url, headers={**HEADERS, "Cookie": f"HW_CHECK={cookie_val}"}
                 )
-                resp2 = urlopen(req2, timeout=15)
+                resp2 = urlopen(req2, timeout=12)
                 raw2 = resp2.read()
                 if resp2.headers.get("Content-Encoding") == "gzip":
                     raw2 = gzip.decompress(raw2)
@@ -1144,6 +1168,7 @@ def fetch_news(existing_news, max_items=20):
             print(f"    {commodity}: {len(detail_links)} links found")
         except Exception as e:
             print(f"    {commodity}: ERROR - {e}")
+            continue
 
     # Deduplicate by title
     seen = set()

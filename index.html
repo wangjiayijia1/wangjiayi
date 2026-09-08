@@ -357,6 +357,19 @@ a.news-item-title:hover{color:var(--c-primary)}
 .modal-stat .ms-val{font-size:16px;font-weight:700}
 .modal-stat .ms-lbl{font-size:11px;color:var(--c-text-dim);margin-top:2px}
 
+/* Trend AI Analysis */
+.modal-ai-analysis{margin-top:16px;padding:16px;border-radius:8px;background:var(--c-panel2);border:1px solid var(--c-border)}
+.modal-ai-title{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.modal-ai-title .ai-icon{font-size:16px}
+.modal-ai-title .ai-label{font-size:14px;font-weight:600;color:var(--c-primary)}
+.trend-ai-summary{font-size:13px;line-height:1.7;color:var(--c-text)}
+.trend-ai-reasons-title{font-size:12px;font-weight:600;color:var(--c-text-dim);margin:10px 0 4px}
+.trend-ai-reasons{list-style:none;padding:0;margin:0}
+.trend-ai-reasons li{font-size:12px;line-height:1.6;color:var(--c-text-dim);padding:3px 0 3px 14px;position:relative}
+.trend-ai-reasons li::before{content:"\u2022";position:absolute;left:2px;color:var(--c-primary)}
+.trend-ai-outlook{margin-top:10px;font-size:12px;line-height:1.6;color:var(--c-text-dim);padding:8px 10px;border-radius:6px;background:rgba(59,130,246,0.06)}
+.trend-ai-outlook-label{font-weight:600;color:var(--c-primary)}
+
 /* Data Source */
 .data-source{text-align:center;font-size:12px;color:var(--c-text-dim);padding:20px;margin-top:20px;border-top:1px solid var(--c-border)}
 .data-source a{color:var(--c-primary);text-decoration:none}
@@ -602,6 +615,7 @@ async function loadData(cacheBust=false){
     const resp=await fetch(url);
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     priceData=await resp.json();
+    window._appData=priceData;
     products=priceData.products||[];
     rawMaterials=priceData.rawMaterials||[];
     intermediates=priceData.intermediates||[];
@@ -677,37 +691,9 @@ function getAvgProfit(line,days){
 function renderPeerPlants(){
   const html=peerPlants.map(p=>{
     const tags=p.products.map(t=>'<span class="peer-product-tag">'+t+'</span>').join("");
-    // Peer price comparison
-    var priceHTML='';
-    if(p.price&&p.price.length>0){
-      priceHTML='<div class="peer-prices">'+
-        p.price.map(function(pr){
-          // Compare with our price
-          var ourPrice=null;
-          for(var pi=0;pi<products.length;pi++){
-            if(products[pi].name===pr.product){ourPrice=products[pi].price;break;}
-          }
-          var diffSign='',diffClass='peer-price-neutral',diffText='';
-          if(ourPrice&&pr.price){
-            var diff=pr.price-ourPrice;
-            if(Math.abs(diff)>1){
-              diffSign=diff>0?'\u2191':'\u2193';
-              diffText='('+diffSign+Math.abs(diff).toLocaleString()+')';
-              diffClass=diff>0?'peer-price-higher':'peer-price-lower';
-            }
-          }
-          return '<span class="peer-price-item '+diffClass+'">'+
-            '<span class="peer-price-name">'+pr.product+'</span>'+
-            '<span class="peer-price-val">'+(pr.price?pr.price.toLocaleString():'--')+'\u5143/\u5428</span>'+
-            '<span class="peer-price-diff">'+diffText+'</span>'+
-          '</span>';
-        }).join('')+
-      '</div>';
-    }
     return '<div class="peer-card">'+
       '<div class="peer-card-head"><div class="peer-name">'+p.name+'</div><div class="peer-location">'+p.location+'</div></div>'+
       '<div class="peer-products">'+tags+'</div>'+
-      priceHTML+
       '<div class="peer-capacity">'+p.capacity+'</div>'+
       '<div class="peer-status">'+p.status+'</div>'+
       '<div class="peer-note">'+p.note+'</div></div>';
@@ -1235,9 +1221,82 @@ function showTrendModal(item){
       '<div class="modal-stat"><div class="ms-val" style="color:var(--c-down)">'+minP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u6700\u4f4e</div></div>'+
       '<div class="modal-stat"><div class="ms-val" style="color:var(--c-primary)">'+avgP.toLocaleString()+'</div><div class="ms-lbl">'+history.length+'\u65e5\u5747\u503c</div></div>'+
       '<div class="modal-stat"><div class="ms-val" style="color:'+changeColor+'">'+(item.weekPct>0?"+":"")+item.weekPct+'%</div><div class="ms-lbl">\u5468\u6da8\u8dcc</div></div>'+
+    '</div>'+
+    '<div class="modal-ai-analysis">'+
+      '<div class="modal-ai-title"><span class="ai-icon">\u26a1</span><span class="ai-label">AI \u4ef7\u683c\u6ce2\u52a8\u5206\u6790</span></div>'+
+      '<div class="modal-ai-content" id="trendAIContent"></div>'+
     '</div>';
   document.getElementById("modalOverlay").classList.add("active");
   setTimeout(()=>drawTrendChart(document.getElementById("trendCanvas"),history,item.trend),50);
+  // Generate AI price analysis
+  setTimeout(()=>renderTrendAIAnalysis(item,history),60);
+}
+
+function renderTrendAIAnalysis(item,history){
+  const el=document.getElementById("trendAIContent");
+  if(!el) return;
+  el.innerHTML='<div style="color:var(--c-text-dim);font-size:13px;">\u5206\u6790\u4e2d...</div>';
+  const aiData=window._appData&&window._appData.aiAnalysis;
+  if(aiData&&aiData.productAnalysis&&aiData.productAnalysis[item.name]){
+    const pa=aiData.productAnalysis[item.name];
+    let html='<div class="trend-ai-summary">'+pa.summary+'</div>';
+    if(pa.reasons&&pa.reasons.length>0){
+      html+='<div class="trend-ai-reasons-title">\u4e3b\u8981\u539f\u56e0\uff1a</div><ul class="trend-ai-reasons">';
+      pa.reasons.forEach(r=>{html+='<li>'+r+'</li>';});
+      html+='</ul>';
+    }
+    if(pa.outlook){
+      html+='<div class="trend-ai-outlook"><span class="trend-ai-outlook-label">\u540e\u5e02\u5c55\u671b\uff1a</span>'+pa.outlook+'</div>';
+    }
+    el.innerHTML=html;
+    return;
+  }
+  const prices=history.map(d=>d.price);
+  const latest=prices[prices.length-1];
+  const first=prices[0];
+  const changePct=((latest-first)/first*100).toFixed(1);
+  const maxP=Math.max(...prices);
+  const minP=Math.min(...prices);
+  const avgP=Math.round(prices.reduce((a,b)=>a+b,0)/prices.length);
+  const volatility=((maxP-minP)/avgP*100).toFixed(1);
+  const recent3=prices.slice(-3);
+  const recentAvg=(recent3.reduce((a,b)=>a+b,0)/recent3.length);
+  const prev3=prices.slice(-6,-3);
+  const prevAvg=prev3.length>0?(prev3.reduce((a,b)=>a+b,0)/prev3.length):latest;
+  const recentTrendPct=((recentAvg-prevAvg)/prevAvg*100).toFixed(1);
+  let summary="";
+  let reasons=[];
+  let outlook="";
+  if(Math.abs(changePct)<2){
+    summary=item.name+"\u8fd1"+history.length+"\u65e5\u4ef7\u683c\u6574\u4f53\u6ce2\u52a8\u8f83\u5c0f\uff0c\u6da8\u8dcc\u5e45\u5ea6\u4ec5"+Math.abs(changePct)+"%\uff0c\u5904\u4e8e\u76f8\u5bf9\u7a33\u5b9a\u72b6\u6001\u3002";
+    reasons.push("\u4ef7\u683c\u5728"+minP+"\u2013"+maxP+"\u5143/\u5428\u7a84\u7a84\u533a\u95f4\u5185\u8fd0\u884c\uff0c\u632f\u5e45"+volatility+"%\uff0c\u591a\u7a7a\u7ef4\u6301\u7f59\u7ed3\u3002");
+    reasons.push("\u8fd1\u65e5\u5747\u4ef7"+Math.round(recentAvg)+"\u5143/\u5428\uff0c\u4e0e\u524d\u671f\u76f8\u6bd4"+(recentTrendPct>0?"\u4e0a\u5347":"\u4e0b\u964d")+Math.abs(recentTrendPct)+"%\uff0c\u8d8b\u52bf\u5e73\u7f13\u3002");
+    outlook="\u77ed\u671f\u9884\u8ba1\u7ee7\u7eed\u5728\u5f53\u524d\u533a\u95f4\u9707\u8361\uff0c\u5173\u6ce8\u4e0b\u6e38\u9700\u6c42\u53d8\u5316\u3002";
+  }else if(changePct>0){
+    summary=item.name+"\u8fd1"+history.length+"\u65e5\u4ef7\u683c\u4e0a\u6da8"+changePct+"%\uff0c\u4ece"+first+"\u5143/\u5428\u4e0a\u5347\u81f3"+latest+"\u5143/\u5428\u3002";
+    reasons.push("\u4ef7\u683c\u7a81\u7834"+avgP+"\u5143/\u5428\u5747\u7ebf\u5411\u4e0a\uff0c\u6700\u9ad8\u8fbe"+maxP+"\u5143/\u5428\uff0c\u6700\u4f4e"+minP+"\u5143/\u5428\u3002");
+    reasons.push("\u8fd1\u65e5\u5747\u4ef7"+Math.round(recentAvg)+"\u5143/\u5428\uff0c"+(recentTrendPct>0?"\u6301\u7eed\u4e0a\u5347\u6001\u52bf":"\u51fa\u73b0\u56de\u8c03")+"\uff0c\u6ce2\u52a8\u5e45\u5ea6"+volatility+"%\u3002");
+    if(recentTrendPct>0){
+      outlook="\u4e0a\u6da8\u52a8\u80fd\u4ecd\u5728\uff0c\u4f46\u9700\u8b66\u60e0\u9ad8\u4f4d\u56de\u8c03\u98ce\u9669\u3002";
+    }else{
+      outlook="\u6da8\u52bf\u653e\u7f13\uff0c\u53ef\u80fd\u8f6c\u5165\u9ad8\u4f4d\u6574\u7406\u3002";
+    }
+  }else{
+    summary=item.name+"\u8fd1"+history.length+"\u65e5\u4ef7\u683c\u4e0b\u8dcc"+Math.abs(changePct)+"%\uff0c\u4ece"+first+"\u5143/\u5428\u964d\u81f3"+latest+"\u5143/\u5428\u3002";
+    reasons.push("\u4ef7\u683c\u8dcc\u7834"+avgP+"\u5143/\u5428\u5747\u7ebf\uff0c\u6700\u4f4e\u63a2"+minP+"\u5143/\u5428\uff0c\u6700\u9ad8"+maxP+"\u5143/\u5428\u3002");
+    reasons.push("\u8fd1\u65e5\u5747\u4ef7"+Math.round(recentAvg)+"\u5143/\u5428\uff0c"+(recentTrendPct<0?"\u6301\u7eed\u4e0b\u884c":"\u51fa\u73b0\u53cd\u5f39")+"\uff0c\u6ce2\u52a8\u5e45\u5ea6"+volatility+"%\u3002");
+    if(recentTrendPct<0){
+      outlook="\u4e0b\u8dcc\u8d8b\u52bf\u672a\u6539\uff0c\u5173\u6ce8\u4e0b\u6e38\u51cf\u4ea7\u6216\u6210\u672c\u652f\u6491\u3002";
+    }else{
+      outlook="\u8dcc\u52bf\u653e\u7f13\uff0c\u53ef\u80fd\u5728\u4f4e\u4f4d\u83b7\u5f97\u652f\u6491\u3002";
+    }
+  }
+  let html='<div class="trend-ai-summary">'+summary+'</div>';
+  html+='<div class="trend-ai-reasons-title">\u4e3b\u8981\u539f\u56e0\uff1a</div><ul class="trend-ai-reasons">';
+  reasons.forEach(r=>{html+='<li>'+r+'</li>';});
+  html+='</ul>';
+  html+='<div class="trend-ai-outlook"><span class="trend-ai-outlook-label">\u540e\u5e02\u5c55\u671b\uff1a</span>'+outlook+'</div>';
+  el.innerHTML=html;
 }
 
 function drawTrendChart(canvas,data,trend){
@@ -1316,8 +1375,9 @@ function drawTrendChart(canvas,data,trend){
   ctx.stroke();
   ctx.restore();
   // Draw forecast label
-  ctx.fillStyle="#888";ctx.font="10px sans-serif";ctx.textAlign="left";
-  ctx.fillText("\u9884\u6d4b",foreStartX+6,foreStartY-8);
+  ctx.fillStyle="#888";ctx.font="10px sans-serif";ctx.textAlign="center";
+  var foreMidX=foreStartX+(cw/(data.length-1))*1.5;
+  ctx.fillText("\u9884\u6d4b",foreMidX,Math.max(foreStartY-12,pad.top+12));
 }
 
 // ==================== COST INPUT HANDLING ====================
