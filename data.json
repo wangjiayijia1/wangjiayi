@@ -1,13 +1,13 @@
 {
-  "lastUpdate": "2026-09-08 06:42:34",
+  "lastUpdate": "2026-09-09 03:29:52",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
       "price": 13820.0,
       "unit": "元/吨",
-      "change": 315.0,
-      "changePct": 2.33,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 2.14,
       "trend": "up",
       "tag": "product"
@@ -26,10 +26,10 @@
     {
       "name": "尼龙6切片",
       "formula": "(C6H11NO)n",
-      "price": 13466.67,
+      "price": 14500.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 1033.33,
+      "changePct": 7.67,
       "weekPct": 2.28,
       "trend": "up",
       "tag": "product"
@@ -39,8 +39,8 @@
       "formula": "NH3",
       "price": 2706.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 9.98,
+      "changePct": 0.37,
       "weekPct": -0.36,
       "trend": "down",
       "tag": "product"
@@ -59,10 +59,10 @@
     {
       "name": "双氧水",
       "formula": "H2O2",
-      "price": 646.67,
+      "price": 653.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 6.66,
+      "changePct": 1.03,
       "weekPct": 2.14,
       "trend": "up",
       "tag": "product"
@@ -83,8 +83,8 @@
       "formula": "NH3(l)",
       "price": 2706.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 9.98,
+      "changePct": 0.37,
       "weekPct": -0.36,
       "trend": "down",
       "tag": "product"
@@ -105,7 +105,7 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 8774.33,
+      "price": 8901.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -116,10 +116,10 @@
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 8201.75,
+      "price": 8126.75,
       "unit": "元/吨",
-      "change": -75.32,
-      "changePct": -0.91,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 3.47,
       "trend": "up",
       "tag": "raw"
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 8774.33
+          "price": 8901.0
         }
       ],
       "h2Qty": 250,
@@ -190,7 +190,7 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 8774.33
+          "price": 8901.0
         },
         {
           "label": "硝酸",
@@ -214,7 +214,7 @@
     },
     {
       "name": "尼龙6切片",
-      "productPrice": 13466.67,
+      "productPrice": 14500.0,
       "threshold": 500,
       "rawMaterials": [
         {
@@ -246,7 +246,7 @@
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 8774.33
+          "price": 8901.0
         }
       ],
       "h2Qty": 350,
@@ -290,7 +290,7 @@
     },
     {
       "name": "双氧水",
-      "productPrice": 646.67,
+      "productPrice": 653.33,
       "threshold": 100,
       "rawMaterials": [],
       "h2Qty": 70,
@@ -531,163 +531,163 @@
       "source": "中国化工报"
     },
     {
-      "date": "2026-09-08",
+      "date": "2026-09-09",
       "category": "行业快讯",
-      "title": "生意社：9月7日国内纯碱库存变化",
-      "url": "https://www.100ppi.com/news/detail-20260908-6183767.html",
-      "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-08",
-      "category": "行业快讯",
-      "title": "生意社：9月8日国内部分丁二烯企业竞拍及销售情况",
-      "url": "https://www.100ppi.com/news/detail-20260908-6183761.html",
-      "commodity": "丁二烯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-08",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月8日丁二烯市场行情走势分析",
-      "url": "https://www.100ppi.com/news/detail-20260908-6183760.html",
-      "commodity": "丁二烯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "市场动态",
-      "title": "生意社：9月7日国内BDOO市场偏强震荡",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182843.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "装置检修",
-      "title": "生意社：9月7日国内BDO部分企业装置检修",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182834.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "生意社：9月7日新疆蓝山屯河BDO公布9月挂牌价格",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182833.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：2026年9月7日中石化各区域乙二醇挂牌价公布",
-      "url": "https://www.100ppi.com/news/detail-20260907-6177682.html",
-      "commodity": "乙二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "市场动态",
-      "title": "PriceSeek提醒：卫星化学乙二醇出厂报价大幅下调",
-      "url": "https://www.100ppi.com/news/detail-20260907-6177676.html",
-      "commodity": "乙二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "生意社：2026年9月7日卫星化学乙二醇报价6750元/吨",
-      "url": "https://www.100ppi.com/news/detail-20260907-6177675.html",
-      "commodity": "乙二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：Coveris推出LDPE拉伸套标 影响相关塑料品类",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182980.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：三养包装投产PET新产线 推进塑料轻量化",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182978.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：GE家电加码美国本土家电产能布局",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182913.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "GE Appliances加码投资Appliance Park，扩大美国本土生产并强化区域供应链",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182874.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "滚塑成型企业Maks Plastics瞄准北美前十 并购驱动与“以人为本”文化助推快速扩张",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182872.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "塑料行业并购活动在第二季度放缓，尽管行业盈利能力普遍增强",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182870.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "安全事故",
-      "title": "俄亥俄州树脂制造商就致命工厂爆炸案表示担责",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182869.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "每年减塑2200吨！亿滋欧洲饼干包装告别PET托盘，改用纸板",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182864.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "AGV赋能+碳中和目标，三养包装与克朗斯共推无菌线升级",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182862.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-07",
-      "category": "行业快讯",
-      "title": "新型弹性拉伸套标：减少材料用量、无需蒸汽通道，助力品牌合规",
-      "url": "https://www.100ppi.com/news/detail-20260907-6182847.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-04",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：高化上调丙酮出厂价 现货价格获支撑",
-      "url": "https://www.100ppi.com/news/detail-20260904-6172929.html",
+      "title": "PriceSeek提醒：利华益维远丙酮出厂价上调200元/吨",
+      "url": "https://www.100ppi.com/news/detail-20260909-6189715.html",
       "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-09",
+      "category": "行业快讯",
+      "title": "生意社：9月9日利华益维远丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20260909-6189713.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-09",
+      "category": "行业快讯",
+      "title": "生意社：9月9日新疆蓝山屯河BDO公布9月挂牌价格",
+      "url": "https://www.100ppi.com/news/detail-20260909-6189732.html",
+      "commodity": "1,4-丁二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-09",
+      "category": "行业快讯",
+      "title": "PriceSeek重点提醒：9月9日国产聚酯级乙二醇早盘报价上调",
+      "url": "https://www.100ppi.com/news/detail-20260909-6189730.html",
+      "commodity": "乙二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-09",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：国内PE样本库存环比下跌 相关品种行情分析",
+      "url": "https://www.100ppi.com/news/detail-20260909-6189699.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-09",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：PE社会库存去化 相关品种行情分析",
+      "url": "https://www.100ppi.com/news/detail-20260909-6189697.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月8日浙江石化丙酮报价上调300元/吨",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188855.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月8日龙江化工丙酮出厂价上调300元/吨",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188852.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：利华益维远9月8日下调苯酚出厂结算价",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188848.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日利华益维远苯酚价格下调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188842.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日蓝星哈尔滨丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188840.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日龙江化工丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188838.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日利华益维远丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188837.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日浙江石化丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188835.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：鲁西化工二氯甲烷出厂报价下调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188975.html",
+      "commodity": "二氯甲烷",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月8日东营华泰二氯甲烷出厂价下调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188974.html",
+      "commodity": "二氯甲烷",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月8日山东东岳二氯甲烷出厂价下调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188973.html",
+      "commodity": "二氯甲烷",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月8日山东金岭二氯甲烷出厂价下调",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188966.html",
+      "commodity": "二氯甲烷",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日山东金岭二氯甲烷价格动态",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188932.html",
+      "commodity": "二氯甲烷",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-08",
+      "category": "行业快讯",
+      "title": "生意社：9月8日山东东岳二氯甲烷价格动态",
+      "url": "https://www.100ppi.com/news/detail-20260908-6188931.html",
+      "commodity": "二氯甲烷",
       "autoFetched": true
     }
   ],
