@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-09-18 03:36:01",
+  "lastUpdate": "2026-09-19 03:31:20",
   "products": [
     {
       "name": "己内酰胺",
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 760.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -10.17,
+      "changePct": -1.32,
       "weekPct": 4.64,
       "trend": "up",
       "tag": "product"
@@ -72,8 +72,8 @@
       "formula": "H2SO4",
       "price": 1840.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -27.83,
+      "changePct": -1.49,
       "weekPct": 1.65,
       "trend": "up",
       "tag": "product"
@@ -105,7 +105,7 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 9734.33,
+      "price": 9601.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -118,8 +118,8 @@
       "formula": "S",
       "price": 7685.67,
       "unit": "元/吨",
-      "change": -16.95,
-      "changePct": -0.22,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 1.84,
       "trend": "up",
       "tag": "raw"
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 9734.33
+          "price": 9601.0
         }
       ],
       "h2Qty": 250,
@@ -190,7 +190,7 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 9734.33
+          "price": 9601.0
         },
         {
           "label": "硝酸",
@@ -239,14 +239,14 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 8700,
+      "productPrice": 10700.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 9734.33
+          "price": 9601.0
         }
       ],
       "h2Qty": 350,
@@ -603,6 +603,46 @@
       "autoFetched": true
     },
     {
+      "date": "2026-09-18",
+      "category": "行业快讯",
+      "title": "生意社：9月18日山东鲁清PP装置动态",
+      "url": "https://www.100ppi.com/news/detail-20260918-6239986.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-18",
+      "category": "装置检修",
+      "title": "PriceSeek提醒：塔里木石化聚乙烯装置临时停车行情分析",
+      "url": "https://www.100ppi.com/news/detail-20260918-6239757.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-18",
+      "category": "装置检修",
+      "title": "PriceSeek提醒：中化泉州低压聚乙烯装置重启",
+      "url": "https://www.100ppi.com/news/detail-20260918-6239753.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-18",
+      "category": "行业快讯",
+      "title": "生意社：9月18日中化泉州PE装置动态",
+      "url": "https://www.100ppi.com/news/detail-20260918-6235073.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-18",
+      "category": "行业快讯",
+      "title": "生意社：9月18日塔里木石化PE装置动态",
+      "url": "https://www.100ppi.com/news/detail-20260918-6234890.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
       "date": "2026-09-17",
       "category": "行业快讯",
       "title": "PriceSeek提醒：中沙天津石化丙酮价格下调400元/吨",
@@ -648,46 +688,6 @@
       "title": "生意社：9月17日新疆蓝山屯河BDO公布9月挂牌价格",
       "url": "https://www.100ppi.com/news/detail-20260917-6229017.html",
       "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月17日龙江化工苯酚价格上调",
-      "url": "https://www.100ppi.com/news/detail-20260917-6234097.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：盛虹炼化苯酚挂牌价上调300元/吨",
-      "url": "https://www.100ppi.com/news/detail-20260917-6234027.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：江苏瑞恒9月17日苯酚报价上调300元/吨",
-      "url": "https://www.100ppi.com/news/detail-20260917-6234010.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：默伊维化工上调苯酚出厂价200元/吨",
-      "url": "https://www.100ppi.com/news/detail-20260917-6234007.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "行业快讯",
-      "title": "生意社：9月17日龙江化工苯酚价格下调",
-      "url": "https://www.100ppi.com/news/detail-20260917-6234001.html",
-      "commodity": "苯酚",
       "autoFetched": true
     }
   ],
