@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-09-19 03:31:20",
+  "lastUpdate": "2026-09-20 03:49:51",
   "products": [
     {
       "name": "己内酰胺",
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 760.0,
       "unit": "元/吨",
-      "change": -10.17,
-      "changePct": -1.32,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 4.64,
       "trend": "up",
       "tag": "product"
@@ -72,8 +72,8 @@
       "formula": "H2SO4",
       "price": 1840.0,
       "unit": "元/吨",
-      "change": -27.83,
-      "changePct": -1.49,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 1.65,
       "trend": "up",
       "tag": "product"
@@ -239,7 +239,7 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 10700.0,
+      "productPrice": 8700,
       "threshold": 500,
       "rawMaterials": [
         {
@@ -531,6 +531,38 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-09-20",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：山东征求十五五高端化工产业发展意见",
+      "url": "https://www.100ppi.com/news/detail-20260920-6242408.html",
+      "commodity": "纯碱",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-20",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月20日丁二烯市场行情走势分析",
+      "url": "https://www.100ppi.com/news/detail-20260920-6242435.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-20",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：国内PE周度产量小幅下降行情分析",
+      "url": "https://www.100ppi.com/news/detail-20260920-6242401.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-20",
+      "category": "装置检修",
+      "title": "PriceSeek提醒：国内PE下游开工率环比提升行情分析",
+      "url": "https://www.100ppi.com/news/detail-20260920-6242400.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
       "date": "2026-09-18",
       "category": "市场动态",
       "title": "PriceSeek提醒：9月18日国内1,4-丁二醇市场坚挺上行",
@@ -656,38 +688,6 @@
       "title": "生意社：9月17日中沙天津石化丙酮价格下调",
       "url": "https://www.100ppi.com/news/detail-20260917-6233969.html",
       "commodity": "纯苯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "市场动态",
-      "title": "PriceSeek提醒：9月17日国内BDO市场高位震荡上行",
-      "url": "https://www.100ppi.com/news/detail-20260917-6229028.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "装置检修",
-      "title": "生意社：9月17日国内BDO部分企业装置检修",
-      "url": "https://www.100ppi.com/news/detail-20260917-6229022.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "市场动态",
-      "title": "生意社：9月17日国内BDOO市场重心高位震荡",
-      "url": "https://www.100ppi.com/news/detail-20260917-6229021.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-17",
-      "category": "行业快讯",
-      "title": "生意社：9月17日新疆蓝山屯河BDO公布9月挂牌价格",
-      "url": "https://www.100ppi.com/news/detail-20260917-6229017.html",
-      "commodity": "1,4-丁二醇",
       "autoFetched": true
     }
   ],
