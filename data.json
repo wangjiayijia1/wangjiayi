@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-09-25 03:47:48",
+  "lastUpdate": "2026-09-26 03:54:27",
   "products": [
     {
       "name": "己内酰胺",
@@ -39,8 +39,8 @@
       "formula": "NH3",
       "price": 2903.33,
       "unit": "元/吨",
-      "change": -92.88,
-      "changePct": -3.1,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 4.01,
       "trend": "up",
       "tag": "product"
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 710.0,
       "unit": "元/吨",
-      "change": 3.32,
-      "changePct": 0.47,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 10.84,
       "trend": "up",
       "tag": "product"
@@ -83,8 +83,8 @@
       "formula": "NH3(l)",
       "price": 2903.33,
       "unit": "元/吨",
-      "change": -92.88,
-      "changePct": -3.1,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 4.01,
       "trend": "up",
       "tag": "product"
@@ -94,8 +94,8 @@
       "formula": "(NH4)2SO4",
       "price": 1283.33,
       "unit": "元/吨",
-      "change": 16.72,
-      "changePct": 1.32,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 4.75,
       "trend": "up",
       "tag": "product"
