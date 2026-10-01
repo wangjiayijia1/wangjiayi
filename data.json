@@ -1,13 +1,13 @@
 {
-  "lastUpdate": "2026-09-30 04:21:57",
+  "lastUpdate": "2026-10-01 04:33:54",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
       "price": 14108.75,
       "unit": "元/吨",
-      "change": -36.25,
-      "changePct": -0.26,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -1.91,
       "trend": "down",
       "tag": "product"
@@ -15,10 +15,10 @@
     {
       "name": "己二酸",
       "formula": "C6H10O4",
-      "price": 9933.33,
+      "price": 10100.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 166.88,
+      "changePct": 1.68,
       "weekPct": 1.13,
       "trend": "up",
       "tag": "product"
@@ -28,8 +28,8 @@
       "formula": "(C6H11NO)n",
       "price": 14600.0,
       "unit": "元/吨",
-      "change": -200.0,
-      "changePct": -1.35,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -3.9,
       "trend": "down",
       "tag": "product"
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 713.33,
       "unit": "元/吨",
-      "change": -6.7,
-      "changePct": -0.93,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -1.39,
       "trend": "down",
       "tag": "product"
@@ -72,8 +72,8 @@
       "formula": "H2SO4",
       "price": 1710.0,
       "unit": "元/吨",
-      "change": -27.45,
-      "changePct": -1.58,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 0.0,
       "trend": "flat",
       "tag": "product"
@@ -92,10 +92,10 @@
     {
       "name": "硫铵",
       "formula": "(NH4)2SO4",
-      "price": 1300.0,
+      "price": 1313.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 13.39,
+      "changePct": 1.03,
       "weekPct": 1.58,
       "trend": "up",
       "tag": "product"
@@ -105,7 +105,7 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 10084.33,
+      "price": 10151.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -116,10 +116,10 @@
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 7752.33,
+      "price": 7685.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 16.87,
+      "changePct": 0.22,
       "weekPct": 0.13,
       "trend": "up",
       "tag": "raw"
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 10084.33
+          "price": 10151.0
         }
       ],
       "h2Qty": 250,
@@ -183,14 +183,14 @@
     },
     {
       "name": "己二酸",
-      "productPrice": 9933.33,
+      "productPrice": 10100.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 10084.33
+          "price": 10151.0
         },
         {
           "label": "硝酸",
@@ -246,7 +246,7 @@
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 10084.33
+          "price": 10151.0
         }
       ],
       "h2Qty": 350,
@@ -541,6 +541,22 @@
     {
       "date": "2026-09-30",
       "category": "市场动态",
+      "title": "PriceSeek提醒：卫星化学乙二醇出厂报价大幅下调",
+      "url": "https://www.100ppi.com/news/detail-20260930-6293791.html",
+      "commodity": "乙二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-30",
+      "category": "行业快讯",
+      "title": "生意社：2026年9月30日卫星化学乙二醇报价6200元/吨",
+      "url": "https://www.100ppi.com/news/detail-20260930-6293784.html",
+      "commodity": "乙二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-30",
+      "category": "市场动态",
       "title": "PriceSeek提醒：9月30日港口乙二醇基差大幅下移",
       "url": "https://www.100ppi.com/news/detail-20260930-6288738.html",
       "commodity": "乙二醇",
@@ -552,6 +568,22 @@
       "title": "生意社：2026年9月30日港口乙二醇现货合约基差大幅下移",
       "url": "https://www.100ppi.com/news/detail-20260930-6288717.html",
       "commodity": "乙二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-30",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：9月30日福建联合PE装置动态影响分析",
+      "url": "https://www.100ppi.com/news/detail-20260930-6288825.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-09-30",
+      "category": "行业快讯",
+      "title": "生意社：9月30日福建联合PE装置动态",
+      "url": "https://www.100ppi.com/news/detail-20260930-6288816.html",
+      "commodity": "LLDPE",
       "autoFetched": true
     },
     {
@@ -656,38 +688,6 @@
       "title": "生意社：9月28日国内BDOO市场重心窄幅波动",
       "url": "https://www.100ppi.com/news/detail-20260928-6282119.html",
       "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月28日新疆蓝山屯河BDO公布10月挂牌价格",
-      "url": "https://www.100ppi.com/news/detail-20260928-6282117.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "市场动态",
-      "title": "PriceSeek提醒：9月24日当周国内纯碱库存环比下降",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276683.html",
-      "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月24日当周纯碱出货数据向好",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276681.html",
-      "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月24日当周纯碱企业出货量变化",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276678.html",
-      "commodity": "纯碱",
       "autoFetched": true
     }
   ],
