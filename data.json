@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-01 04:33:54",
+  "lastUpdate": "2026-10-02 04:26:18",
   "products": [
     {
       "name": "己内酰胺",
@@ -17,8 +17,8 @@
       "formula": "C6H10O4",
       "price": 10100.0,
       "unit": "元/吨",
-      "change": 166.88,
-      "changePct": 1.68,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 1.13,
       "trend": "up",
       "tag": "product"
@@ -94,8 +94,8 @@
       "formula": "(NH4)2SO4",
       "price": 1313.33,
       "unit": "元/吨",
-      "change": 13.39,
-      "changePct": 1.03,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 1.58,
       "trend": "up",
       "tag": "product"
@@ -116,10 +116,10 @@
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 7685.67,
+      "price": 7702.33,
       "unit": "元/吨",
-      "change": 16.87,
-      "changePct": 0.22,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 0.13,
       "trend": "up",
       "tag": "raw"
@@ -531,6 +531,46 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-10-01",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：2026年8月PP进出口环比双降分析",
+      "url": "https://www.100ppi.com/news/detail-20261001-6295966.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-01",
+      "category": "装置检修",
+      "title": "PriceSeek提醒：泉州国亨PP装置停车检修供应收缩",
+      "url": "https://www.100ppi.com/news/detail-20261001-6295962.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-01",
+      "category": "行业快讯",
+      "title": "生意社：10月1日泉州国亨PP装置动态",
+      "url": "https://www.100ppi.com/news/detail-20261001-6295961.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-01",
+      "category": "行业快讯",
+      "title": "生意社：10月1日惠州立拓PP装置动态",
+      "url": "https://www.100ppi.com/news/detail-20261001-6295960.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-01",
+      "category": "行业快讯",
+      "title": "我国聚丙烯进出口统计（2026年8月）",
+      "url": "https://www.100ppi.com/news/detail-20261001-6295957.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
       "date": "2026-09-30",
       "category": "行业快讯",
       "title": "生意社：9月30日利华益维远丙酮价格下调",
@@ -648,46 +688,6 @@
       "title": "生意社：9月24日山东金岭二氯甲烷价格动态",
       "url": "https://www.100ppi.com/news/detail-20260928-6276696.html",
       "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月28日山东东岳二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276695.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月28日东营华泰二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276694.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "市场动态",
-      "title": "PriceSeek重点提醒：新疆蓝山屯河10月BDO挂牌价大幅上调",
-      "url": "https://www.100ppi.com/news/detail-20260928-6282155.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月28日国内BDO部分企业计划换剂",
-      "url": "https://www.100ppi.com/news/detail-20260928-6282124.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月28日国内BDOO市场重心窄幅波动",
-      "url": "https://www.100ppi.com/news/detail-20260928-6282119.html",
-      "commodity": "1,4-丁二醇",
       "autoFetched": true
     }
   ],
