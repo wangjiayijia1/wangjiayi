@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-04 04:41:01",
+  "lastUpdate": "2026-10-05 04:27:41",
   "products": [
     {
       "name": "己内酰胺",
@@ -8,7 +8,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -1.91,
+      "weekPct": -0.26,
       "trend": "down",
       "tag": "product"
     },
@@ -19,7 +19,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.13,
+      "weekPct": 1.68,
       "trend": "up",
       "tag": "product"
     },
@@ -30,7 +30,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -3.9,
+      "weekPct": -1.35,
       "trend": "down",
       "tag": "product"
     },
@@ -41,7 +41,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -6.95,
+      "weekPct": -0.91,
       "trend": "down",
       "tag": "product"
     },
@@ -52,8 +52,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.25,
-      "trend": "up",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     },
     {
@@ -63,7 +63,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -1.39,
+      "weekPct": -0.93,
       "trend": "down",
       "tag": "product"
     },
@@ -74,8 +74,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.0,
-      "trend": "flat",
+      "weekPct": -1.58,
+      "trend": "down",
       "tag": "product"
     },
     {
@@ -85,7 +85,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -6.95,
+      "weekPct": -0.91,
       "trend": "down",
       "tag": "product"
     },
@@ -96,7 +96,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.58,
+      "weekPct": 1.03,
       "trend": "up",
       "tag": "product"
     }
@@ -109,7 +109,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.79,
+      "weekPct": 0.5,
       "trend": "up",
       "tag": "raw"
     },
@@ -120,8 +120,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.13,
-      "trend": "up",
+      "weekPct": -0.43,
+      "trend": "down",
       "tag": "raw"
     }
   ],
@@ -133,8 +133,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -1.87,
-      "trend": "down",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "mid"
     },
     {
