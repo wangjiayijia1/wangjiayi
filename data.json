@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-07 04:42:15",
+  "lastUpdate": "2026-10-08 04:53:19",
   "products": [
     {
       "name": "己内酰胺",
@@ -39,8 +39,8 @@
       "formula": "NH3",
       "price": 2540.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 219.31,
+      "changePct": 9.45,
       "weekPct": -0.91,
       "trend": "down",
       "tag": "product"
@@ -83,8 +83,8 @@
       "formula": "NH3(l)",
       "price": 2540.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 219.31,
+      "changePct": 9.45,
       "weekPct": -0.91,
       "trend": "down",
       "tag": "product"
@@ -142,10 +142,10 @@
       "formula": "C6H12",
       "price": 6833.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 317.95,
+      "changePct": 4.88,
       "weekPct": 0.0,
-      "trend": "flat",
+      "trend": "up",
       "tag": "mid"
     }
   ],
@@ -531,6 +531,94 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "生意社：10月8日济南泽盛化工化工品最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308126.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "装置检修",
+      "title": "生意社：10月8日国内BDO部分企业计划重启",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308192.html",
+      "commodity": "1,4-丁二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "生意社：10月8日新疆蓝山屯河BDO公布10月挂牌价格",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308191.html",
+      "commodity": "1,4-丁二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "生意社：10月8日国内BDOO市场坚挺运行",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308190.html",
+      "commodity": "1,4-丁二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：利华益维远10月8日起上调苯酚出厂价",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308187.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "生意社：10月8日国内部分丁二烯企业竞拍及销售情况",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308169.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：10月7日亚洲丁二烯市场报价偏强",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308123.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：2026年8月PE进口数据公布",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308157.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：2026年8月国内PE出口同比大幅增长",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308154.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "2026年8月PE出口数量",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308152.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-08",
+      "category": "行业快讯",
+      "title": "2026年8月PE进口数量",
+      "url": "https://www.100ppi.com/news/detail-20261008-6308151.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
       "date": "2026-10-01",
       "category": "行业快讯",
       "title": "PriceSeek提醒：2026年8月PP进出口环比双降分析",
@@ -600,94 +688,6 @@
       "title": "PriceSeek提醒：9月30日港口乙二醇基差大幅下移",
       "url": "https://www.100ppi.com/news/detail-20260930-6288738.html",
       "commodity": "乙二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-30",
-      "category": "市场动态",
-      "title": "生意社：2026年9月30日港口乙二醇现货合约基差大幅下移",
-      "url": "https://www.100ppi.com/news/detail-20260930-6288717.html",
-      "commodity": "乙二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-30",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月30日福建联合PE装置动态影响分析",
-      "url": "https://www.100ppi.com/news/detail-20260930-6288825.html",
-      "commodity": "LLDPE",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-30",
-      "category": "行业快讯",
-      "title": "生意社：9月30日福建联合PE装置动态",
-      "url": "https://www.100ppi.com/news/detail-20260930-6288816.html",
-      "commodity": "LLDPE",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-29",
-      "category": "行业快讯",
-      "title": "生意社：9月29日山东金岭二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20260929-6283050.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-29",
-      "category": "行业快讯",
-      "title": "生意社：9月29日新疆蓝山屯河BDO公布10月挂牌价格",
-      "url": "https://www.100ppi.com/news/detail-20260929-6287849.html",
-      "commodity": "1,4-丁二醇",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：鲁西化工二氯甲烷出厂报价上调",
-      "url": "https://www.100ppi.com/news/detail-20260928-6282190.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月28日鲁西化工二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20260928-6282171.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月24日山东金岭二氯甲烷出厂价上调",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276700.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月28日东营华泰二氯甲烷出厂价上调",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276698.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：9月28日山东东岳二氯甲烷出厂价上调",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276697.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-09-28",
-      "category": "行业快讯",
-      "title": "生意社：9月24日山东金岭二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20260928-6276696.html",
-      "commodity": "二氯甲烷",
       "autoFetched": true
     }
   ],
