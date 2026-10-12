@@ -1,15 +1,15 @@
 {
-  "lastUpdate": "2026-10-11 04:26:59",
+  "lastUpdate": "2026-10-12 04:42:26",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
-      "price": 14108.75,
+      "price": 14258.75,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": -0.26,
-      "trend": "down",
+      "change": 150.0,
+      "changePct": 1.06,
+      "weekPct": 1.06,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -19,30 +19,30 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.68,
-      "trend": "up",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     },
     {
       "name": "尼龙6切片",
       "formula": "(C6H11NO)n",
-      "price": 14600.0,
+      "price": 14666.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": -1.35,
-      "trend": "down",
+      "change": 66.67,
+      "changePct": 0.46,
+      "weekPct": 0.46,
+      "trend": "up",
       "tag": "product"
     },
     {
       "name": "合成氨",
       "formula": "NH3",
-      "price": 2780.0,
+      "price": 3006.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.91,
-      "trend": "down",
+      "weekPct": 18.37,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -52,8 +52,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.0,
-      "trend": "flat",
+      "weekPct": 0.25,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -63,41 +63,41 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.93,
-      "trend": "down",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     },
     {
       "name": "硫酸",
       "formula": "H2SO4",
-      "price": 1710.0,
+      "price": 1677.5,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -1.58,
+      "weekPct": -1.9,
       "trend": "down",
       "tag": "product"
     },
     {
       "name": "液氨",
       "formula": "NH3(l)",
-      "price": 2780.0,
+      "price": 3006.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.91,
-      "trend": "down",
+      "weekPct": 18.37,
+      "trend": "up",
       "tag": "product"
     },
     {
       "name": "硫铵",
       "formula": "(NH4)2SO4",
-      "price": 1300.0,
+      "price": 1286.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": 1.03,
-      "trend": "up",
+      "change": -6.6,
+      "changePct": -0.51,
+      "weekPct": -2.03,
+      "trend": "down",
       "tag": "product"
     }
   ],
@@ -105,22 +105,22 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 10417.67,
+      "price": 10567.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.5,
+      "weekPct": 4.1,
       "trend": "up",
       "tag": "raw"
     },
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 7402.33,
+      "price": 7535.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": -0.43,
+      "change": -187.68,
+      "changePct": -2.43,
+      "weekPct": -2.16,
       "trend": "down",
       "tag": "raw"
     }
@@ -129,12 +129,12 @@
     {
       "name": "环己酮",
       "formula": "C6H10O",
-      "price": 10600.0,
+      "price": 11100.0,
       "unit": "元/吨",
-      "change": 190.49,
-      "changePct": 1.83,
-      "weekPct": 0.0,
-      "trend": "flat",
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": 4.72,
+      "trend": "up",
       "tag": "mid"
     },
     {
@@ -157,14 +157,14 @@
   "profitLines": [
     {
       "name": "己内酰胺",
-      "productPrice": 14108.75,
+      "productPrice": 14258.75,
       "threshold": 2000,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 10417.67
+          "price": 10567.67
         }
       ],
       "h2Qty": 250,
@@ -190,7 +190,7 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 10417.67
+          "price": 10567.67
         },
         {
           "label": "硝酸",
@@ -214,14 +214,14 @@
     },
     {
       "name": "尼龙6切片",
-      "productPrice": 14600.0,
+      "productPrice": 14666.67,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "己内酰胺",
           "qty": 1.01,
           "unit": "吨",
-          "price": 14108.75
+          "price": 14258.75
         }
       ],
       "h2Qty": 0,
@@ -239,14 +239,14 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 10600.0,
+      "productPrice": 11100.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 10417.67
+          "price": 10567.67
         }
       ],
       "h2Qty": 350,
@@ -264,7 +264,7 @@
     },
     {
       "name": "合成氨",
-      "productPrice": 2780.0,
+      "productPrice": 3006.67,
       "threshold": 400,
       "rawMaterials": [
         {
@@ -315,7 +315,7 @@
           "label": "液氨",
           "qty": 0.29,
           "unit": "吨",
-          "price": 2780.0
+          "price": 3006.67
         }
       ],
       "h2Qty": 0,
@@ -531,6 +531,62 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：加拿大企业在美建厂 包装供应链本地化",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328310.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "Wipfli建议塑料加工商：控制可控之事，抓住数据中心等增长机遇",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328309.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "加拿大Polyethics投资4100万美元，在俄亥俄州设首个美国薄膜生产基地",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328308.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "Novolex在德克萨斯州开设全新包装创新中心",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328307.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "CurTec 再投南卡奥科尼县，扩产瞄准北美制药包装市场",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328306.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "APR塑料回收领导力奖项提名开放，寻找行业领军者",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328304.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-12",
+      "category": "行业快讯",
+      "title": "Sutton将生成式AI引入塑料制造ERP",
+      "url": "https://www.100ppi.com/news/detail-20261012-6328303.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
       "date": "2026-10-10",
       "category": "行业快讯",
       "title": "PriceSeek提醒：鲁西化工二氯甲烷出厂报价上调",
@@ -632,62 +688,6 @@
       "title": "生意社：10月9日当周纯碱开工率增加",
       "url": "https://www.100ppi.com/news/detail-20261010-6320151.html",
       "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：利华益维远上调苯酚出厂结算价",
-      "url": "https://www.100ppi.com/news/detail-20261010-6320272.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：10月10日甲苯二甲苯市场行情分析",
-      "url": "https://www.100ppi.com/news/detail-20261010-6320202.html",
-      "commodity": "丁二烯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "生意社：10月10日国内部分丁二烯企业竞拍及销售情况",
-      "url": "https://www.100ppi.com/news/detail-20261010-6320196.html",
-      "commodity": "丁二烯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "从塑料到混凝土：ADS 多元化战略再落子",
-      "url": "https://www.100ppi.com/news/detail-20261010-6325674.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "星宇股份5000万美元赴美建厂，招工300-500人",
-      "url": "https://www.100ppi.com/news/detail-20261010-6325673.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "Innova 在墨西卡利再扩产：新增9台注塑机与第三座工厂",
-      "url": "https://www.100ppi.com/news/detail-20261010-6325651.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-10",
-      "category": "行业快讯",
-      "title": "佛州模具厂 American Tool & Mold 易主",
-      "url": "https://www.100ppi.com/news/detail-20261010-6325649.html",
-      "commodity": "PP",
       "autoFetched": true
     }
   ],
