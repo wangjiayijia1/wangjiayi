@@ -6852,6 +6852,95 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-23",
+      "prices": {
+        "己内酰胺": 14223.33,
+        "己二酸": 10133.33,
+        "尼龙6切片": 15000.0,
+        "合成氨": 2776.67,
+        "硝酸": 1413.33,
+        "双氧水": 720.0,
+        "硫酸": 1557.5,
+        "液氨": 2776.67,
+        "硫铵": 1230.0,
+        "纯苯": 10351.0,
+        "硫磺": 5714.25,
+        "环己酮": 11300.0,
+        "环己烷": 7500.0
+      },
+      "profitLines": [
+        {
+          "name": "己内酰胺",
+          "productPrice": 14223.33,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 10351.0
+            }
+          ]
+        },
+        {
+          "name": "己二酸",
+          "productPrice": 10133.33,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 10351.0
+            },
+            {
+              "label": "硝酸",
+              "price": 1413.33
+            }
+          ]
+        },
+        {
+          "name": "尼龙6切片",
+          "productPrice": 15000.0,
+          "rawMaterials": [
+            {
+              "label": "己内酰胺",
+              "price": 14223.33
+            }
+          ]
+        },
+        {
+          "name": "环己酮(外售)",
+          "productPrice": 11300.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 10351.0
+            }
+          ]
+        },
+        {
+          "name": "合成氨",
+          "productPrice": 2776.67,
+          "rawMaterials": [
+            {
+              "label": "原料煤",
+              "price": 920
+            }
+          ]
+        },
+        {
+          "name": "双氧水",
+          "productPrice": 720.0,
+          "rawMaterials": []
+        },
+        {
+          "name": "硝酸",
+          "productPrice": 1413.33,
+          "rawMaterials": [
+            {
+              "label": "液氨",
+              "price": 2776.67
+            }
+          ]
+        }
+      ]
     }
   ]
 }
