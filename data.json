@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-23 03:40:59",
+  "lastUpdate": "2026-10-24 03:35:26",
   "products": [
     {
       "name": "己内酰胺",
@@ -50,8 +50,8 @@
       "formula": "HNO3",
       "price": 1413.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 13.16,
+      "changePct": 0.94,
       "weekPct": 3.53,
       "trend": "up",
       "tag": "product"
@@ -532,6 +532,62 @@
     },
     {
       "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：利华益维远10月23日上调丙酮出厂价",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393063.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：山东富宇石化10月23日丙酮报价上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393062.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "生意社：10月23日江苏瑞恒新材料丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393059.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "生意社：10月23日龙江化工丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393058.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "生意社：10月23日蓝星哈尔滨丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393056.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "生意社：10月3日山东富宇石化丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393055.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
+      "category": "行业快讯",
+      "title": "生意社：10月23日利华益维远丙酮价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393054.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-23",
       "category": "装置检修",
       "title": "生意社：10月23日国内BDO部分企业计划重启",
       "url": "https://www.100ppi.com/news/detail-20261023-6387389.html",
@@ -597,97 +653,41 @@
     {
       "date": "2026-10-23",
       "category": "行业快讯",
-      "title": "PriceSeek提醒：中科炼化下调二甘醇报价 相关装置满负荷运行",
-      "url": "https://www.100ppi.com/news/detail-20261023-6387360.html",
-      "commodity": "乙二醇",
+      "title": "PriceSeek提醒：盛虹炼化苯酚挂牌价上调行情分析",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393074.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "category": "行业快讯",
-      "title": "PriceSeek提醒：10月22日山东富宇石化丙酮报价上调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6381188.html",
-      "commodity": "纯苯",
+      "title": "PriceSeek提醒：山东富宇石化上调苯酚出厂报价100元/吨",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393073.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "category": "行业快讯",
-      "title": "生意社：10月22日利华益维远丙酮价格上调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6381171.html",
-      "commodity": "纯苯",
+      "title": "生意社：10月23日山东富宇石化苯酚价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393070.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "category": "行业快讯",
-      "title": "生意社：10月22日山东富宇石化丙酮价格上调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6381170.html",
-      "commodity": "纯苯",
+      "title": "生意社：10月23日盛虹炼化苯酚价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393069.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "category": "行业快讯",
-      "title": "PriceSeek提醒：10月22日鲁西化工二氯甲烷出厂价下调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386714.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：10月22日山东金岭二氯甲烷出厂价下调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386713.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：10月22日山东东岳二氯甲烷出厂价下调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386711.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：10月22日东营华泰二氯甲烷出厂价下调",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386424.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "生意社：10月22日东营华泰二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386375.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "生意社：10月22日山东东岳二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386373.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "生意社：10月22日山东金岭二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386371.html",
-      "commodity": "二氯甲烷",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-22",
-      "category": "行业快讯",
-      "title": "生意社：10月22日鲁西化工二氯甲烷价格动态",
-      "url": "https://www.100ppi.com/news/detail-20261022-6386369.html",
-      "commodity": "二氯甲烷",
+      "title": "生意社：10月23日江苏瑞恒新材料苯酚价格上调",
+      "url": "https://www.100ppi.com/news/detail-20261023-6393068.html",
+      "commodity": "苯酚",
       "autoFetched": true
     }
   ],
