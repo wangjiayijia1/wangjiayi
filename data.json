@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-24 03:35:26",
+  "lastUpdate": "2026-10-25 03:32:25",
   "products": [
     {
       "name": "己内酰胺",
@@ -50,8 +50,8 @@
       "formula": "HNO3",
       "price": 1413.33,
       "unit": "元/吨",
-      "change": 13.16,
-      "changePct": 0.94,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 3.53,
       "trend": "up",
       "tag": "product"
