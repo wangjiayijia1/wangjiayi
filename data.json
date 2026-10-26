@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-10-25 03:32:25",
+  "lastUpdate": "2026-10-26 03:34:46",
   "products": [
     {
       "name": "己内酰胺",
@@ -118,8 +118,8 @@
       "formula": "S",
       "price": 5714.25,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -75.85,
+      "changePct": -1.31,
       "weekPct": -9.11,
       "trend": "down",
       "tag": "raw"
@@ -531,6 +531,70 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "生意社：10月26日新疆蓝山屯河BDO公布10月结算价格",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397288.html",
+      "commodity": "1,4-丁二醇",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "从泡沫到黑色塑料：美国城镇掀起外卖餐盒禁令新浪潮",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397295.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "Cruz Foam关停：1800万美元融资与明星投资人难掩产品市场契合失败",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397294.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "市场动态",
+      "title": "Rotoplas美国Q3销售额大涨31%，储水罐需求旺盛但树脂成本挤压利润",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397293.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "突破塑料边界：Tupperware启动品类与创新体系双重重建",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397292.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "Greystone Logistics押注国际合作与租赁池化自救",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397291.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "微塑料辩论敲响警钟：塑料行业被敦促吸取PFAS教训",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397290.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-10-26",
+      "category": "行业快讯",
+      "title": "Niagara Bottling 投资1.41亿美元在肯塔基州开设首家工厂",
+      "url": "https://www.100ppi.com/news/detail-20261026-6397289.html",
+      "commodity": "PP",
+      "autoFetched": true
+    },
+    {
       "date": "2026-10-23",
       "category": "行业快讯",
       "title": "PriceSeek提醒：利华益维远10月23日上调丙酮出厂价",
@@ -624,70 +688,6 @@
       "title": "生意社：10月22日当周纯碱库存变化",
       "url": "https://www.100ppi.com/news/detail-20261023-6387384.html",
       "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "装置检修",
-      "title": "生意社：10月22日当周纯碱开工率减少",
-      "url": "https://www.100ppi.com/news/detail-20261023-6387381.html",
-      "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：10月22日当周纯碱出货数据行情分析",
-      "url": "https://www.100ppi.com/news/detail-20261023-6387380.html",
-      "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "生意社：10月22日当周纯碱企业出货量变化",
-      "url": "https://www.100ppi.com/news/detail-20261023-6387378.html",
-      "commodity": "纯碱",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：盛虹炼化苯酚挂牌价上调行情分析",
-      "url": "https://www.100ppi.com/news/detail-20261023-6393074.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：山东富宇石化上调苯酚出厂报价100元/吨",
-      "url": "https://www.100ppi.com/news/detail-20261023-6393073.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "生意社：10月23日山东富宇石化苯酚价格上调",
-      "url": "https://www.100ppi.com/news/detail-20261023-6393070.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "生意社：10月23日盛虹炼化苯酚价格上调",
-      "url": "https://www.100ppi.com/news/detail-20261023-6393069.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-10-23",
-      "category": "行业快讯",
-      "title": "生意社：10月23日江苏瑞恒新材料苯酚价格上调",
-      "url": "https://www.100ppi.com/news/detail-20261023-6393068.html",
-      "commodity": "苯酚",
       "autoFetched": true
     }
   ],
