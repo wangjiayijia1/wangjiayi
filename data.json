@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-11-03 05:39:24",
+  "lastUpdate": "2026-11-04 05:08:21",
   "products": [
     {
       "name": "己内酰胺",
@@ -17,8 +17,8 @@
       "formula": "C6H10O4",
       "price": 9900.0,
       "unit": "元/吨",
-      "change": -199.98,
-      "changePct": -1.98,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -0.33,
       "trend": "down",
       "tag": "product"
@@ -26,10 +26,10 @@
     {
       "name": "尼龙6切片",
       "formula": "(C6H11NO)n",
-      "price": 15200.0,
+      "price": 15033.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -166.67,
+      "changePct": -1.1,
       "weekPct": 1.33,
       "trend": "up",
       "tag": "product"
@@ -48,10 +48,10 @@
     {
       "name": "硝酸",
       "formula": "HNO3",
-      "price": 1466.67,
+      "price": 1480.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 13.35,
+      "changePct": 0.91,
       "weekPct": 1.15,
       "trend": "up",
       "tag": "product"
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 670.0,
       "unit": "元/吨",
-      "change": -13.32,
-      "changePct": -1.95,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -5.09,
       "trend": "down",
       "tag": "product"
@@ -72,8 +72,8 @@
       "formula": "H2SO4",
       "price": 1515.0,
       "unit": "元/吨",
-      "change": -24.95,
-      "changePct": -1.62,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 0.0,
       "trend": "flat",
       "tag": "product"
@@ -94,8 +94,8 @@
       "formula": "(NH4)2SO4",
       "price": 1250.0,
       "unit": "元/吨",
-      "change": 3.37,
-      "changePct": 0.27,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 1.36,
       "trend": "up",
       "tag": "product"
@@ -105,7 +105,7 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 9911.0,
+      "price": 9624.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
@@ -116,10 +116,10 @@
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 5224.25,
+      "price": 5261.75,
       "unit": "元/吨",
-      "change": 24.96,
-      "changePct": 0.48,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -4.81,
       "trend": "down",
       "tag": "raw"
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 9911.0
+          "price": 9624.33
         }
       ],
       "h2Qty": 250,
@@ -190,13 +190,13 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 9911.0
+          "price": 9624.33
         },
         {
           "label": "硝酸",
           "qty": 0.65,
           "unit": "吨",
-          "price": 1466.67
+          "price": 1480.0
         }
       ],
       "h2Qty": 60,
@@ -214,7 +214,7 @@
     },
     {
       "name": "尼龙6切片",
-      "productPrice": 15200.0,
+      "productPrice": 15033.33,
       "threshold": 500,
       "rawMaterials": [
         {
@@ -246,7 +246,7 @@
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 9911.0
+          "price": 9624.33
         }
       ],
       "h2Qty": 350,
@@ -308,7 +308,7 @@
     },
     {
       "name": "硝酸",
-      "productPrice": 1466.67,
+      "productPrice": 1480.0,
       "threshold": 150,
       "rawMaterials": [
         {
@@ -531,6 +531,70 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "生意社：11月4日山东满堂红新材料化工品最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439895.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "生意社：11月4日济南泽盛化工化工品最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439894.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：利华益维远下调苯酚出厂结算价格",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439897.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "生意社：11月4日江苏喜勒化工品最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439896.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "生意社：11月4日利华益维远苯酚价格下调",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439893.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：11月4日国内丁二烯市场行情分析",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439865.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "生意社：11月4日国内部分丁二烯企业竞拍及销售情况",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439864.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-04",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：中科炼化下调二甘醇报价行情分析",
+      "url": "https://www.100ppi.com/news/detail-20261104-6439876.html",
+      "commodity": "乙二醇",
+      "autoFetched": true
+    },
+    {
       "date": "2026-11-03",
       "category": "行业快讯",
       "title": "生意社：11月3日济南泽盛化工化工品最新价格",
@@ -612,82 +676,18 @@
     },
     {
       "date": "2026-11-03",
-      "category": "装置检修",
-      "title": "PriceSeek提醒：中沙天津PP装置检修 供应端收紧",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433745.html",
-      "commodity": "PP",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：11月3日海南炼化二甘醇报价下调",
+      "url": "https://www.100ppi.com/news/detail-20261103-6439272.html",
+      "commodity": "乙二醇",
       "autoFetched": true
     },
     {
       "date": "2026-11-03",
       "category": "行业快讯",
-      "title": "生意社：11月3日中沙天津PP装置动态",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433742.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "生意社：11月3日中韩石化PP装置动态",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433740.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "装置检修",
-      "title": "PriceSeek提醒：联泓新科PP装置停车 供应端收缩",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433738.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "生意社：11月3日联泓新科PP装置动态",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433737.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：比利时塑料回收厂投运 再生供给扩容",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433731.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：Tronix3D塑料增材扩产 提振相关塑料需求",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433729.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "加拿大农用塑料回收创历史新高：Cleanfarms 2025年收集量突破1180万公斤",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433721.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "Tronix3D 斥资 400 万美元扩建匹兹堡 3D 打印业务",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433720.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-03",
-      "category": "行业快讯",
-      "title": "Outlook Group收购威斯康星工厂，新增导电薄膜印刷能力",
-      "url": "https://www.100ppi.com/news/detail-20261103-6433719.html",
-      "commodity": "PP",
+      "title": "PriceSeek提醒：11月3日卫星化学乙二醇出厂价下调",
+      "url": "https://www.100ppi.com/news/detail-20261103-6438816.html",
+      "commodity": "乙二醇",
       "autoFetched": true
     }
   ],
