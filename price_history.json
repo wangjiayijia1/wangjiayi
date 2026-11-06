@@ -1,95 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-07-23",
-      "prices": {
-        "己内酰胺": 11005.55,
-        "己二酸": 8348.34,
-        "尼龙6切片": 12071.56,
-        "合成氨": 2100.81,
-        "硝酸": 1332.55,
-        "双氧水": 683.83,
-        "硫酸": 1882.54,
-        "液氨": 2116.19,
-        "硫铵": 1224.04,
-        "纯苯": 7750.12,
-        "硫磺": 9264.32,
-        "环己酮": 7592.86,
-        "环己烷": 5777.21
-      },
-      "profitLines": [
-        {
-          "name": "己内酰胺",
-          "productPrice": 12401.67,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7750.12
-            }
-          ]
-        },
-        {
-          "name": "己二酸",
-          "productPrice": 8375.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7750.12
-            },
-            {
-              "label": "硝酸",
-              "price": 1332.55
-            }
-          ]
-        },
-        {
-          "name": "尼龙6切片",
-          "productPrice": 12866.67,
-          "rawMaterials": [
-            {
-              "label": "己内酰胺",
-              "price": 11005.55
-            }
-          ]
-        },
-        {
-          "name": "环己酮(外售)",
-          "productPrice": 9200.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7750.12
-            }
-          ]
-        },
-        {
-          "name": "合成氨",
-          "productPrice": 2313.33,
-          "rawMaterials": [
-            {
-              "label": "原料煤",
-              "price": 920
-            }
-          ]
-        },
-        {
-          "name": "双氧水",
-          "productPrice": 576.67,
-          "rawMaterials": []
-        },
-        {
-          "name": "硝酸",
-          "productPrice": 1300.0,
-          "rawMaterials": [
-            {
-              "label": "液氨",
-              "price": 2116.19
-            }
-          ]
-        }
-      ]
-    },
-    {
       "date": "2026-07-24",
       "prices": {
         "己内酰胺": 11040.03,
@@ -8005,6 +7916,95 @@
             {
               "label": "液氨",
               "price": 2673.33
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "prices": {
+        "己内酰胺": 13236.67,
+        "己二酸": 9900.0,
+        "尼龙6切片": 15033.33,
+        "合成氨": 2683.33,
+        "硝酸": 1486.67,
+        "双氧水": 670.0,
+        "硫酸": 1485.0,
+        "液氨": 2683.33,
+        "硫铵": 1250.0,
+        "纯苯": 8670.0,
+        "硫磺": 5324.25,
+        "环己酮": 10900.0,
+        "环己烷": 7500.0
+      },
+      "profitLines": [
+        {
+          "name": "己内酰胺",
+          "productPrice": 13236.67,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8670.0
+            }
+          ]
+        },
+        {
+          "name": "己二酸",
+          "productPrice": 9900.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8670.0
+            },
+            {
+              "label": "硝酸",
+              "price": 1486.67
+            }
+          ]
+        },
+        {
+          "name": "尼龙6切片",
+          "productPrice": 15033.33,
+          "rawMaterials": [
+            {
+              "label": "己内酰胺",
+              "price": 13236.67
+            }
+          ]
+        },
+        {
+          "name": "环己酮(外售)",
+          "productPrice": 10900.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8670.0
+            }
+          ]
+        },
+        {
+          "name": "合成氨",
+          "productPrice": 2683.33,
+          "rawMaterials": [
+            {
+              "label": "原料煤",
+              "price": 920
+            }
+          ]
+        },
+        {
+          "name": "双氧水",
+          "productPrice": 670.0,
+          "rawMaterials": []
+        },
+        {
+          "name": "硝酸",
+          "productPrice": 1486.67,
+          "rawMaterials": [
+            {
+              "label": "液氨",
+              "price": 2683.33
             }
           ]
         }
