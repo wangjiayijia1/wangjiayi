@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-11-06 05:28:25",
+  "lastUpdate": "2026-11-07 04:56:41",
   "products": [
     {
       "name": "己内酰胺",
@@ -50,8 +50,8 @@
       "formula": "HNO3",
       "price": 1486.67,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 6.66,
+      "changePct": 0.45,
       "weekPct": 1.15,
       "trend": "up",
       "tag": "product"
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 670.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": 6.63,
+      "changePct": 1.0,
       "weekPct": -5.09,
       "trend": "down",
       "tag": "product"
@@ -72,8 +72,8 @@
       "formula": "H2SO4",
       "price": 1485.0,
       "unit": "元/吨",
-      "change": -30.0,
-      "changePct": -1.98,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": 0.0,
       "trend": "flat",
       "tag": "product"
@@ -131,8 +131,8 @@
       "formula": "C6H10O",
       "price": 10900.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -308.23,
+      "changePct": -2.75,
       "weekPct": -0.88,
       "trend": "down",
       "tag": "mid"
@@ -556,138 +556,138 @@
     },
     {
       "date": "2026-11-06",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：美包装企业破产 塑料原料需求承压",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452532.html",
-      "commodity": "PP",
+      "category": "装置检修",
+      "title": "PriceSeek提醒：纯碱周度开工及产量环比大幅上升",
+      "url": "https://www.100ppi.com/news/detail-20261106-6457925.html",
+      "commodity": "纯碱",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "PriceSeek提醒：丰田PA6一体式皮卡货箱获SPE汽车创新大奖",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452531.html",
-      "commodity": "PP",
+      "title": "生意社：11月6日当周纯碱库存变化",
+      "url": "https://www.100ppi.com/news/detail-20261106-6457924.html",
+      "commodity": "纯碱",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-06",
+      "category": "装置检修",
+      "title": "生意社：11月6日当周纯碱开工率增加",
+      "url": "https://www.100ppi.com/news/detail-20261106-6457920.html",
+      "commodity": "纯碱",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "IAC宣布关闭阿拉巴马州工厂",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452530.html",
-      "commodity": "PP",
+      "title": "PriceSeek提醒：中沙天津石化苯酚出厂价下调400元/吨",
+      "url": "https://www.100ppi.com/news/detail-20261106-6457392.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "丰田Tacoma一体式注塑货箱斩获2026 SPE汽车创新大奖最高荣誉",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452529.html",
-      "commodity": "PP",
+      "title": "PriceSeek提醒：中石化华北苯酚执行9600元/吨挂牌价",
+      "url": "https://www.100ppi.com/news/detail-20261106-6457391.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "Maxiplast USA申请第11章破产保护 佛州塑料包装供应商陷偿债困境",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452527.html",
-      "commodity": "PP",
+      "title": "PriceSeek提醒：11月6日默伊维化工苯酚报价下调",
+      "url": "https://www.100ppi.com/news/detail-20261106-6453280.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "新泽西再生含量新规延期，PureCycle 5000万磅需求落空、盈亏平衡推迟",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452525.html",
-      "commodity": "PP",
+      "title": "PriceSeek提醒：高化苯酚执行9400元/吨 库存处于低位",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452835.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "PriceSeek提醒：欧盟收紧再生PET进口管控影响分析",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452522.html",
-      "commodity": "PP",
+      "title": "生意社：11月6日高化材料苯酚最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452585.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "Amcor 15亿美元北美饮料包装业务出售延期，地缘政治与市场波动拖慢交易进程",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452521.html",
-      "commodity": "PP",
+      "title": "生意社：11月6日扬州实友苯酚最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452584.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "PriceSeek提醒：树脂价格飙升 垃圾袋头部品牌相继提价",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452520.html",
-      "commodity": "PP",
+      "title": "生意社：11月6日默伊维化工（上海）苯酚价格下调",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452583.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "UFP Technologies加速医疗注塑并购布局：TPI收购超预期，下一目标已在路上",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452519.html",
-      "commodity": "PP",
+      "title": "生意社：11月6日惠州忠信苯酚价格下调",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452580.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-06",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：利华益维远苯酚出厂结算价下调300元/吨",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452577.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-06",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：中石化华东苯酚挂牌价执行9400元/吨",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452576.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-06",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：盛虹炼化苯酚调价 相关商品行情分析",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452574.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-06",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：11月6日江苏苯酚价格下调市场影响分析",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452571.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "市场动态",
-      "title": "树脂涨价撕开品牌粘性裂缝：Hefty与Glad的垃圾袋定价博弈",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452518.html",
-      "commodity": "PP",
+      "title": "生意社：11月6日华东地区苯酚市场下行",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452567.html",
+      "commodity": "苯酚",
       "autoFetched": true
     },
     {
       "date": "2026-11-06",
       "category": "行业快讯",
-      "title": "欧盟收紧食品接触再生PET进口管控：追溯文件与海关编码双升级",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452517.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-06",
-      "category": "行业快讯",
-      "title": "欧盟再生塑料“废物终结”标准获成员国通过，《循环经济法案》却再度延期",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452515.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-05",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：中石化华北丙酮挂牌价下调800元/吨",
-      "url": "https://www.100ppi.com/news/detail-20261105-6451502.html",
-      "commodity": "纯苯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-05",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：中沙天津石化丙酮报价下调800元/吨",
-      "url": "https://www.100ppi.com/news/detail-20261105-6451501.html",
-      "commodity": "纯苯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-05",
-      "category": "行业快讯",
-      "title": "生意社：11月5日中沙天津石化丙酮价格下调",
-      "url": "https://www.100ppi.com/news/detail-20261105-6451496.html",
-      "commodity": "纯苯",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-05",
-      "category": "行业快讯",
-      "title": "生意社：11月5日中石化华北丙酮价格下调",
-      "url": "https://www.100ppi.com/news/detail-20261105-6451494.html",
-      "commodity": "纯苯",
+      "title": "生意社：11月6日江苏瑞恒新材料苯酚价格下调",
+      "url": "https://www.100ppi.com/news/detail-20261106-6452558.html",
+      "commodity": "苯酚",
       "autoFetched": true
     }
   ],
