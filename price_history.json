@@ -1,95 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-07-25",
-      "prices": {
-        "己内酰胺": 11022.99,
-        "己二酸": 8362.01,
-        "尼龙6切片": 12082.39,
-        "合成氨": 2119.24,
-        "硝酸": 1323.56,
-        "双氧水": 676.99,
-        "硫酸": 1869.73,
-        "液氨": 2118.41,
-        "硫铵": 1208.88,
-        "纯苯": 7725.69,
-        "硫磺": 9232.6,
-        "环己酮": 7720.58,
-        "环己烷": 5833.11
-      },
-      "profitLines": [
-        {
-          "name": "己内酰胺",
-          "productPrice": 12401.67,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7725.69
-            }
-          ]
-        },
-        {
-          "name": "己二酸",
-          "productPrice": 8375.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7725.69
-            },
-            {
-              "label": "硝酸",
-              "price": 1323.56
-            }
-          ]
-        },
-        {
-          "name": "尼龙6切片",
-          "productPrice": 12866.67,
-          "rawMaterials": [
-            {
-              "label": "己内酰胺",
-              "price": 11022.99
-            }
-          ]
-        },
-        {
-          "name": "环己酮(外售)",
-          "productPrice": 9200.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7725.69
-            }
-          ]
-        },
-        {
-          "name": "合成氨",
-          "productPrice": 2313.33,
-          "rawMaterials": [
-            {
-              "label": "原料煤",
-              "price": 920
-            }
-          ]
-        },
-        {
-          "name": "双氧水",
-          "productPrice": 576.67,
-          "rawMaterials": []
-        },
-        {
-          "name": "硝酸",
-          "productPrice": 1300.0,
-          "rawMaterials": [
-            {
-              "label": "液氨",
-              "price": 2118.41
-            }
-          ]
-        }
-      ]
-    },
-    {
       "date": "2026-07-26",
       "prices": {
         "己内酰胺": 11181.35,
@@ -7923,6 +7834,95 @@
     },
     {
       "date": "2026-11-07",
+      "prices": {
+        "己内酰胺": 13236.67,
+        "己二酸": 9900.0,
+        "尼龙6切片": 15033.33,
+        "合成氨": 2683.33,
+        "硝酸": 1486.67,
+        "双氧水": 670.0,
+        "硫酸": 1485.0,
+        "液氨": 2683.33,
+        "硫铵": 1250.0,
+        "纯苯": 8670.0,
+        "硫磺": 5324.25,
+        "环己酮": 10900.0,
+        "环己烷": 7500.0
+      },
+      "profitLines": [
+        {
+          "name": "己内酰胺",
+          "productPrice": 13236.67,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8670.0
+            }
+          ]
+        },
+        {
+          "name": "己二酸",
+          "productPrice": 9900.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8670.0
+            },
+            {
+              "label": "硝酸",
+              "price": 1486.67
+            }
+          ]
+        },
+        {
+          "name": "尼龙6切片",
+          "productPrice": 15033.33,
+          "rawMaterials": [
+            {
+              "label": "己内酰胺",
+              "price": 13236.67
+            }
+          ]
+        },
+        {
+          "name": "环己酮(外售)",
+          "productPrice": 10900.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8670.0
+            }
+          ]
+        },
+        {
+          "name": "合成氨",
+          "productPrice": 2683.33,
+          "rawMaterials": [
+            {
+              "label": "原料煤",
+              "price": 920
+            }
+          ]
+        },
+        {
+          "name": "双氧水",
+          "productPrice": 670.0,
+          "rawMaterials": []
+        },
+        {
+          "name": "硝酸",
+          "productPrice": 1486.67,
+          "rawMaterials": [
+            {
+              "label": "液氨",
+              "price": 2683.33
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "prices": {
         "己内酰胺": 13236.67,
         "己二酸": 9900.0,
