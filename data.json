@@ -1,14 +1,14 @@
 {
-  "lastUpdate": "2026-11-08 04:50:34",
+  "lastUpdate": "2026-11-09 04:58:13",
   "products": [
     {
       "name": "己内酰胺",
       "formula": "C6H11NO",
       "price": 13236.67,
       "unit": "元/吨",
-      "change": -250.0,
-      "changePct": -1.85,
-      "weekPct": -1.18,
+      "change": 0.0,
+      "changePct": 0.0,
+      "weekPct": -5.47,
       "trend": "down",
       "tag": "product"
     },
@@ -19,8 +19,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.33,
-      "trend": "down",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     },
     {
@@ -30,8 +30,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.33,
-      "trend": "up",
+      "weekPct": -1.1,
+      "trend": "down",
       "tag": "product"
     },
     {
@@ -41,30 +41,30 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -5.42,
-      "trend": "down",
+      "weekPct": 0.37,
+      "trend": "up",
       "tag": "product"
     },
     {
       "name": "硝酸",
       "formula": "HNO3",
-      "price": 1486.67,
+      "price": 1493.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.15,
+      "weekPct": 1.82,
       "trend": "up",
       "tag": "product"
     },
     {
       "name": "双氧水",
       "formula": "H2O2",
-      "price": 670.0,
+      "price": 676.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -5.09,
-      "trend": "down",
+      "weekPct": 1.0,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -74,8 +74,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.0,
-      "trend": "flat",
+      "weekPct": -1.98,
+      "trend": "down",
       "tag": "product"
     },
     {
@@ -85,8 +85,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -5.42,
-      "trend": "down",
+      "weekPct": 0.37,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -96,8 +96,8 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 1.36,
-      "trend": "up",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     }
   ],
@@ -105,23 +105,23 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 8670.0,
+      "price": 8336.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -3.97,
+      "weekPct": -15.88,
       "trend": "down",
       "tag": "raw"
     },
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 5324.25,
+      "price": 5274.25,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -4.81,
-      "trend": "down",
+      "weekPct": 0.96,
+      "trend": "up",
       "tag": "raw"
     }
   ],
@@ -129,11 +129,11 @@
     {
       "name": "环己酮",
       "formula": "C6H10O",
-      "price": 10900.0,
+      "price": 10600.0,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.88,
+      "weekPct": -5.36,
       "trend": "down",
       "tag": "mid"
     },
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 8670.0
+          "price": 8336.67
         }
       ],
       "h2Qty": 250,
@@ -190,13 +190,13 @@
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 8670.0
+          "price": 8336.67
         },
         {
           "label": "硝酸",
           "qty": 0.65,
           "unit": "吨",
-          "price": 1486.67
+          "price": 1493.33
         }
       ],
       "h2Qty": 60,
@@ -239,14 +239,14 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 10900.0,
+      "productPrice": 10600.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 8670.0
+          "price": 8336.67
         }
       ],
       "h2Qty": 350,
@@ -290,7 +290,7 @@
     },
     {
       "name": "双氧水",
-      "productPrice": 670.0,
+      "productPrice": 676.67,
       "threshold": 100,
       "rawMaterials": [],
       "h2Qty": 70,
@@ -308,7 +308,7 @@
     },
     {
       "name": "硝酸",
-      "productPrice": 1486.67,
+      "productPrice": 1493.33,
       "threshold": 150,
       "rawMaterials": [
         {
@@ -531,6 +531,38 @@
       "source": "中国化工报"
     },
     {
+      "date": "2026-11-09",
+      "category": "行业快讯",
+      "title": "生意社：11月9日国内部分丁二烯企业竞拍及销售情况",
+      "url": "https://www.100ppi.com/news/detail-20261109-6462191.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-09",
+      "category": "行业快讯",
+      "title": "PriceSeek提醒：11月9日国内丁二烯市场行情分析",
+      "url": "https://www.100ppi.com/news/detail-20261109-6462115.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-09",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：国内PE周度产量环比小幅上涨",
+      "url": "https://www.100ppi.com/news/detail-20261109-6462164.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-09",
+      "category": "装置检修",
+      "title": "PriceSeek提醒：PE下游开工率下滑相关品种行情分析",
+      "url": "https://www.100ppi.com/news/detail-20261109-6462163.html",
+      "commodity": "LLDPE",
+      "autoFetched": true
+    },
+    {
       "date": "2026-11-06",
       "category": "装置检修",
       "title": "生意社：11月6日国内BDO部分企业计划重启",
@@ -655,38 +687,6 @@
       "category": "行业快讯",
       "title": "PriceSeek提醒：中石化华东苯酚挂牌价执行9400元/吨",
       "url": "https://www.100ppi.com/news/detail-20261106-6452576.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-06",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：盛虹炼化苯酚调价 相关商品行情分析",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452574.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-06",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：11月6日江苏苯酚价格下调市场影响分析",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452571.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-06",
-      "category": "市场动态",
-      "title": "生意社：11月6日华东地区苯酚市场下行",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452567.html",
-      "commodity": "苯酚",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-06",
-      "category": "行业快讯",
-      "title": "生意社：11月6日江苏瑞恒新材料苯酚价格下调",
-      "url": "https://www.100ppi.com/news/detail-20261106-6452558.html",
       "commodity": "苯酚",
       "autoFetched": true
     }
