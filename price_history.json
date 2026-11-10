@@ -1,95 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-07-27",
-      "prices": {
-        "己内酰胺": 11253.46,
-        "己二酸": 8350.39,
-        "尼龙6切片": 12200.19,
-        "合成氨": 2130.68,
-        "硝酸": 1320.44,
-        "双氧水": 668.4,
-        "硫酸": 1865.22,
-        "液氨": 2131.08,
-        "硫铵": 1198.64,
-        "纯苯": 7737.32,
-        "硫磺": 9243.81,
-        "环己酮": 7820.51,
-        "环己烷": 5869.59
-      },
-      "profitLines": [
-        {
-          "name": "己内酰胺",
-          "productPrice": 12401.67,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7737.32
-            }
-          ]
-        },
-        {
-          "name": "己二酸",
-          "productPrice": 8375.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7737.32
-            },
-            {
-              "label": "硝酸",
-              "price": 1320.44
-            }
-          ]
-        },
-        {
-          "name": "尼龙6切片",
-          "productPrice": 12866.67,
-          "rawMaterials": [
-            {
-              "label": "己内酰胺",
-              "price": 11253.46
-            }
-          ]
-        },
-        {
-          "name": "环己酮(外售)",
-          "productPrice": 9200.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7737.32
-            }
-          ]
-        },
-        {
-          "name": "合成氨",
-          "productPrice": 2313.33,
-          "rawMaterials": [
-            {
-              "label": "原料煤",
-              "price": 920
-            }
-          ]
-        },
-        {
-          "name": "双氧水",
-          "productPrice": 576.67,
-          "rawMaterials": []
-        },
-        {
-          "name": "硝酸",
-          "productPrice": 1300.0,
-          "rawMaterials": [
-            {
-              "label": "液氨",
-              "price": 2131.08
-            }
-          ]
-        }
-      ]
-    },
-    {
       "date": "2026-07-28",
       "prices": {
         "己内酰胺": 11294.09,
@@ -8005,6 +7916,95 @@
             {
               "label": "液氨",
               "price": 2683.33
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "prices": {
+        "己内酰胺": 12782.0,
+        "己二酸": 9900.0,
+        "尼龙6切片": 14533.33,
+        "合成氨": 2690.0,
+        "硝酸": 1523.33,
+        "双氧水": 680.0,
+        "硫酸": 1485.0,
+        "液氨": 2690.0,
+        "硫铵": 1250.0,
+        "纯苯": 8270.0,
+        "硫磺": 5151.75,
+        "环己酮": 10300.0,
+        "环己烷": 7500.0
+      },
+      "profitLines": [
+        {
+          "name": "己内酰胺",
+          "productPrice": 12782.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8270.0
+            }
+          ]
+        },
+        {
+          "name": "己二酸",
+          "productPrice": 9900.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8270.0
+            },
+            {
+              "label": "硝酸",
+              "price": 1523.33
+            }
+          ]
+        },
+        {
+          "name": "尼龙6切片",
+          "productPrice": 14533.33,
+          "rawMaterials": [
+            {
+              "label": "己内酰胺",
+              "price": 12782.0
+            }
+          ]
+        },
+        {
+          "name": "环己酮(外售)",
+          "productPrice": 10300.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 8270.0
+            }
+          ]
+        },
+        {
+          "name": "合成氨",
+          "productPrice": 2690.0,
+          "rawMaterials": [
+            {
+              "label": "原料煤",
+              "price": 920
+            }
+          ]
+        },
+        {
+          "name": "双氧水",
+          "productPrice": 680.0,
+          "rawMaterials": []
+        },
+        {
+          "name": "硝酸",
+          "productPrice": 1523.33,
+          "rawMaterials": [
+            {
+              "label": "液氨",
+              "price": 2690.0
             }
           ]
         }
