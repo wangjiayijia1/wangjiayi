@@ -1,95 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-08-04",
-      "prices": {
-        "己内酰胺": 11614.95,
-        "己二酸": 8437.12,
-        "尼龙6切片": 12389.98,
-        "合成氨": 2213.26,
-        "硝酸": 1320.61,
-        "双氧水": 643.23,
-        "硫酸": 1865.0,
-        "液氨": 2204.25,
-        "硫铵": 1168.28,
-        "纯苯": 7861.4,
-        "硫磺": 9381.0,
-        "环己酮": 8366.61,
-        "环己烷": 6117.82
-      },
-      "profitLines": [
-        {
-          "name": "己内酰胺",
-          "productPrice": 12401.67,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7861.4
-            }
-          ]
-        },
-        {
-          "name": "己二酸",
-          "productPrice": 8375.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7861.4
-            },
-            {
-              "label": "硝酸",
-              "price": 1320.61
-            }
-          ]
-        },
-        {
-          "name": "尼龙6切片",
-          "productPrice": 12866.67,
-          "rawMaterials": [
-            {
-              "label": "己内酰胺",
-              "price": 11614.95
-            }
-          ]
-        },
-        {
-          "name": "环己酮(外售)",
-          "productPrice": 9200.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7861.4
-            }
-          ]
-        },
-        {
-          "name": "合成氨",
-          "productPrice": 2313.33,
-          "rawMaterials": [
-            {
-              "label": "原料煤",
-              "price": 920
-            }
-          ]
-        },
-        {
-          "name": "双氧水",
-          "productPrice": 576.67,
-          "rawMaterials": []
-        },
-        {
-          "name": "硝酸",
-          "productPrice": 1300.0,
-          "rawMaterials": [
-            {
-              "label": "液氨",
-              "price": 2204.25
-            }
-          ]
-        }
-      ]
-    },
-    {
       "date": "2026-08-05",
       "prices": {
         "己内酰胺": 11724.37,
@@ -8005,6 +7916,95 @@
             {
               "label": "液氨",
               "price": 2566.67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "prices": {
+        "己内酰胺": 11890.0,
+        "己二酸": 9900.0,
+        "尼龙6切片": 13200.0,
+        "合成氨": 2666.67,
+        "硝酸": 1510.0,
+        "双氧水": 683.33,
+        "硫酸": 1450.0,
+        "液氨": 2666.67,
+        "硫铵": 1190.0,
+        "纯苯": 7986.67,
+        "硫磺": 5114.25,
+        "环己酮": 9700.0,
+        "环己烷": 7833.33
+      },
+      "profitLines": [
+        {
+          "name": "己内酰胺",
+          "productPrice": 11890.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 7986.67
+            }
+          ]
+        },
+        {
+          "name": "己二酸",
+          "productPrice": 9900.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 7986.67
+            },
+            {
+              "label": "硝酸",
+              "price": 1510.0
+            }
+          ]
+        },
+        {
+          "name": "尼龙6切片",
+          "productPrice": 13200.0,
+          "rawMaterials": [
+            {
+              "label": "己内酰胺",
+              "price": 11890.0
+            }
+          ]
+        },
+        {
+          "name": "环己酮(外售)",
+          "productPrice": 9700.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 7986.67
+            }
+          ]
+        },
+        {
+          "name": "合成氨",
+          "productPrice": 2666.67,
+          "rawMaterials": [
+            {
+              "label": "原料煤",
+              "price": 920
+            }
+          ]
+        },
+        {
+          "name": "双氧水",
+          "productPrice": 683.33,
+          "rawMaterials": []
+        },
+        {
+          "name": "硝酸",
+          "productPrice": 1510.0,
+          "rawMaterials": [
+            {
+              "label": "液氨",
+              "price": 2666.67
             }
           ]
         }
