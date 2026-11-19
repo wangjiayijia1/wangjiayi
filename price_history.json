@@ -1,95 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-08-05",
-      "prices": {
-        "己内酰胺": 11724.37,
-        "己二酸": 8391.46,
-        "尼龙6切片": 12456.51,
-        "合成氨": 2207.97,
-        "硝酸": 1310.27,
-        "双氧水": 636.19,
-        "硫酸": 1850.35,
-        "液氨": 2194.97,
-        "硫铵": 1155.8,
-        "纯苯": 7813.33,
-        "硫磺": 9322.46,
-        "环己酮": 8372.8,
-        "环己烷": 6105.45
-      },
-      "profitLines": [
-        {
-          "name": "己内酰胺",
-          "productPrice": 12401.67,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7813.33
-            }
-          ]
-        },
-        {
-          "name": "己二酸",
-          "productPrice": 8375.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7813.33
-            },
-            {
-              "label": "硝酸",
-              "price": 1310.27
-            }
-          ]
-        },
-        {
-          "name": "尼龙6切片",
-          "productPrice": 12866.67,
-          "rawMaterials": [
-            {
-              "label": "己内酰胺",
-              "price": 11724.37
-            }
-          ]
-        },
-        {
-          "name": "环己酮(外售)",
-          "productPrice": 9200.0,
-          "rawMaterials": [
-            {
-              "label": "纯苯",
-              "price": 7813.33
-            }
-          ]
-        },
-        {
-          "name": "合成氨",
-          "productPrice": 2313.33,
-          "rawMaterials": [
-            {
-              "label": "原料煤",
-              "price": 920
-            }
-          ]
-        },
-        {
-          "name": "双氧水",
-          "productPrice": 576.67,
-          "rawMaterials": []
-        },
-        {
-          "name": "硝酸",
-          "productPrice": 1300.0,
-          "rawMaterials": [
-            {
-              "label": "液氨",
-              "price": 2194.97
-            }
-          ]
-        }
-      ]
-    },
-    {
       "date": "2026-08-06",
       "prices": {
         "己内酰胺": 11718.94,
@@ -8005,6 +7916,95 @@
             {
               "label": "液氨",
               "price": 2666.67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "prices": {
+        "己内酰胺": 11890.0,
+        "己二酸": 9866.67,
+        "尼龙6切片": 13200.0,
+        "合成氨": 2690.0,
+        "硝酸": 1510.0,
+        "双氧水": 683.33,
+        "硫酸": 1437.5,
+        "液氨": 2690.0,
+        "硫铵": 1180.0,
+        "纯苯": 7686.67,
+        "硫磺": 5114.25,
+        "环己酮": 9700.0,
+        "环己烷": 7833.33
+      },
+      "profitLines": [
+        {
+          "name": "己内酰胺",
+          "productPrice": 11890.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 7686.67
+            }
+          ]
+        },
+        {
+          "name": "己二酸",
+          "productPrice": 9866.67,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 7686.67
+            },
+            {
+              "label": "硝酸",
+              "price": 1510.0
+            }
+          ]
+        },
+        {
+          "name": "尼龙6切片",
+          "productPrice": 13200.0,
+          "rawMaterials": [
+            {
+              "label": "己内酰胺",
+              "price": 11890.0
+            }
+          ]
+        },
+        {
+          "name": "环己酮(外售)",
+          "productPrice": 9700.0,
+          "rawMaterials": [
+            {
+              "label": "纯苯",
+              "price": 7686.67
+            }
+          ]
+        },
+        {
+          "name": "合成氨",
+          "productPrice": 2690.0,
+          "rawMaterials": [
+            {
+              "label": "原料煤",
+              "price": 920
+            }
+          ]
+        },
+        {
+          "name": "双氧水",
+          "productPrice": 683.33,
+          "rawMaterials": []
+        },
+        {
+          "name": "硝酸",
+          "productPrice": 1510.0,
+          "rawMaterials": [
+            {
+              "label": "液氨",
+              "price": 2690.0
             }
           ]
         }
