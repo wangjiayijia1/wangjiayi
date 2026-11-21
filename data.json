@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-11-20 06:00:20",
+  "lastUpdate": "2026-11-21 05:55:14",
   "products": [
     {
       "name": "己内酰胺",
@@ -17,8 +17,8 @@
       "formula": "C6H10O4",
       "price": 9800.0,
       "unit": "元/吨",
-      "change": -67.1,
-      "changePct": -0.68,
+      "change": -33.43,
+      "changePct": -0.34,
       "weekPct": 0.0,
       "trend": "flat",
       "tag": "product"
@@ -39,8 +39,8 @@
       "formula": "NH3",
       "price": 2716.67,
       "unit": "元/吨",
-      "change": 26.36,
-      "changePct": 0.98,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -5.2,
       "trend": "down",
       "tag": "product"
@@ -50,8 +50,8 @@
       "formula": "HNO3",
       "price": 1510.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -6.67,
+      "changePct": -0.44,
       "weekPct": 1.97,
       "trend": "up",
       "tag": "product"
@@ -61,8 +61,8 @@
       "formula": "H2O2",
       "price": 683.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -20.63,
+      "changePct": -2.93,
       "weekPct": 0.49,
       "trend": "up",
       "tag": "product"
@@ -83,8 +83,8 @@
       "formula": "NH3(l)",
       "price": 2716.67,
       "unit": "元/吨",
-      "change": 26.36,
-      "changePct": 0.98,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -5.2,
       "trend": "down",
       "tag": "product"
@@ -94,8 +94,8 @@
       "formula": "(NH4)2SO4",
       "price": 1176.67,
       "unit": "元/吨",
-      "change": -3.3,
-      "changePct": -0.28,
+      "change": 0.0,
+      "changePct": 0.0,
       "weekPct": -2.93,
       "trend": "down",
       "tag": "product"
@@ -131,8 +131,8 @@
       "formula": "C6H10O",
       "price": 9700.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
+      "change": -100.95,
+      "changePct": -1.03,
       "weekPct": -6.8,
       "trend": "down",
       "tag": "mid"
@@ -556,6 +556,14 @@
     },
     {
       "date": "2026-11-20",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：10月我国二氯甲烷出口量环比大幅增长",
+      "url": "https://www.100ppi.com/news/detail-20261120-6523616.html",
+      "commodity": "二氯甲烷",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-20",
       "category": "装置检修",
       "title": "生意社：11月20日国内BDO部分装置临时停车",
       "url": "https://www.100ppi.com/news/detail-20261120-6518929.html",
@@ -620,6 +628,14 @@
     },
     {
       "date": "2026-11-20",
+      "category": "行业快讯",
+      "title": "生意社：11月20日盛腾科技有限公司化工品最新价格",
+      "url": "https://www.100ppi.com/news/detail-20261120-6523857.html",
+      "commodity": "苯酚",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-20",
       "category": "市场动态",
       "title": "PriceSeek提醒：国内丁二烯市场偏弱震荡 区域价格分化",
       "url": "https://www.100ppi.com/news/detail-20261120-6518868.html",
@@ -671,22 +687,6 @@
       "category": "市场动态",
       "title": "PriceSeek提醒：美国再生HDPE需求疲软 短期或窄幅阴跌",
       "url": "https://www.100ppi.com/news/detail-20261120-6518904.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-20",
-      "category": "政策法规",
-      "title": "美企申请对华塑料气球征收最高276%反倾销税，ITC已启动损害调查",
-      "url": "https://www.100ppi.com/news/detail-20261120-6518903.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-20",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：Demgy参与法国APOLLO计划 拓展特种塑料应用",
-      "url": "https://www.100ppi.com/news/detail-20261120-6518901.html",
       "commodity": "PP",
       "autoFetched": true
     }
