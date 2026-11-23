@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-11-22 05:29:20",
+  "lastUpdate": "2026-11-23 06:05:22",
   "products": [
     {
       "name": "己内酰胺",
@@ -8,19 +8,19 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -4.95,
-      "trend": "down",
+      "weekPct": 0.0,
+      "trend": "flat",
       "tag": "product"
     },
     {
       "name": "己二酸",
       "formula": "C6H10O4",
-      "price": 9800.0,
+      "price": 9766.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.0,
-      "trend": "flat",
+      "weekPct": -1.35,
+      "trend": "down",
       "tag": "product"
     },
     {
@@ -30,41 +30,41 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -7.57,
+      "weekPct": -1.74,
       "trend": "down",
       "tag": "product"
     },
     {
       "name": "合成氨",
       "formula": "NH3",
-      "price": 2716.67,
+      "price": 2743.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -5.2,
-      "trend": "down",
+      "weekPct": 6.88,
+      "trend": "up",
       "tag": "product"
     },
     {
       "name": "硝酸",
       "formula": "HNO3",
-      "price": 1510.0,
+      "price": 1503.33,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": 1.97,
-      "trend": "up",
+      "change": -3.31,
+      "changePct": -0.22,
+      "weekPct": -1.53,
+      "trend": "down",
       "tag": "product"
     },
     {
       "name": "双氧水",
       "formula": "H2O2",
-      "price": 683.33,
+      "price": 663.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": 0.49,
-      "trend": "up",
+      "weekPct": -2.93,
+      "trend": "down",
       "tag": "product"
     },
     {
@@ -74,19 +74,19 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -0.84,
+      "weekPct": -0.86,
       "trend": "down",
       "tag": "product"
     },
     {
       "name": "液氨",
       "formula": "NH3(l)",
-      "price": 2716.67,
+      "price": 2743.33,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -5.2,
-      "trend": "down",
+      "weekPct": 6.88,
+      "trend": "up",
       "tag": "product"
     },
     {
@@ -96,7 +96,7 @@
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -2.93,
+      "weekPct": -2.75,
       "trend": "down",
       "tag": "product"
     }
@@ -105,23 +105,23 @@
     {
       "name": "纯苯",
       "formula": "C6H6",
-      "price": 7553.33,
+      "price": 7536.67,
       "unit": "元/吨",
       "change": 0.0,
       "changePct": 0.0,
-      "weekPct": -5.24,
+      "weekPct": -6.22,
       "trend": "down",
       "tag": "raw"
     },
     {
       "name": "硫磺",
       "formula": "S",
-      "price": 5139.25,
+      "price": 5156.75,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": -1.46,
-      "trend": "down",
+      "change": 20.03,
+      "changePct": 0.39,
+      "weekPct": 1.08,
+      "trend": "up",
       "tag": "raw"
     }
   ],
@@ -129,11 +129,11 @@
     {
       "name": "环己酮",
       "formula": "C6H10O",
-      "price": 9700.0,
+      "price": 9600.0,
       "unit": "元/吨",
-      "change": 0.0,
-      "changePct": 0.0,
-      "weekPct": -6.8,
+      "change": -100.89,
+      "changePct": -1.04,
+      "weekPct": -1.03,
       "trend": "down",
       "tag": "mid"
     },
@@ -164,7 +164,7 @@
           "label": "纯苯",
           "qty": 1.0,
           "unit": "吨",
-          "price": 7553.33
+          "price": 7536.67
         }
       ],
       "h2Qty": 250,
@@ -183,20 +183,20 @@
     },
     {
       "name": "己二酸",
-      "productPrice": 9800.0,
+      "productPrice": 9766.67,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.7,
           "unit": "吨",
-          "price": 7553.33
+          "price": 7536.67
         },
         {
           "label": "硝酸",
           "qty": 0.65,
           "unit": "吨",
-          "price": 1510.0
+          "price": 1503.33
         }
       ],
       "h2Qty": 60,
@@ -239,14 +239,14 @@
     },
     {
       "name": "环己酮(外售)",
-      "productPrice": 9700.0,
+      "productPrice": 9600.0,
       "threshold": 500,
       "rawMaterials": [
         {
           "label": "纯苯",
           "qty": 0.95,
           "unit": "吨",
-          "price": 7553.33
+          "price": 7536.67
         }
       ],
       "h2Qty": 350,
@@ -264,7 +264,7 @@
     },
     {
       "name": "合成氨",
-      "productPrice": 2716.67,
+      "productPrice": 2743.33,
       "threshold": 400,
       "rawMaterials": [
         {
@@ -290,7 +290,7 @@
     },
     {
       "name": "双氧水",
-      "productPrice": 683.33,
+      "productPrice": 663.33,
       "threshold": 100,
       "rawMaterials": [],
       "h2Qty": 70,
@@ -308,14 +308,14 @@
     },
     {
       "name": "硝酸",
-      "productPrice": 1510.0,
+      "productPrice": 1503.33,
       "threshold": 150,
       "rawMaterials": [
         {
           "label": "液氨",
           "qty": 0.29,
           "unit": "吨",
-          "price": 2716.67
+          "price": 2743.33
         }
       ],
       "h2Qty": 0,
@@ -531,11 +531,35 @@
       "source": "中国化工报"
     },
     {
-      "date": "2026-11-20",
+      "date": "2026-11-23",
       "category": "行业快讯",
       "title": "PriceSeek提醒：利华益维远丙酮出厂价下调100元/吨",
-      "url": "https://www.100ppi.com/news/detail-20261120-6518933.html",
+      "url": "https://www.100ppi.com/news/detail-20261123-6528539.html",
       "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-23",
+      "category": "行业快讯",
+      "title": "生意社：11月23日利华益维远丙酮价格下调",
+      "url": "https://www.100ppi.com/news/detail-20261123-6528538.html",
+      "commodity": "纯苯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-23",
+      "category": "行业快讯",
+      "title": "生意社：11月23日国内部分丁二烯企业竞拍及销售情况",
+      "url": "https://www.100ppi.com/news/detail-20261123-6528521.html",
+      "commodity": "丁二烯",
+      "autoFetched": true
+    },
+    {
+      "date": "2026-11-23",
+      "category": "市场动态",
+      "title": "PriceSeek提醒：本周期国内PE产能利用率环比下降",
+      "url": "https://www.100ppi.com/news/detail-20261123-6528489.html",
+      "commodity": "LLDPE",
       "autoFetched": true
     },
     {
@@ -663,30 +687,6 @@
       "category": "行业快讯",
       "title": "生意社：11月20日宁波金发PP装置动态",
       "url": "https://www.100ppi.com/news/detail-20261120-6518926.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-20",
-      "category": "行业快讯",
-      "title": "生意社：11月20日中沙天津PP装置动态",
-      "url": "https://www.100ppi.com/news/detail-20261120-6518919.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-20",
-      "category": "行业快讯",
-      "title": "PriceSeek提醒：再生塑料供需缺口拉大 相关塑价获利好支撑",
-      "url": "https://www.100ppi.com/news/detail-20261120-6518909.html",
-      "commodity": "PP",
-      "autoFetched": true
-    },
-    {
-      "date": "2026-11-20",
-      "category": "市场动态",
-      "title": "PriceSeek提醒：美国再生HDPE需求疲软 短期或窄幅阴跌",
-      "url": "https://www.100ppi.com/news/detail-20261120-6518904.html",
       "commodity": "PP",
       "autoFetched": true
     }
